@@ -5,249 +5,250 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>THINKERZ STUDIO</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <style>
+  /* ─── TOKENS ─── */
   :root {
-    --black: #0a0a0a;
-    --white: #f5f5f0;
-    --gray-1: #161616;
-    --gray-2: #2a2a2a;
-    --gray-3: #999;
-    --gray-4: #bbb;
-    --gray-5: #ddd;
+    --black:  #0a0a0a;
+    --white:  #f0f0ee;
+    --g1:     #161616;
+    --g2:     #2a2a2a;
+    --g3:     #666;
+    --g4:     #999;
+    --g5:     #bbb;
+    --g6:     #ddd;
     --gutter: 48px;
+    --nav-h:  56px;
   }
+  @media (max-width: 768px) { :root { --gutter: 32px; --nav-h: 52px; } }
+  @media (max-width: 480px) { :root { --gutter: 20px; --nav-h: 96px; } }
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
-  a { color: inherit; text-decoration: none; }
-  html { scroll-behavior: smooth; background-color: #0a0a0a; }
-
+/* ─── RESET ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html {
+scroll-behavior: smooth;
+background: #0a0a0a;
+-webkit-text-size-adjust: 100%;
+}
 body {
-background-color: #0a0a0a !important;
 background: #0a0a0a !important;
-color: #f5f5f0;
-font-family: ‘Noto Sans KR’, sans-serif;
+color: var(–g6);
+font-family: ‘Pretendard’, ‘Inter’, sans-serif;
 font-weight: 300;
+font-size: 15px;
+line-height: 1.7;
 overflow-x: hidden;
 }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
 
-@media (max-width: 768px) { :root { –gutter: 32px; } }
-@media (max-width: 480px) { :root { –gutter: 20px; } }
+/* ─── TYPOGRAPHY SCALE ─── */
+.t-label {
+font-family: ‘Inter’, sans-serif;
+font-size: 10px;
+font-weight: 600;
+letter-spacing: 0.35em;
+text-transform: uppercase;
+color: var(–g4);
+margin-bottom: 32px;
+}
 
-/* NAV */
+.t-hero-en {
+font-family: ‘Inter’, sans-serif;
+font-size: clamp(56px, 12vw, 130px);
+font-weight: 900;
+line-height: 0.88;
+letter-spacing: -0.03em;
+text-transform: uppercase;
+color: var(–white);
+}
+
+.t-tagline {
+font-family: ‘Inter’, sans-serif;
+font-size: clamp(14px, 2.5vw, 22px);
+font-weight: 300;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(–g4);
+margin-top: 24px;
+margin-bottom: 32px;
+}
+
+.t-body-lg {
+font-size: clamp(14px, 1.8vw, 17px);
+font-weight: 300;
+line-height: 1.85;
+color: var(–g6);
+max-width: 600px;
+}
+
+.t-body {
+font-size: 14px;
+font-weight: 300;
+line-height: 1.85;
+color: var(–g5);
+}
+
+.t-small {
+font-family: ‘Inter’, sans-serif;
+font-size: 11px;
+font-weight: 400;
+line-height: 1.6;
+color: var(–g4);
+letter-spacing: 0.03em;
+}
+
+/* ─── NAV ─── */
 nav {
 position: fixed;
-top: 0;
-left: 0;
-right: 0;
-z-index: 100;
-padding: 20px var(–gutter);
+top: 0; left: 0; right: 0;
+z-index: 200;
+height: var(–nav-h);
+padding: 0 var(–gutter);
 display: flex;
-justify-content: space-between;
 align-items: center;
-background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%);
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 8px;
+background: rgba(10,10,10,0.95);
+border-bottom: 1px solid var(–g2);
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
 }
 
 .nav-logo {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 14px;
+font-family: ‘Inter’, sans-serif;
+font-size: 13px;
 font-weight: 700;
-letter-spacing: 0.2em;
+letter-spacing: 0.18em;
 text-transform: uppercase;
 color: var(–white);
-text-decoration: none;
 flex-shrink: 0;
 }
 
 .nav-links {
 display: flex;
-gap: 24px;
+gap: 28px;
 list-style: none;
+flex-wrap: wrap;
 }
 
 .nav-links a {
-font-family: ‘Barlow Condensed’, sans-serif;
+font-family: ‘Inter’, sans-serif;
 font-size: 11px;
 font-weight: 500;
-letter-spacing: 0.2em;
+letter-spacing: 0.18em;
 text-transform: uppercase;
-color: var(–gray-3);
-text-decoration: none;
+color: var(–g4);
 transition: color 0.2s;
 }
 
 .nav-links a:hover { color: var(–white); }
 
 @media (max-width: 480px) {
-nav {
-padding: 14px 20px;
-flex-direction: column;
-align-items: flex-start;
-gap: 10px;
-background: rgba(10,10,10,0.95);
-}
+nav { padding: 12px var(–gutter); height: auto; min-height: var(–nav-h); align-items: flex-start; }
 .nav-links { gap: 16px; }
-.nav-links a { font-size: 10px; letter-spacing: 0.15em; }
 }
 
-/* HERO — STUDIO */
-.studio-hero {
+/* ─── SECTIONS ─── */
+.hero-studio {
 min-height: 100vh;
+padding: calc(var(–nav-h) + 80px) var(–gutter) 80px;
 display: flex;
 flex-direction: column;
 justify-content: flex-end;
-padding: 56px var(–gutter);
-border-bottom: 1px solid var(–gray-2);
-position: relative;
+border-bottom: 1px solid var(–g2);
 }
 
-.studio-hero-tag {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 10px;
-font-weight: 500;
-letter-spacing: 0.4em;
-color: var(–gray-3);
-text-transform: uppercase;
-margin-bottom: 24px;
+section {
+padding: 80px var(–gutter);
+border-bottom: 1px solid var(–g2);
 opacity: 0;
-animation: fadeUp 0.6s ease forwards 0.2s;
+transform: translateY(20px);
+transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.studio-hero-title {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: clamp(48px, 10vw, 120px);
-font-weight: 900;
-line-height: 0.9;
-letter-spacing: -0.02em;
-text-transform: uppercase;
-color: var(–white);
-margin-bottom: 32px;
-opacity: 0;
-animation: fadeUp 0.6s ease forwards 0.4s;
-}
+section.visible { opacity: 1; transform: none; }
 
-.studio-hero-tagline {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: clamp(18px, 3vw, 32px);
-font-weight: 300;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: var(–gray-4);
-margin-bottom: 40px;
-opacity: 0;
-animation: fadeUp 0.6s ease forwards 0.6s;
-}
-
-.studio-hero-desc {
-font-size: clamp(13px, 1.6vw, 16px);
-font-weight: 300;
-line-height: 1.9;
-color: var(–gray-3);
-max-width: 560px;
-opacity: 0;
-animation: fadeUp 0.6s ease forwards 0.8s;
-}
-
-/* DIVIDER */
-.section-divider {
-width: 100%;
-height: 1px;
-background: var(–gray-2);
-}
-
+/* ─── VLUW DIVIDER ─── */
 .vluw-divider {
-padding: 48px var(–gutter);
-border-bottom: 1px solid var(–gray-2);
+padding: 56px var(–gutter);
+border-bottom: 1px solid var(–g2);
 opacity: 0;
-transform: translateY(16px);
+transform: translateY(20px);
 transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .vluw-divider.visible { opacity: 1; transform: none; }
 
 .vluw-divider-label {
-font-family: ‘Barlow Condensed’, sans-serif;
+font-family: ‘Inter’, sans-serif;
 font-size: 10px;
 font-weight: 600;
-letter-spacing: 0.4em;
-color: var(–gray-3);
+letter-spacing: 0.35em;
 text-transform: uppercase;
-margin-bottom: 16px;
+color: var(–g4);
+margin-bottom: 12px;
 }
 
 .vluw-divider-title {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: clamp(36px, 8vw, 80px);
+font-family: ‘Inter’, sans-serif;
+font-size: clamp(48px, 10vw, 100px);
 font-weight: 900;
-letter-spacing: -0.02em;
+letter-spacing: -0.03em;
 text-transform: uppercase;
 color: var(–white);
 line-height: 0.9;
 }
 
-/* SECTIONS */
-section {
-padding: 80px var(–gutter);
-border-bottom: 1px solid var(–gray-1);
-opacity: 0;
-transform: translateY(16px);
-transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-section.visible { opacity: 1; transform: none; }
-
-.label {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.4em;
-color: var(–gray-3);
-text-transform: uppercase;
-margin-bottom: 40px;
-}
-
-/* HERO — VLUW */
+/* ─── VLUW HERO ─── */
 .vluw-hero {
-min-height: 70vh;
+min-height: 60vh;
+position: relative;
+overflow: hidden;
 display: flex;
 flex-direction: column;
 justify-content: flex-end;
 padding: 56px var(–gutter);
-border-bottom: 1px solid var(–gray-2);
-position: relative;
-overflow: hidden;
+border-bottom: 1px solid var(–g2);
 opacity: 0;
-transform: translateY(16px);
+transform: translateY(20px);
 transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .vluw-hero.visible { opacity: 1; transform: none; }
 
-.vluw-hero-img {
+.vluw-hero-bg {
 position: absolute;
 inset: 0;
-background: var(–gray-1);
+background: var(–g1);
 display: flex;
 align-items: center;
 justify-content: center;
 }
 
-.vluw-hero-img-label {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 11px;
+.vluw-hero-bg-label {
+font-family: ‘Inter’, sans-serif;
+font-size: 10px;
 font-weight: 400;
 letter-spacing: 0.3em;
-color: var(–gray-3);
+color: var(–g3);
 text-transform: uppercase;
 text-align: center;
 line-height: 2.4;
 }
 
-.vluw-hero-img::after {
+.vluw-hero-bg::after {
 content: ‘’;
 position: absolute;
 inset: 0;
-background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.55) 40%, rgba(10,10,10,0.05) 100%);
+background: linear-gradient(to top,
+rgba(10,10,10,1) 0%,
+rgba(10,10,10,0.5) 40%,
+rgba(10,10,10,0.05) 100%);
 }
 
 .vluw-hero-content {
@@ -256,54 +257,54 @@ z-index: 1;
 }
 
 .vluw-hero-hook {
-font-size: clamp(13px, 1.6vw, 16px);
+font-size: clamp(13px, 1.5vw, 16px);
 font-weight: 300;
-color: var(–gray-4);
-line-height: 1.8;
+color: var(–g4);
+line-height: 1.7;
 margin-bottom: 16px;
 }
 
 .vluw-hero-title {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: clamp(56px, 12vw, 120px);
+font-family: ‘Inter’, sans-serif;
+font-size: clamp(52px, 12vw, 120px);
 font-weight: 900;
 line-height: 0.88;
-letter-spacing: -0.02em;
+letter-spacing: -0.03em;
 text-transform: uppercase;
 color: var(–white);
 }
 
-/* WHAT */
-.what-intro {
-font-size: clamp(14px, 1.8vw, 18px);
+/* ─── WHO IS VLUW ─── */
+.world-text {
+font-size: clamp(14px, 1.8vw, 17px);
 font-weight: 300;
-line-height: 1.9;
-color: var(–gray-5);
+line-height: 1.85;
+color: var(–g6);
 max-width: 640px;
-margin-bottom: 56px;
+margin-bottom: 64px;
 }
 
-/* MEMBERS */
+/* ─── MEMBERS ─── */
 .members {
 display: flex;
 flex-direction: column;
-border-top: 1px solid var(–gray-2);
+border-top: 1px solid var(–g2);
 }
 
 .member {
 display: grid;
-grid-template-columns: 220px 1fr;
+grid-template-columns: 200px 1fr;
 gap: 48px;
 padding: 48px 0;
-border-bottom: 1px solid var(–gray-2);
+border-bottom: 1px solid var(–g2);
 transition: background 0.2s;
 }
 
-@media (max-width: 640px) {
-.member { grid-template-columns: 1fr; gap: 20px; }
-}
+.member:hover { background: var(–g1); }
 
-.member:hover { background: var(–gray-1); }
+@media (max-width: 640px) {
+.member { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
+}
 
 .member-photo {
 width: 100%;
@@ -311,9 +312,11 @@ aspect-ratio: 3/4;
 object-fit: cover;
 }
 
+.member-info { padding-top: 2px; }
+
 .member-name-en {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 28px;
+font-family: ‘Inter’, sans-serif;
+font-size: 26px;
 font-weight: 700;
 letter-spacing: 0.04em;
 text-transform: uppercase;
@@ -324,61 +327,83 @@ margin-bottom: 4px;
 
 .member-name-kr {
 font-size: 12px;
-font-weight: 300;
-color: var(–gray-4);
-margin-bottom: 10px;
+font-weight: 400;
+color: var(–g5);
+margin-bottom: 8px;
 }
 
 .member-role {
-font-family: ‘Barlow Condensed’, sans-serif;
+font-family: ‘Inter’, sans-serif;
 font-size: 10px;
 font-weight: 600;
 letter-spacing: 0.2em;
-color: var(–gray-5);
 text-transform: uppercase;
-margin-bottom: 12px;
+color: var(–g5);
+margin-bottom: 16px;
 }
 
 .member-tags {
 font-size: 11px;
 font-weight: 300;
-color: var(–gray-4);
+color: var(–g4);
 line-height: 1.8;
-margin-bottom: 16px;
+margin-bottom: 20px;
+letter-spacing: 0.02em;
 }
 
 .member-desc {
 font-size: 14px;
 font-weight: 300;
-color: var(–gray-5);
-line-height: 1.9;
+line-height: 1.85;
+color: var(–g6);
 }
 
-/* MUSIC */
-.music-block { margin-bottom: 64px; }
+/* ─── MUSIC ─── */
+.music-block { margin-bottom: 72px; }
+.music-block:last-child { margin-bottom: 0; }
 
 .music-block-title {
-font-family: ‘Barlow Condensed’, sans-serif;
+font-family: ‘Inter’, sans-serif;
 font-size: 10px;
 font-weight: 600;
 letter-spacing: 0.35em;
-color: var(–gray-3);
 text-transform: uppercase;
+color: var(–g4);
 margin-bottom: 32px;
-padding-bottom: 12px;
-border-bottom: 1px solid var(–gray-2);
+padding-bottom: 16px;
+border-bottom: 1px solid var(–g2);
+}
+
+.album-intro {
+font-size: 14px;
+font-weight: 300;
+line-height: 1.85;
+color: var(–g6);
+max-width: 640px;
+margin-bottom: 40px;
+}
+
+.tracklist-label {
+font-family: ‘Inter’, sans-serif;
+font-size: 10px;
+font-weight: 600;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–g4);
+margin-bottom: 8px;
 }
 
 .track {
 display: grid;
-grid-template-columns: 120px 1fr;
-gap: 32px;
-padding: 28px 0;
-border-bottom: 1px solid var(–gray-1);
+grid-template-columns: 100px 1fr;
+gap: 28px;
+padding: 24px 0;
+border-bottom: 1px solid var(–g1);
+align-items: start;
 }
 
-@media (max-width: 560px) {
-.track { grid-template-columns: 1fr; gap: 16px; }
+@media (max-width: 480px) {
+.track { grid-template-columns: 80px 1fr; gap: 20px; }
 }
 
 .track-cover {
@@ -388,88 +413,70 @@ object-fit: cover;
 }
 
 .track-title {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 18px;
-font-weight: 700;
-letter-spacing: 0.05em;
+font-family: ‘Inter’, sans-serif;
+font-size: 16px;
+font-weight: 600;
+letter-spacing: 0.02em;
 color: var(–white);
 margin-bottom: 8px;
+line-height: 1.3;
 }
 
 .track-desc {
 font-size: 13px;
 font-weight: 300;
-color: var(–gray-5);
-line-height: 1.8;
+line-height: 1.75;
+color: var(–g5);
 margin-bottom: 12px;
 }
 
 .track-link {
-font-family: ‘Barlow Condensed’, sans-serif;
+font-family: ‘Inter’, sans-serif;
 font-size: 10px;
 font-weight: 600;
 letter-spacing: 0.2em;
-color: var(–gray-3);
-text-decoration: none;
 text-transform: uppercase;
-border-bottom: 1px solid var(–gray-2);
+color: var(–g4);
+border-bottom: 1px solid var(–g2);
 padding-bottom: 2px;
 transition: color 0.15s, border-color 0.15s;
+display: inline-block;
 }
 
 .track-link:hover { color: var(–white); border-color: var(–white); }
 
-.album-intro {
-font-size: 14px;
-font-weight: 300;
-color: var(–gray-5);
-line-height: 1.9;
-max-width: 640px;
-margin-bottom: 40px;
-}
-
-.tracklist-label {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.3em;
-color: var(–gray-3);
-text-transform: uppercase;
-margin-bottom: 24px;
-}
-
-.music-links {
+.music-platforms {
 display: flex;
 gap: 10px;
 flex-wrap: wrap;
-margin-top: 40px;
+margin-top: 48px;
 padding-top: 32px;
-border-top: 1px solid var(–gray-2);
+border-top: 1px solid var(–g2);
 }
 
 .btn {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 11px;
+font-family: ‘Inter’, sans-serif;
+font-size: 10px;
 font-weight: 600;
-letter-spacing: 0.25em;
+letter-spacing: 0.2em;
 text-transform: uppercase;
-text-decoration: none;
 padding: 10px 20px;
 transition: all 0.15s;
+display: inline-block;
 }
 
-.btn-primary { background: var(–white); color: var(–black); }
-.btn-primary:hover { background: var(–gray-4); color: var(–white); }
-.btn-secondary { border: 1px solid var(–gray-2); color: var(–gray-3); }
-.btn-secondary:hover { border-color: var(–white); color: var(–white); }
+.btn-fill { background: var(–white); color: var(–black); }
+.btn-fill:hover { background: var(–g5); }
+.btn-outline { border: 1px solid var(–g2); color: var(–g5); }
+.btn-outline:hover { border-color: var(–white); color: var(–white); }
 
-/* STORY */
+/* ─── STORY ─── */
 .story-grid {
 display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 1px;
-background: var(–gray-2);
-border: 1px solid var(–gray-2);
+background: var(–g2);
+border: 1px solid var(–g2);
 max-width: 720px;
 }
 
@@ -481,7 +488,7 @@ padding: 32px 28px;
 transition: background 0.2s;
 }
 
-.story-item:hover { background: var(–gray-1); }
+.story-item:hover { background: var(–g1); }
 
 .story-cover {
 width: 100%;
@@ -492,85 +499,82 @@ margin-bottom: 20px;
 
 .story-title {
 font-size: 14px;
-font-weight: 400;
+font-weight: 500;
 color: var(–white);
-line-height: 1.6;
-margin-bottom: 10px;
+line-height: 1.5;
+margin-bottom: 12px;
 }
 
 .story-desc {
 font-size: 12px;
 font-weight: 300;
-color: var(–gray-4);
-line-height: 1.7;
-margin-bottom: 16px;
+line-height: 1.75;
+color: var(–g5);
+margin-bottom: 20px;
 }
 
 .story-link {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 11px;
+font-family: ‘Inter’, sans-serif;
+font-size: 10px;
 font-weight: 600;
 letter-spacing: 0.2em;
-color: var(–white);
-text-decoration: none;
 text-transform: uppercase;
-border-bottom: 1px solid var(–gray-2);
+color: var(–g5);
+border-bottom: 1px solid var(–g2);
 padding-bottom: 2px;
-transition: border-color 0.15s;
+transition: color 0.15s, border-color 0.15s;
+display: inline-block;
 }
 
-.story-link:hover { border-color: var(–white); }
+.story-link:hover { color: var(–white); border-color: var(–white); }
 
-/* LINKS */
-.links-grid {
+/* ─── LINKS ─── */
+.links-list {
 display: flex;
 flex-direction: column;
-border: 1px solid var(–gray-2);
-max-width: 400px;
+border: 1px solid var(–g2);
+max-width: 360px;
 }
 
-.link-item {
+.link-row {
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding: 16px 24px;
-border-bottom: 1px solid var(–gray-2);
-text-decoration: none;
+padding: 14px 20px;
+border-bottom: 1px solid var(–g2);
 transition: background 0.2s;
 }
 
-.link-item:last-child { border-bottom: none; }
-.link-item:hover { background: var(–gray-1); }
+.link-row:last-child { border-bottom: none; }
+.link-row:hover { background: var(–g1); }
 
 .link-name {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 12px;
+font-family: ‘Inter’, sans-serif;
+font-size: 11px;
 font-weight: 600;
-letter-spacing: 0.2em;
-color: var(–white);
+letter-spacing: 0.18em;
 text-transform: uppercase;
+color: var(–g6);
 }
 
-.link-arrow { font-size: 12px; color: var(–gray-3); }
+.link-arrow { font-size: 12px; color: var(–g3); }
 
-/* CONTACT */
+/* ─── CONTACT ─── */
 .contact-sub {
 font-size: 13px;
 font-weight: 300;
-color: var(–gray-3);
-margin-bottom: 28px;
-line-height: 1.8;
+color: var(–g4);
+line-height: 1.7;
+margin-bottom: 24px;
 }
 
 .contact-email {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: clamp(22px, 4vw, 40px);
+font-family: ‘Inter’, sans-serif;
+font-size: clamp(18px, 3.5vw, 36px);
 font-weight: 700;
-letter-spacing: 0.05em;
-text-transform: uppercase;
+letter-spacing: 0.02em;
 color: var(–white);
-text-decoration: none;
-border-bottom: 1px solid var(–gray-2);
+border-bottom: 1px solid var(–g2);
 padding-bottom: 4px;
 transition: border-color 0.2s;
 display: inline-block;
@@ -578,46 +582,37 @@ display: inline-block;
 
 .contact-email:hover { border-color: var(–white); }
 
-/* FOOTER */
+/* ─── FOOTER ─── */
 footer {
 padding: 32px var(–gutter);
 display: flex;
 flex-direction: column;
 align-items: flex-start;
 gap: 6px;
-border-top: 1px solid var(–gray-2);
+border-top: 1px solid var(–g2);
 }
 
-.footer-logo {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 13px;
+.footer-name {
+font-family: ‘Inter’, sans-serif;
+font-size: 12px;
 font-weight: 600;
-letter-spacing: 0.2em;
+letter-spacing: 0.18em;
 text-transform: uppercase;
-color: var(–gray-3);
+color: var(–g3);
 }
 
 .footer-copy {
-font-family: ‘Barlow Condensed’, sans-serif;
+font-family: ‘Inter’, sans-serif;
 font-size: 11px;
-font-weight: 400;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(–gray-3);
+font-weight: 300;
+letter-spacing: 0.1em;
+color: var(–g3);
 }
 
-@media (max-width: 600px) {
-
-}
-
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(12px); }
-to { opacity: 1; transform: none; }
-}
-
+/* ─── SCROLL REVEAL ─── */
 ::-webkit-scrollbar { width: 2px; }
 ::-webkit-scrollbar-track { background: var(–black); }
-::-webkit-scrollbar-thumb { background: var(–gray-2); }
+::-webkit-scrollbar-thumb { background: var(–g2); }
 </style>
 
 </head>
@@ -637,11 +632,11 @@ to { opacity: 1; transform: none; }
 
 <!-- STUDIO HERO -->
 
-<div class="studio-hero" id="about">
-  <div class="studio-hero-tag">Virtual Entertainment Studio</div>
-  <h1 class="studio-hero-title">Thinkerz<br>Studio</h1>
-  <p class="studio-hero-tagline">A Shelter for Misfits</p>
-  <p class="studio-hero-desc">Thinkerz Studio는 AI 기술 기반의 Virtual Entertainment 제작사입니다. 인간의 창의성과 AI의 제작 역량을 결합한 Human-Led AI Production을 통해 스토리·비주얼·음악이 유기적으로 연결된 엔터테인먼트 IP를 구축합니다.</p>
+<div class="hero-studio" id="about">
+  <p class="t-label">Virtual Entertainment Studio</p>
+  <h1 class="t-hero-en">Thinkerz<br>Studio</h1>
+  <p class="t-tagline">A Shelter for Misfits</p>
+  <p class="t-body-lg">Thinkerz Studio는 AI 기술 기반의 Virtual Entertainment 제작사입니다. 인간의 창의성과 AI의 제작 역량을 결합한 Human-Led AI Production을 통해 스토리·비주얼·음악이 유기적으로 연결된 엔터테인먼트 IP를 구축합니다.</p>
 </div>
 
 <!-- VLUW DIVIDER -->
@@ -654,8 +649,8 @@ to { opacity: 1; transform: none; }
 <!-- VLUW HERO -->
 
 <div class="vluw-hero">
-  <div class="vluw-hero-img">
-    <div class="vluw-hero-img-label">
+  <div class="vluw-hero-bg">
+    <div class="vluw-hero-bg-label">
       Image Placeholder<br>
       허름한 그런지 패션 · 뒷골목 · 비 · 연주
     </div>
@@ -669,14 +664,13 @@ to { opacity: 1; transform: none; }
 <!-- WHO IS VLUW -->
 
 <section id="who">
-  <div class="label">Who is VLUW</div>
-  <p class="what-intro">
-    VLUW는 타임머신이 존재하는 평행우주에서 탄생한 4인조 밴드다. 이 세계에서 타임머신은 역사를 바꾸거나 미래를 지배하는 데 쓰이지 않는다. 과거에서 아파하는 누군가를 집으로 데려와 밥을 먹이고, 미래에서 방황하는 존재에게 삶의 이유를 되찾아준다. 슬퍼도 오늘을 신나게 살아가는데 쓰이는 지극히 사적인 타임머신. 그 세계에서 VLUW는 태어났다.
-  </p>
+  <p class="t-label">Who is VLUW</p>
+  <p class="world-text">VLUW는 타임머신이 존재하는 평행우주에서 탄생한 4인조 밴드다. 이 세계에서 타임머신은 역사를 바꾸거나 미래를 지배하는 데 쓰이지 않는다. 과거에서 아파하는 누군가를 집으로 데려와 밥을 먹이고, 미래에서 방황하는 존재에게 삶의 이유를 되찾아준다. 슬퍼도 오늘을 신나게 살아가는데 쓰이는 지극히 사적인 타임머신. 그 세계에서 VLUW는 태어났다.</p>
+
   <div class="members">
     <div class="member">
       <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/762a3210828282699651566163.jpg?w=1000&q=90" alt="이제나">
-      <div>
+      <div class="member-info">
         <div class="member-name-en">Jena</div>
         <div class="member-name-kr">이제나</div>
         <div class="member-role">Guitar</div>
@@ -686,7 +680,7 @@ to { opacity: 1; transform: none; }
     </div>
     <div class="member">
       <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/f0ce6c38442131805861183.jpg?w=1000&q=90" alt="나선">
-      <div>
+      <div class="member-info">
         <div class="member-name-en">Naseon</div>
         <div class="member-name-kr">나선</div>
         <div class="member-role">Vocal · Bass</div>
@@ -696,7 +690,7 @@ to { opacity: 1; transform: none; }
     </div>
     <div class="member">
       <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/da67c7762575580052176070.jpg?w=1000&q=90" alt="고호정">
-      <div>
+      <div class="member-info">
         <div class="member-name-en">Hojeong</div>
         <div class="member-name-kr">고호정</div>
         <div class="member-role">Drums</div>
@@ -706,7 +700,7 @@ to { opacity: 1; transform: none; }
     </div>
     <div class="member">
       <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/59/e5976a2041799531719999091.jpg?w=1000&q=90" alt="2AR">
-      <div>
+      <div class="member-info">
         <div class="member-name-en">2AR</div>
         <div class="member-name-kr">투에이알</div>
         <div class="member-role">Sound Engineer · All Features</div>
@@ -720,7 +714,8 @@ to { opacity: 1; transform: none; }
 <!-- MUSIC -->
 
 <section id="music">
-  <div class="label">Music</div>
+  <p class="t-label">Music</p>
+
   <div class="music-block">
     <div class="music-block-title">Single</div>
     <div class="track">
@@ -748,6 +743,7 @@ to { opacity: 1; transform: none; }
       </div>
     </div>
   </div>
+
   <div class="music-block">
     <div class="music-block-title">1st EP — Crush Hug</div>
     <p class="album-intro">오늘도 세상 어딘가에서 감당할 수 없는 무자비한 폭력 속에서 선량한 누군가가 죽어가고 있다. 분노해도, 슬퍼해도, 아무것도 막을 수 없다는 무력감. 이 앨범은 그 감정들을 있는 그대로 담았다. 상처투성이인 3곡의 록과 그것을 비추는 거울 속에는 그 상처를 안아주는 3곡의 보사노바. 그 사이 어딘가에서 우리는 발을 구르며 서성이고만 있다.</p>
@@ -761,7 +757,7 @@ to { opacity: 1; transform: none; }
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="춤">
+      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="춤 Grunge">
       <div>
         <div class="track-title">2. 춤 Grunge</div>
         <div class="track-desc">생존을 위한 몸부림은 처절한 춤이 됐다. 죽음의 폐허 속으로 떨어지는 희망의 음식들. 굶주림과 두려움도 쓰러뜨리지 못한 강인한 심장은 아직도 뛰고 있다.</div>
@@ -808,18 +804,22 @@ to { opacity: 1; transform: none; }
         <a href="https://youtu.be/c51eWLXQ-t4" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
       </div>
     </div>
-  </div>
-  <div class="music-links">
-    <a href="https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN" target="_blank" rel="noopener" class="btn btn-primary">Spotify</a>
-    <a href="https://music.apple.com/kr/artist/vluw/1864445735" target="_blank" rel="noopener" class="btn btn-secondary">Apple Music</a>
-    <a href="https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag" target="_blank" rel="noopener" class="btn btn-secondary">Youtube Music</a>
+
+```
+<div class="music-platforms">
+  <a href="https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN" target="_blank" rel="noopener" class="btn btn-fill">Spotify</a>
+  <a href="https://music.apple.com/kr/artist/vluw/1864445735" target="_blank" rel="noopener" class="btn btn-outline">Apple Music</a>
+  <a href="https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag" target="_blank" rel="noopener" class="btn btn-outline">Youtube Music</a>
+</div>
+```
+
   </div>
 </section>
 
 <!-- STORY -->
 
 <section id="story">
-  <div class="label">Story</div>
+  <p class="t-label">Story</p>
   <div class="story-grid">
     <div class="story-item">
       <img class="story-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/38/e2f1b818037744882393561093.png?w=1000&q=90" alt="제나의 위험한 광폭행보">
@@ -839,21 +839,21 @@ to { opacity: 1; transform: none; }
 <!-- LINKS -->
 
 <section id="links">
-  <div class="label">Related Links</div>
-  <div class="links-grid">
-    <a href="https://instagram.com/official_vluw" target="_blank" rel="noopener" class="link-item">
+  <p class="t-label">Related Links</p>
+  <div class="links-list">
+    <a href="https://instagram.com/official_vluw" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">Instagram</span><span class="link-arrow">→</span>
     </a>
-    <a href="https://www.tiktok.com/@official_vluw" target="_blank" rel="noopener" class="link-item">
+    <a href="https://www.tiktok.com/@official_vluw" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">TikTok</span><span class="link-arrow">→</span>
     </a>
-    <a href="https://www.youtube.com/@official_vluw" target="_blank" rel="noopener" class="link-item">
+    <a href="https://www.youtube.com/@official_vluw" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">YouTube</span><span class="link-arrow">→</span>
     </a>
-    <a href="https://www.threads.com/@official_vluw" target="_blank" rel="noopener" class="link-item">
+    <a href="https://www.threads.com/@official_vluw" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">Threads</span><span class="link-arrow">→</span>
     </a>
-    <a href="https://x.com/official_vluw" target="_blank" rel="noopener" class="link-item">
+    <a href="https://x.com/official_vluw" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">X</span><span class="link-arrow">→</span>
     </a>
   </div>
@@ -862,22 +862,22 @@ to { opacity: 1; transform: none; }
 <!-- CONTACT -->
 
 <section id="contact">
-  <div class="label">Contact</div>
+  <p class="t-label">Contact</p>
   <p class="contact-sub">협업, 파트너십, 투자 제안을 환영합니다.</p>
   <a href="mailto:hi.thinkerz@gmail.com" class="contact-email">hi.thinkerz@gmail.com</a>
 </section>
 
 <footer>
-  <div class="footer-logo">Thinkerz Studio © 2026</div>
+  <div class="footer-name">Thinkerz Studio © 2026</div>
   <div class="footer-copy">All Rights Reserved</div>
 </footer>
 
 <script>
-  const els = document.querySelectorAll('section, .vluw-hero, .vluw-divider');
+  const targets = document.querySelectorAll('section, .vluw-hero, .vluw-divider');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.05 });
-  els.forEach(el => io.observe(el));
+  targets.forEach(t => io.observe(t));
 </script>
 
 </body>
