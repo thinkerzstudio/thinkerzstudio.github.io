@@ -1,871 +1,884 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THINKERZ STUDIO</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --black: #0a0a0a;
-    --white: #f5f5f0;
-    --gray-1: #141414;
-    --gray-2: #222;
-    --gray-3: #555;
-    --gray-4: #888;
-  }
-
-- { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-body {
-background: var(–black);
-color: var(–white);
-font-family: ‘Noto Sans KR’, sans-serif;
-font-weight: 300;
-overflow-x: hidden;
-}
-
-/* NAV */
-nav {
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-z-index: 100;
-padding: 20px 48px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-background: linear-gradient(to bottom, rgba(10,10,10,0.9) 0%, transparent 100%);
-}
-
-.nav-logo {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 14px;
-font-weight: 700;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(–white);
-text-decoration: none;
-}
-
-.nav-links {
-display: flex;
-gap: 32px;
-list-style: none;
-}
-
-.nav-links a {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 11px;
-font-weight: 500;
-letter-spacing: 0.25em;
-text-transform: uppercase;
-color: var(–gray-3);
-text-decoration: none;
-transition: color 0.2s;
-}
-
-.nav-links a:hover { color: var(–white); }
-
-@media (max-width: 600px) {
-nav { padding: 16px 24px; }
-.nav-links { gap: 20px; }
-.nav-links a { font-size: 10px; }
-}
-
-/* HERO — STUDIO */
-.studio-hero {
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: flex-end;
-padding: 56px 48px;
-border-bottom: 1px solid var(–gray-2);
-position: relative;
-}
-
-.studio-hero-tag {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 10px;
-font-weight: 500;
-letter-spacing: 0.4em;
-color: var(–gray-3);
-text-transform: uppercase;
-margin-bottom: 24px;
-opacity: 0;
-animation: fadeUp 0.6s ease forwards 0.2s;
-}
-
-.studio-hero-title {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: clamp(48px, 10vw, 120px);
-font-weight: 900;
-line-height: 0.9;
-letter-spacing: -0.02em;
-text-transform: uppercase;
-color: var(–white);
-margin-bottom: 32px;
-opacity: 0;
-animation: fadeUp 0.6s ease forwards 0.4s;
-}
-
-.studio-hero-tagline {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: clamp(18px, 3vw, 32px);
-font-weight: 300;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: var(–gray-4);
-margin-bottom: 40px;
-opacity: 0;
-animation: fadeUp 0.6s ease forwards 0.6s;
-}
-
-.studio-hero-desc {
-font-size: clamp(13px, 1.6vw, 16px);
-font-weight: 300;
-line-height: 1.9;
-color: var(–gray-3);
-max-width: 560px;
-opacity: 0;
-animation: fadeUp 0.6s ease forwards 0.8s;
-}
-
-/* DIVIDER */
-.section-divider {
-width: 100%;
-height: 1px;
-background: var(–gray-2);
-}
-
-.vluw-divider {
-padding: 48px 48px;
-border-bottom: 1px solid var(–gray-2);
-opacity: 0;
-transform: translateY(16px);
-transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.vluw-divider.visible { opacity: 1; transform: none; }
-
-.vluw-divider-label {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.4em;
-color: var(–gray-3);
-text-transform: uppercase;
-margin-bottom: 16px;
-}
-
-.vluw-divider-title {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: clamp(36px, 8vw, 80px);
-font-weight: 900;
-letter-spacing: -0.02em;
-text-transform: uppercase;
-color: var(–white);
-line-height: 0.9;
-}
-
-/* SECTIONS */
-section {
-padding: 80px 48px;
-border-bottom: 1px solid var(–gray-1);
-opacity: 0;
-transform: translateY(16px);
-transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-section.visible { opacity: 1; transform: none; }
-
-.label {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.4em;
-color: var(–gray-3);
-text-transform: uppercase;
-margin-bottom: 40px;
-}
-
-/* HERO — VLUW */
-.vluw-hero {
-min-height: 70vh;
-display: flex;
-flex-direction: column;
-justify-content: flex-end;
-padding: 56px 48px;
-border-bottom: 1px solid var(–gray-2);
-position: relative;
-overflow: hidden;
-opacity: 0;
-transform: translateY(16px);
-transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.vluw-hero.visible { opacity: 1; transform: none; }
-
-.vluw-hero-img {
-position: absolute;
-inset: 0;
-background: var(–gray-1);
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.vluw-hero-img-label {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 11px;
-font-weight: 400;
-letter-spacing: 0.3em;
-color: var(–gray-3);
-text-transform: uppercase;
-text-align: center;
-line-height: 2.4;
-}
-
-.vluw-hero-img::after {
-content: ‘’;
-position: absolute;
-inset: 0;
-background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.55) 40%, rgba(10,10,10,0.05) 100%);
-}
-
-.vluw-hero-content {
-position: relative;
-z-index: 1;
-}
-
-.vluw-hero-hook {
-font-size: clamp(13px, 1.6vw, 16px);
-font-weight: 300;
-color: var(–gray-4);
-line-height: 1.8;
-margin-bottom: 16px;
-}
-
-.vluw-hero-title {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: clamp(56px, 12vw, 120px);
-font-weight: 900;
-line-height: 0.88;
-letter-spacing: -0.02em;
-text-transform: uppercase;
-color: var(–white);
-}
-
-/* WHAT */
-.what-intro {
-font-size: clamp(14px, 1.8vw, 18px);
-font-weight: 300;
-line-height: 1.9;
-color: var(–gray-4);
-max-width: 640px;
-margin-bottom: 56px;
-}
-
-/* MEMBERS */
-.members {
-display: flex;
-flex-direction: column;
-border-top: 1px solid var(–gray-2);
-}
-
-.member {
-display: grid;
-grid-template-columns: 220px 1fr;
-gap: 48px;
-padding: 48px 0;
-border-bottom: 1px solid var(–gray-2);
-transition: background 0.2s;
-}
-
-@media (max-width: 640px) {
-.member { grid-template-columns: 1fr; gap: 20px; }
-}
-
-.member:hover { background: var(–gray-1); }
-
-.member-photo {
-width: 100%;
-aspect-ratio: 3/4;
-object-fit: cover;
-}
-
-.member-name-en {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 28px;
-font-weight: 700;
-letter-spacing: 0.04em;
-text-transform: uppercase;
-color: var(–white);
-line-height: 1;
-margin-bottom: 4px;
-}
-
-.member-name-kr {
-font-size: 12px;
-font-weight: 300;
-color: var(–gray-3);
-margin-bottom: 10px;
-}
-
-.member-role {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 10px;
-font-weight: 500;
-letter-spacing: 0.2em;
-color: var(–gray-3);
-text-transform: uppercase;
-margin-bottom: 12px;
-}
-
-.member-tags {
-font-size: 11px;
-font-weight: 300;
-color: var(–gray-3);
-line-height: 1.8;
-margin-bottom: 16px;
-}
-
-.member-desc {
-font-size: 14px;
-font-weight: 300;
-color: var(–gray-4);
-line-height: 1.9;
-}
-
-/* MUSIC */
-.music-block { margin-bottom: 64px; }
-
-.music-block-title {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.35em;
-color: var(–gray-3);
-text-transform: uppercase;
-margin-bottom: 32px;
-padding-bottom: 12px;
-border-bottom: 1px solid var(–gray-2);
-}
-
-.track {
-display: grid;
-grid-template-columns: 120px 1fr;
-gap: 32px;
-padding: 28px 0;
-border-bottom: 1px solid var(–gray-1);
-}
-
-@media (max-width: 560px) {
-.track { grid-template-columns: 1fr; gap: 16px; }
-}
-
-.track-cover {
-width: 100%;
-aspect-ratio: 1;
-object-fit: cover;
-}
-
-.track-title {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 18px;
-font-weight: 700;
-letter-spacing: 0.05em;
-color: var(–white);
-margin-bottom: 8px;
-}
-
-.track-desc {
-font-size: 13px;
-font-weight: 300;
-color: var(–gray-4);
-line-height: 1.8;
-margin-bottom: 12px;
-}
-
-.track-link {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.2em;
-color: var(–gray-3);
-text-decoration: none;
-text-transform: uppercase;
-border-bottom: 1px solid var(–gray-2);
-padding-bottom: 2px;
-transition: color 0.15s, border-color 0.15s;
-}
-
-.track-link:hover { color: var(–white); border-color: var(–white); }
-
-.album-intro {
-font-size: 14px;
-font-weight: 300;
-color: var(–gray-4);
-line-height: 1.9;
-max-width: 640px;
-margin-bottom: 40px;
-}
-
-.tracklist-label {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.3em;
-color: var(–gray-3);
-text-transform: uppercase;
-margin-bottom: 24px;
-}
-
-.music-links {
-display: flex;
-gap: 10px;
-flex-wrap: wrap;
-margin-top: 40px;
-padding-top: 32px;
-border-top: 1px solid var(–gray-2);
-}
-
-.btn {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 11px;
-font-weight: 600;
-letter-spacing: 0.25em;
-text-transform: uppercase;
-text-decoration: none;
-padding: 10px 20px;
-transition: all 0.15s;
-}
-
-.btn-primary { background: var(–white); color: var(–black); }
-.btn-primary:hover { background: var(–gray-4); color: var(–white); }
-.btn-secondary { border: 1px solid var(–gray-2); color: var(–gray-3); }
-.btn-secondary:hover { border-color: var(–white); color: var(–white); }
-
-/* STORY */
-.story-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 1px;
-background: var(–gray-2);
-border: 1px solid var(–gray-2);
-max-width: 720px;
-}
-
-@media (max-width: 560px) { .story-grid { grid-template-columns: 1fr; } }
-
-.story-item {
-background: var(–black);
-padding: 32px 28px;
-transition: background 0.2s;
-}
-
-.story-item:hover { background: var(–gray-1); }
-
-.story-cover {
-width: 100%;
-aspect-ratio: 16/9;
-object-fit: cover;
-margin-bottom: 20px;
-}
-
-.story-title {
-font-size: 14px;
-font-weight: 400;
-color: var(–white);
-line-height: 1.6;
-margin-bottom: 10px;
-}
-
-.story-desc {
-font-size: 12px;
-font-weight: 300;
-color: var(–gray-3);
-line-height: 1.7;
-margin-bottom: 16px;
-}
-
-.story-link {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 11px;
-font-weight: 600;
-letter-spacing: 0.2em;
-color: var(–white);
-text-decoration: none;
-text-transform: uppercase;
-border-bottom: 1px solid var(–gray-2);
-padding-bottom: 2px;
-transition: border-color 0.15s;
-}
-
-.story-link:hover { border-color: var(–white); }
-
-/* LINKS */
-.links-grid {
-display: flex;
-flex-direction: column;
-border: 1px solid var(–gray-2);
-max-width: 400px;
-}
-
-.link-item {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 16px 24px;
-border-bottom: 1px solid var(–gray-2);
-text-decoration: none;
-transition: background 0.2s;
-}
-
-.link-item:last-child { border-bottom: none; }
-.link-item:hover { background: var(–gray-1); }
-
-.link-name {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 12px;
-font-weight: 600;
-letter-spacing: 0.2em;
-color: var(–white);
-text-transform: uppercase;
-}
-
-.link-arrow { font-size: 12px; color: var(–gray-3); }
-
-/* CONTACT */
-.contact-sub {
-font-size: 13px;
-font-weight: 300;
-color: var(–gray-3);
-margin-bottom: 28px;
-line-height: 1.8;
-}
-
-.contact-email {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: clamp(22px, 4vw, 40px);
-font-weight: 700;
-letter-spacing: 0.05em;
-text-transform: uppercase;
-color: var(–white);
-text-decoration: none;
-border-bottom: 1px solid var(–gray-2);
-padding-bottom: 4px;
-transition: border-color 0.2s;
-display: inline-block;
-}
-
-.contact-email:hover { border-color: var(–white); }
-
-/* FOOTER */
-footer {
-padding: 24px 48px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-wrap: wrap;
-gap: 12px;
-}
-
-.footer-logo {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 13px;
-font-weight: 600;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(–gray-2);
-}
-
-.footer-copy {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 10px;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(–gray-2);
-}
-
-@media (max-width: 600px) {
-section { padding: 56px 24px; }
-.vluw-hero { padding: 56px 24px; }
-.vluw-divider { padding: 40px 24px; }
-footer { padding: 20px 24px; }
-}
-
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(12px); }
-to { opacity: 1; transform: none; }
-}
-
-::-webkit-scrollbar { width: 2px; }
-::-webkit-scrollbar-track { background: var(–black); }
-::-webkit-scrollbar-thumb { background: var(–gray-2); }
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THINKERZ STUDIO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #f5f5f0;
+            --gray-1: #141414;
+            --gray-2: #222;
+            --gray-3: #555;
+            --gray-4: #888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.8) 60%, transparent 100%);
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-logo {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gray-3);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active { 
+            color: var(--white); 
+        }
+
+        @media (max-width: 600px) {
+            nav { padding: 16px 24px; }
+            .nav-links { gap: 20px; }
+            .nav-links a { font-size: 10px; }
+        }
+
+        /* HERO — STUDIO */
+        .studio-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 56px 48px;
+            border-bottom: 1px solid var(--gray-2);
+            position: relative;
+        }
+
+        .studio-hero-tag {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.4em;
+            color: var(--gray-3);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.2s;
+        }
+
+        .studio-hero-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(48px, 10vw, 120px);
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 32px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.4s;
+        }
+
+        .studio-hero-tagline {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(18px, 3vw, 32px);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray-4);
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.6s;
+        }
+
+        .studio-hero-desc {
+            font-size: clamp(13px, 1.6vw, 16px);
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--gray-3);
+            max-width: 560px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.8s;
+        }
+
+        /* DIVIDER */
+        .vluw-divider {
+            padding: 80px 48px 48px 48px;
+            border-bottom: 1px solid var(--gray-2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .vluw-divider.visible { opacity: 1; transform: none; }
+
+        .vluw-divider-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.4em;
+            color: var(--gray-3);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .vluw-divider-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(36px, 8vw, 80px);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: var(--white);
+            line-height: 0.9;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 100px 48px 60px 48px;
+            border-bottom: 1px solid var(--gray-1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible { opacity: 1; transform: none; }
+
+        .label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.4em;
+            color: var(--gray-3);
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        /* HERO — VLUW */
+        .vluw-hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 56px 48px;
+            border-bottom: 1px solid var(--gray-2);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .vluw-hero.visible { opacity: 1; transform: none; }
+
+        .vluw-hero-img {
+            position: absolute;
+            inset: 0;
+            background: var(--gray-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vluw-hero-img-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            color: var(--gray-3);
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 2.4;
+        }
+
+        .vluw-hero-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.55) 40%, rgba(10,10,10,0.05) 100%);
+        }
+
+        .vluw-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .vluw-hero-hook {
+            font-size: clamp(13px, 1.6vw, 16px);
+            font-weight: 300;
+            color: var(--gray-4);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .vluw-hero-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(56px, 12vw, 120px);
+            font-weight: 900;
+            line-height: 0.88;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+
+        /* WHAT */
+        .what-intro {
+            font-size: clamp(14px, 1.8vw, 18px);
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--gray-4);
+            max-width: 640px;
+            margin-bottom: 56px;
+        }
+
+        /* MEMBERS */
+        .members {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--gray-2);
+        }
+
+        .member {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 48px;
+            padding: 48px 0;
+            border-bottom: 1px solid var(--gray-2);
+            transition: background 0.3s ease;
+        }
+
+        @media (max-width: 640px) {
+            .member { grid-template-columns: 1fr; gap: 20px; }
+        }
+
+        .member:hover { background: var(--gray-1); padding-left: 10px; }
+
+        .member-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease;
+        }
+        .member:hover .member-photo { filter: grayscale(0%); }
+
+        .member-name-en {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .member-name-kr {
+            font-size: 12px;
+            font-weight: 300;
+            color: var(--gray-3);
+            margin-bottom: 10px;
+        }
+
+        .member-role {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            color: var(--gray-3);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .member-tags {
+            font-size: 11px;
+            font-weight: 300;
+            color: var(--gray-3);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .member-desc {
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--gray-4);
+            line-height: 1.9;
+        }
+
+        /* MUSIC */
+        .music-block { margin-bottom: 64px; }
+
+        .music-block-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.35em;
+            color: var(--gray-3);
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--gray-2);
+        }
+
+        .track {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 32px;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--gray-1);
+            transition: background 0.3s ease;
+        }
+
+        .track:hover { background: rgba(255,255,255,0.01); }
+
+        @media (max-width: 560px) {
+            .track { grid-template-columns: 1fr; gap: 16px; }
+        }
+
+        .track-cover {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        .track-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .track-desc {
+            font-size: 13px;
+            font-weight: 300;
+            color: var(--gray-4);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .track-link {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--gray-3);
+            text-decoration: none;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--gray-2);
+            padding-bottom: 2px;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .track-link:hover { color: var(--white); border-color: var(--white); }
+
+        .album-intro {
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--gray-4);
+            line-height: 1.9;
+            max-width: 640px;
+            margin-bottom: 40px;
+        }
+
+        .tracklist-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            color: var(--gray-3);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .music-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--gray-2);
+        }
+
+        .btn {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: all 0.15s;
+        }
+
+        .btn-primary { background: var(--white); color: var(--black); }
+        .btn-primary:hover { background: var(--gray-4); color: var(--white); }
+        .btn-secondary { border: 1px solid var(--gray-2); color: var(--gray-3); }
+        .btn-secondary:hover { border-color: var(--white); color: var(--white); }
+
+        /* STORY */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--gray-2);
+            border: 1px solid var(--gray-2);
+            max-width: 720px;
+        }
+
+        @media (max-width: 560px) { .story-grid { grid-template-columns: 1fr; } }
+
+        .story-item {
+            background: var(--black);
+            padding: 32px 28px;
+            transition: background 0.2s;
+        }
+
+        .story-item:hover { background: var(--gray-1); }
+
+        .story-cover {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .story-title {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .story-desc {
+            font-size: 12px;
+            font-weight: 300;
+            color: var(--gray-3);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .story-link {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--gray-2);
+            padding-bottom: 2px;
+            transition: border-color 0.15s;
+        }
+
+        .story-link:hover { border-color: var(--white); }
+
+        /* LINKS */
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--gray-2);
+            max-width: 400px;
+        }
+
+        .link-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--gray-2);
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .link-item:last-child { border-bottom: none; }
+        .link-item:hover { background: var(--gray-1); }
+
+        .link-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+
+        .link-arrow { font-size: 12px; color: var(--gray-3); }
+
+        /* CONTACT */
+        .contact-sub {
+            font-size: 13px;
+            font-weight: 300;
+            color: var(--gray-3);
+            margin-bottom: 28px;
+            line-height: 1.8;
+        }
+
+        .contact-email {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(22px, 4vw, 40px);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+            border-bottom: 1px solid var(--gray-2);
+            padding-bottom: 4px;
+            transition: border-color 0.2s;
+            display: inline-block;
+        }
+
+        .contact-email:hover { border-color: var(--white); }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-top: 1px solid var(--gray-1);
+        }
+
+        .footer-logo {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray-3);
+        }
+
+        .footer-copy {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray-3);
+        }
+
+        @media (max-width: 600px) {
+            section { padding: 80px 24px 40px 24px; }
+            .vluw-hero { padding: 56px 24px; }
+            .vluw-divider { padding: 80px 24px 40px 24px; }
+            footer { padding: 30px 24px; }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: none; }
+        }
+
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-track { background: var(--black); }
+        ::-webkit-scrollbar-thumb { background: var(--gray-3); }
+    </style>
 </head>
 <body>
 
-<!-- NAV -->
-
 <nav>
-  <a href="#" class="nav-logo">Thinkerz Studio</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#vluw">VLUW</a></li>
-    <li><a href="#music">Music</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+    <a href="#about" class="nav-logo">Thinkerz Studio</a>
+    <ul class="nav-links">
+        <li><a href="#about" class="active">About</a></li>
+        <li><a href="#vluw">VLUW</a></li>
+        <li><a href="#music">Music</a></li>
+        <li><a href="#story">Story</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
 </nav>
 
-<!-- STUDIO HERO -->
-
 <div class="studio-hero" id="about">
-  <div class="studio-hero-tag">Virtual Entertainment Studio</div>
-  <h1 class="studio-hero-title">Thinkerz<br>Studio</h1>
-  <p class="studio-hero-tagline">A Shelter for Misfits</p>
-  <p class="studio-hero-desc">Thinkerz Studio는 AI 기술 기반의 Virtual Entertainment 제작사입니다. 인간의 창의성과 AI의 제작 역량을 결합한 Human-Led AI Production을 통해 스토리·비주얼·음악이 유기적으로 연결된 엔터테인먼트 IP를 구축합니다.</p>
+    <div class="studio-hero-tag">Virtual Entertainment Studio</div>
+    <h1 class="studio-hero-title">Thinkerz<br>Studio</h1>
+    <p class="studio-hero-tagline">A Shelter for Misfits</p>
+    <p class="studio-hero-desc">Thinkerz Studio는 AI 기술 기반의 Virtual Entertainment 제작사입니다. 인간의 창의성과 AI의 제작 역량을 결합한 Human-Led AI Production을 통해 스토리·비주얼·음악이 유기적으로 연결된 엔터테인먼트 IP를 구축합니다.</p>
 </div>
-
-<!-- VLUW DIVIDER -->
 
 <div class="vluw-divider" id="vluw">
-  <div class="vluw-divider-label">Project 01</div>
-  <div class="vluw-divider-title">VLUW</div>
+    <div class="vluw-divider-label">Project 01</div>
+    <div class="vluw-divider-title">VLUW</div>
 </div>
-
-<!-- VLUW HERO -->
 
 <div class="vluw-hero">
-  <div class="vluw-hero-img">
-    <div class="vluw-hero-img-label">
-      Image Placeholder<br>
-      허름한 그런지 패션 · 뒷골목 · 비 · 연주
+    <div class="vluw-hero-img">
+        <div class="vluw-hero-img-label">
+            Image Placeholder<br>
+            허름한 그런지 패션 · 뒷골목 · 비 · 연주
+        </div>
     </div>
-  </div>
-  <div class="vluw-hero-content">
-    <p class="vluw-hero-hook">슬퍼도 상관없어. 하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</p>
-    <h2 class="vluw-hero-title">VLUW<br>IS BLUE.</h2>
-  </div>
+    <div class="vluw-hero-content">
+        <p class="vluw-hero-hook">슬퍼도 상관없어. 하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</p>
+        <h2 class="vluw-hero-title">VLUW<br>IS BLUE.</h2>
+    </div>
 </div>
 
-<!-- WHO IS VLUW -->
-
 <section id="who">
-  <div class="label">Who is VLUW</div>
-  <p class="what-intro">
-    VLUW는 타임머신이 존재하는 평행우주에서 탄생한 4인조 밴드다. 이 세계에서 타임머신은 역사를 바꾸거나 미래를 지배하는 데 쓰이지 않는다. 과거에서 아파하는 누군가를 집으로 데려와 밥을 먹이고, 미래에서 방황하는 존재에게 삶의 이유를 되찾아준다. 슬퍼도 오늘을 신나게 살아가는데 쓰이는 지극히 사적인 타임머신. 그 세계에서 VLUW는 태어났다.
-  </p>
-  <div class="members">
-    <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/762a3210828282699651566163.jpg?w=1000&q=90" alt="이제나">
-      <div>
-        <div class="member-name-en">Jena</div>
-        <div class="member-name-kr">이제나</div>
-        <div class="member-role">Guitar</div>
-        <div class="member-tags">#VLUW_를_연결하는_핵심축 #시간여행자 #비자발적_책임의_아이콘 #2026</div>
-        <div class="member-desc">2026년에 살고 있는 시간여행자. 대안학교 출신 고졸자라며 괄시하는 할머니의 맹비난을 피하기 위해 취업한 태봉전자에서 타임머신 '광폭행보'를 만났다. 그녀는 광폭행보를 보고픈 사람들을 만나러 가는 교통수단처럼 사용한다. 과거에서 좌절했던 어린 엄마와 만나고 미래에 버려져 있던 로봇을 집으로 데려온다. 제나는 그렇게 여러 시간을 오가며 상처입은 영혼들을 연결한다. 기타 한 번 쳐본 적 없던 그녀가 늘 경거망동하는 여정 속에서 어느새 밴드 VLUW의 기타리스트가 됐다.</div>
-      </div>
+    <div class="label">Who is VLUW</div>
+    <p class="what-intro">
+        VLUW는 타임머신이 존재하는 평행우주에서 탄생한 4인조 밴드다. 이 세계에서 타임머신은 역사를 바꾸거나 미래를 지배하는 데 쓰이지 않는다. 과거에서 아파하는 누군가를 집으로 데려와 밥을 먹이고, 미래에서 방황하는 존재에게 삶의 이유를 되찾아준다. 슬퍼도 오늘을 신나게 살아가는데 쓰이는 지극히 사적인 타임머신. 그 세계에서 VLUW는 태어났다.
+    </p>
+    <div class="members">
+        <div class="member">
+            <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/762a3210828282699651566163.jpg?w=1000&q=90" alt="이제나">
+            <div>
+                <div class="member-name-en">Jena</div>
+                <div class="member-name-kr">이제나</div>
+                <div class="member-role">Guitar</div>
+                <div class="member-tags">#VLUW_를_연결하는_핵심축 #시간여행자 #비자발적_책임의_아이콘 #2026</div>
+                <div class="member-desc">2026년에 살고 있는 시간여행자. 대안학교 출신 고졸자라며 괄시하는 할머니의 맹비난을 피하기 위해 취업한 태봉전자에서 타임머신 '광폭행보'를 만났다. 그녀는 광폭행보를 보고픈 사람들을 만나러 가는 교통수단처럼 사용한다. 과거에서 좌절했던 어린 엄마와 만나고 미래에 버려져 있던 로봇을 집으로 데려온다. 제나는 그렇게 여러 시간을 오가며 상처입은 영혼들을 연결한다. 기타 한 번 쳐본 적 없던 그녀가 늘 경거망동하는 여정 속에서 어느새 밴드 VLUW의 기타리스트가 됐다.</div>
+            </div>
+        </div>
+        <div class="member">
+            <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/f0ce6c38442131805861183.jpg?w=1000&q=90" alt="나선">
+            <div>
+                <div class="member-name-en">Naseon</div>
+                <div class="member-name-kr">나선</div>
+                <div class="member-role">Vocal · Bass</div>
+                <div class="member-tags">#VLUW_창작의_첫_불씨 #시작은_늘_서늘한_마이너_코드 #습관적_존댓말 #2006</div>
+                <div class="member-desc">2006년 홍대에 살고 있는 재미교포 뮤지션. 세상에 태어난 것 자체를 수치스러워하던 그녀는 자신의 영혼을 달랠 수 있는 유일한 방법이 음악뿐이었다. 한국에서 만난 드러머 고호정과 27클럽의 천재들처럼 스물일곱 살까지만 살겠다며 밴드 '27'을 결성한다. 하지만 정작 스물일곱이 될 때까지 기타리스트를 못 찾아 제대로 된 데뷔도 못 한다. 어느 날 시간을 건너온 기타리스트 이제나를 만나 거짓말처럼 팀을 완성한다. 스물여덟이 되자 죽지 않고 팀명을 VLUW로 수정한다. VLUW의 리더.</div>
+            </div>
+        </div>
+        <div class="member">
+            <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/da67c7762575580052176070.jpg?w=1000&q=90" alt="고호정">
+            <div>
+                <div class="member-name-en">Hojeong</div>
+                <div class="member-name-kr">고호정</div>
+                <div class="member-role">Drums</div>
+                <div class="member-tags">#VLUW_사운드의_중심축 #행동으로_말한다 #2006</div>
+                <div class="member-desc">2006년 도봉구에 살고 있는 비밀이 많은 드러머. 나선과 나이도 생일도 같아 주변인들은 둘을 영혼의 쌍둥이처럼 여긴다. 그렇게 무너지려는 나선을 처음으로 붙잡아준 존재. 하지만 나선과는 다르게 과묵하고 대부분 행동으로 말한다. 열아홉에 갑작스레 생겨버린 딸을 홀로 키워야하는 현실 속에서도 음악을 놓지 않았다. 그 딸이 훗날 시간을 건너와 27과 VLUW의 기타리스트가 됐다. 밴드 27의 공동 창립자.</div>
+            </div>
+        </div>
+        <div class="member">
+            <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/59/e5976a2041799531719999091.jpg?w=1000&q=90" alt="2AR">
+            <div>
+                <div class="member-name-en">2AR</div>
+                <div class="member-name-kr">투에이알</div>
+                <div class="member-role">Sound Engineer · All Features</div>
+                <div class="member-tags">#VLUW_음악이_완성되는_마지막_터치 #내향적_휴머노이드 #2036</div>
+                <div class="member-desc">2035년에서 온 휴머노이드형 사운드 엔지니어. 문명이 망해버린 미래에서 홀로 노래를 만들고 있었다. 아무도 듣지 않던 그 노래를 처음 들어준 것이 제나였다. 제나는 부서진 2AR을 2025년으로 데려오며 황량한 미래에 작별을 고했다. 2AR은 납치되다시피 팀에 합류했지만, 지금은 자신의 시간대로 돌아가길 거부하고 있다. 멤버들이 원하는 모든 세션과 피처링을 거침없이 해내고 사운드를 정리한다. VLUW의 음악이 완성되는 마지막 자리를 늘 지키고 있다.</div>
+            </div>
+        </div>
     </div>
-    <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/f0ce6c38442131805861183.jpg?w=1000&q=90" alt="나선">
-      <div>
-        <div class="member-name-en">Naseon</div>
-        <div class="member-name-kr">나선</div>
-        <div class="member-role">Vocal · Bass</div>
-        <div class="member-tags">#VLUW_창작의_첫_불씨 #시작은_늘_서늘한_마이너_코드 #습관적_존댓말 #2006</div>
-        <div class="member-desc">2006년 홍대에 살고 있는 재미교포 뮤지션. 세상에 태어난 것 자체를 수치스러워하던 그녀는 자신의 영혼을 달랠 수 있는 유일한 방법이 음악뿐이었다. 한국에서 만난 드러머 고호정과 27클럽의 천재들처럼 스물일곱 살까지만 살겠다며 밴드 '27'을 결성한다. 하지만 정작 스물일곱이 될 때까지 기타리스트를 못 찾아 제대로 된 데뷔도 못 한다. 어느 날 시간을 건너온 기타리스트 이제나를 만나 거짓말처럼 팀을 완성한다. 스물여덟이 되자 죽지 않고 팀명을 VLUW로 수정한다. VLUW의 리더.</div>
-      </div>
-    </div>
-    <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/da67c7762575580052176070.jpg?w=1000&q=90" alt="고호정">
-      <div>
-        <div class="member-name-en">Hojeong</div>
-        <div class="member-name-kr">고호정</div>
-        <div class="member-role">Drums</div>
-        <div class="member-tags">#VLUW_사운드의_중심축 #행동으로_말한다 #2006</div>
-        <div class="member-desc">2006년 도봉구에 살고 있는 비밀이 많은 드러머. 나선과 나이도 생일도 같아 주변인들은 둘을 영혼의 쌍둥이처럼 여긴다. 그렇게 무너지려는 나선을 처음으로 붙잡아준 존재. 하지만 나선과는 다르게 과묵하고 대부분 행동으로 말한다. 열아홉에 갑작스레 생겨버린 딸을 홀로 키워야하는 현실 속에서도 음악을 놓지 않았다. 그 딸이 훗날 시간을 건너와 27과 VLUW의 기타리스트가 됐다. 밴드 27의 공동 창립자.</div>
-      </div>
-    </div>
-    <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/59/e5976a2041799531719999091.jpg?w=1000&q=90" alt="2AR">
-      <div>
-        <div class="member-name-en">2AR</div>
-        <div class="member-name-kr">투에이알</div>
-        <div class="member-role">Sound Engineer · All Features</div>
-        <div class="member-tags">#VLUW_음악이_완성되는_마지막_터치 #내향적_휴머노이드 #2036</div>
-        <div class="member-desc">2035년에서 온 휴머노이드형 사운드 엔지니어. 문명이 망해버린 미래에서 홀로 노래를 만들고 있었다. 아무도 듣지 않던 그 노래를 처음 들어준 것이 제나였다. 제나는 부서진 2AR을 2025년으로 데려오며 황량한 미래에 작별을 고했다. 2AR은 납치되다시피 팀에 합류했지만, 지금은 자신의 시간대로 돌아가길 거부하고 있다. 멤버들이 원하는 모든 세션과 피처링을 거침없이 해내고 사운드를 정리한다. VLUW의 음악이 완성되는 마지막 자리를 늘 지키고 있다.</div>
-      </div>
-    </div>
-  </div>
 </section>
-
-<!-- MUSIC -->
 
 <section id="music">
-  <div class="label">Music</div>
-  <div class="music-block">
-    <div class="music-block-title">Single</div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/5661ef6413647086862365706.jpg?w=1000&q=90" alt="Blue">
-      <div>
-        <div class="track-title">Blue</div>
-        <div class="track-desc">누군가를 잃은 뒤의 밤. 슬픔은 희석되지 않고 그리움은 삼켜도 멈춰지지 않는다. 그럼에도 내일은 온다. VLUW의 첫 번째 싱글.</div>
-        <a href="https://youtu.be/M7rsSC1eDfo" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
+    <div class="label">Music</div>
+    <div class="music-block">
+        <div class="music-block-title">Single</div>
+        <div class="track">
+            <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/5661ef6413647086862365706.jpg?w=1000&q=90" alt="Blue">
+            <div>
+                <div class="track-title">Blue</div>
+                <div class="track-desc">누군가를 잃은 뒤의 밤. 슬픔은 희석되지 않고 그리움은 삼켜도 멈춰지지 않는다. 그럼에도 내일은 온다. VLUW의 첫 번째 싱글.</div>
+                <a href="https://youtu.be/M7rsSC1eDfo" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+            </div>
+        </div>
+        <div class="track">
+            <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/0b8a8e9094151469088288066.jpg?w=1000&q=90" alt="Quiet Children">
+            <div>
+                <div class="track-title">Quiet Children</div>
+                <div class="track-desc">태어날 때부터 자유로웠지만 짓밟히고 길들여진 사람들에게. 순종을 강요하는 모든 목소리에 맞서 자신의 진짜 적을 똑바로 보라는 곡. VLUW의 두 번째 싱글.</div>
+                <a href="https://youtu.be/ShYq-PzHVnA" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+            </div>
+        </div>
+        <div class="track">
+            <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/33a8a76149491780090169717.jpg?w=1000&q=90" alt="Little Bird">
+            <div>
+                <div class="track-title">Little Bird</div>
+                <div class="track-desc">추락해도 괜찮다. 잠시 떨어지면 어떠냐고 묻는 곡. 작은 날개로 태양을 향해 날아가는 것을 아무것도 막을 수 없다. VLUW의 세 번째 싱글.</div>
+                <a href="https://youtu.be/5YosU51MyTg" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+            </div>
+        </div>
     </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/0b8a8e9094151469088288066.jpg?w=1000&q=90" alt="Quiet Children">
-      <div>
-        <div class="track-title">Quiet Children</div>
-        <div class="track-desc">태어날 때부터 자유로웠지만 짓밟히고 길들여진 사람들에게. 순종을 강요하는 모든 목소리에 맞서 자신의 진짜 적을 똑바로 보라는 곡. VLUW의 두 번째 싱글.</div>
-        <a href="https://youtu.be/ShYq-PzHVnA" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
+    
+    <div class="music-block">
+        <div class="music-block-title">1st EP — Crush Hug</div>
+        <p class="album-intro">오늘도 세상 어딘가에서 감당할 수 없는 무자비한 폭력 속에서 선량한 누군가가 죽어가고 있다. 분노해도, 슬퍼해도, 아무것도 막을 수 없다는 무력감. 이 앨범은 그 감정들을 있는 그대로 담았다. 상처투성이인 3곡의 록과 그것을 비추는 거울 속에는 그 상처를 안아주는 3곡의 보사노바. 그 사이 어딘가에서 우리는 발을 구르며 서성이고만 있다.</p>
+        <div class="tracklist-label">Track List</div>
+        <div class="track">
+            <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Stone">
+            <div>
+                <div class="track-title">1. Stone</div>
+                <div class="track-desc">돌은 무기가 되고, 잔해가 되고, 묘비가 된다. 침묵이 죽음의 버튼을 누르는 동안 우리는 어떻게 돌이 되어가는가. EP의 첫 번째 충돌.</div>
+                <a href="https://youtu.be/ha35i1GmBUA" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+            </div>
+        </div>
+        <div class="track">
+            <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="춤">
+            <div>
+                <div class="track-title">2. 춤 Grunge</div>
+                <div class="track-desc">생존을 위한 몸부림은 처절한 춤이 됐다. 죽음의 폐허 속으로 떨어지는 희망의 음식들. 굶주림과 두려움도 쓰러뜨리지 못한 강인한 심장은 아직도 뛰고 있다.</div>
+                <a href="https://youtu.be/BvsDH6P4SX8" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+            </div>
+        </div>
+        <div class="track">
+            <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Screwballs">
+            <div>
+                <div class="track-title">3. Screwballs</div>
+                <div class="track-desc">세상의 관심 밖으로 밀려난 존재들은 서로의 존재를 발견한 것만으로도 위로가 된다. 현실의 모든게 엉망이지만 함께 울고 웃다보면 결코 쓰러지지 않는다.</div>
+                <a href="https://youtu.be/m9c8dYFx2_k" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+            </div>
+        </div>
+        <div class="track">
+            <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Mirror">
+            <div>
+                <div class="track-title">4. Mirror (Interlude)</div>
+                <div class="track-desc">분노와 슬픔이 휘몰아친 다음날. 말 없이 마주보던 거울. 선명하던 얼굴이 미끄러지듯 번지다 청명한 감정의 실금소리에 흐려진다.</div>
+                <a href="https://youtu.be/4BFoOLKRmG8" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+            </div>
+        </div>
+        <div class="track">
+            <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Screwballs Fingerstyle">
+            <div>
+                <div class="track-title">5. Screwballs (Fingerstyle)</div>
+                <div class="track-desc">함성이 잦아든 자리에서 같이 울고 웃던 그 순간들을 손끝으로 더듬어 본다. 잔인한 세상은 여전히 처연하지만, 차분한 낙오자들의 신나는 리듬은 멈추지 않는다.</div>
+                <a href="https://youtu.be/8Fmfw_Gz1b0" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+            </div>
+        </div>
+        <div class="track">
+            <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="춤 Bossa Nova">
+            <div>
+                <div class="track-title">6. 춤 Bossa Nova</div>
+                <div class="track-desc">처절한 춤을 추며 살아남은 사람은 그날을 어떻게 기억할까. 심장은 여전히 그날처럼 강인하게 뛰고 있지만, 이제는 담담히 속삭여 본다.</div>
+                <a href="https://youtu.be/a7H85czeqlg" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+            </div>
+        </div>
+        <div class="track">
+            <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Stone Bossa Blues">
+            <div>
+                <div class="track-title">7. Stone (Bossa Blues)</div>
+                <div class="track-desc">바위처럼 쏟아지던 분노는 결국 긴 슬픔이 되어버렸다. "God damn"이란 한탄은 "Endless"한 반복에 서서히 무너져간다.</div>
+                <a href="https://youtu.be/c51eWLXQ-t4" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+            </div>
+        </div>
     </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/33a8a76149491780090169717.jpg?w=1000&q=90" alt="Little Bird">
-      <div>
-        <div class="track-title">Little Bird</div>
-        <div class="track-desc">추락해도 괜찮다. 잠시 떨어지면 어떠냐고 묻는 곡. 작은 날개로 태양을 향해 날아가는 것을 아무것도 막을 수 없다. VLUW의 세 번째 싱글.</div>
-        <a href="https://youtu.be/5YosU51MyTg" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
+    
+    <div class="music-links">
+        <a href="https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN" target="_blank" rel="noopener" class="btn btn-primary">Spotify</a>
+        <a href="https://music.apple.com/kr/artist/vluw/1864445735" target="_blank" rel="noopener" class="btn btn-secondary">Apple Music</a>
+        <a href="https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag" target="_blank" rel="noopener" class="btn btn-secondary">Youtube Music</a>
     </div>
-  </div>
-  <div class="music-block">
-    <div class="music-block-title">1st EP — Crush Hug</div>
-    <p class="album-intro">오늘도 세상 어딘가에서 감당할 수 없는 무자비한 폭력 속에서 선량한 누군가가 죽어가고 있다. 분노해도, 슬퍼해도, 아무것도 막을 수 없다는 무력감. 이 앨범은 그 감정들을 있는 그대로 담았다. 상처투성이인 3곡의 록과 그것을 비추는 거울 속에는 그 상처를 안아주는 3곡의 보사노바. 그 사이 어딘가에서 우리는 발을 구르며 서성이고만 있다.</p>
-    <div class="tracklist-label">Track List</div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Stone">
-      <div>
-        <div class="track-title">1. Stone</div>
-        <div class="track-desc">돌은 무기가 되고, 잔해가 되고, 묘비가 된다. 침묵이 죽음의 버튼을 누르는 동안 우리는 어떻게 돌이 되어가는가. EP의 첫 번째 충돌.</div>
-        <a href="https://youtu.be/ha35i1GmBUA" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="춤">
-      <div>
-        <div class="track-title">2. 춤 Grunge</div>
-        <div class="track-desc">생존을 위한 몸부림은 처절한 춤이 됐다. 죽음의 폐허 속으로 떨어지는 희망의 음식들. 굶주림과 두려움도 쓰러뜨리지 못한 강인한 심장은 아직도 뛰고 있다.</div>
-        <a href="https://youtu.be/BvsDH6P4SX8" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Screwballs">
-      <div>
-        <div class="track-title">3. Screwballs</div>
-        <div class="track-desc">세상의 관심 밖으로 밀려난 존재들은 서로의 존재를 발견한 것만으로도 위로가 된다. 현실의 모든게 엉망이지만 함께 울고 웃다보면 결코 쓰러지지 않는다.</div>
-        <a href="https://youtu.be/m9c8dYFx2_k" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Mirror">
-      <div>
-        <div class="track-title">4. Mirror (Interlude)</div>
-        <div class="track-desc">분노와 슬픔이 휘몰아친 다음날. 말 없이 마주보던 거울. 선명하던 얼굴이 미끄러지듯 번지다 청명한 감정의 실금소리에 흐려진다.</div>
-        <a href="https://youtu.be/4BFoOLKRmG8" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Screwballs Fingerstyle">
-      <div>
-        <div class="track-title">5. Screwballs (Fingerstyle)</div>
-        <div class="track-desc">함성이 잦아든 자리에서 같이 울고 웃던 그 순간들을 손끝으로 더듬어 본다. 잔인한 세상은 여전히 처연하지만, 차분한 낙오자들의 신나는 리듬은 멈추지 않는다.</div>
-        <a href="https://youtu.be/8Fmfw_Gz1b0" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="춤 Bossa Nova">
-      <div>
-        <div class="track-title">6. 춤 Bossa Nova</div>
-        <div class="track-desc">처절한 춤을 추며 살아남은 사람은 그날을 어떻게 기억할까. 심장은 여전히 그날처럼 강인하게 뛰고 있지만, 이제는 담담히 속삭여 본다.</div>
-        <a href="https://youtu.be/a7H85czeqlg" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Stone Bossa Blues">
-      <div>
-        <div class="track-title">7. Stone (Bossa Blues)</div>
-        <div class="track-desc">바위처럼 쏟아지던 분노는 결국 긴 슬픔이 되어버렸다. "God damn"이란 한탄은 "Endless"한 반복에 서서히 무너져간다.</div>
-        <a href="https://youtu.be/c51eWLXQ-t4" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-  </div>
-  <div class="music-links">
-    <a href="https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN" target="_blank" rel="noopener" class="btn btn-primary">Spotify</a>
-    <a href="https://music.apple.com/kr/artist/vluw/1864445735" target="_blank" rel="noopener" class="btn btn-secondary">Apple Music</a>
-    <a href="https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag" target="_blank" rel="noopener" class="btn btn-secondary">Youtube Music</a>
-  </div>
 </section>
-
-<!-- STORY -->
 
 <section id="story">
-  <div class="label">Story</div>
-  <div class="story-grid">
-    <div class="story-item">
-      <img class="story-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/38/e2f1b818037744882393561093.png?w=1000&q=90" alt="제나의 위험한 광폭행보">
-      <div class="story-title">제나의 위험한 광폭행보</div>
-      <div class="story-desc">타임머신을 만들고도 무서워 못 타는 나태봉. 그의 1인 기업에 입사한 이제나는 걸핏하면 자신의 이팔청춘을 돌려달라는 할머니에게 분노해 실제 16세 때 할머니를 잡아다 대령하는데…</div>
-      <a href="https://posty.pe/s5da383" target="_blank" rel="noopener" class="story-link">Read →</a>
+    <div class="label">Story</div>
+    <div class="story-grid">
+        <div class="story-item">
+            <img class="story-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/38/e2f1b818037744882393561093.png?w=1000&q=90" alt="제나의 위험한 광폭행보">
+            <div class="story-title">제나의 위험한 광폭행보</div>
+            <div class="story-desc">타임머신을 만들고도 무서워 못 타는 나태봉. 그의 1인 기업에 입사한 이제나는 걸핏하면 자신의 이팔청춘을 돌려달라는 할머니에게 분노해 실제 16세 때 할머니를 잡아다 대령하는데…</div>
+            <a href="https://posty.pe/s5da383" target="_blank" rel="noopener" class="story-link">Read →</a>
+        </div>
+        <div class="story-item">
+            <img class="story-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/36/5d7c7213088691798976405375.jpg?w=1000&q=90" alt="27 외전">
+            <div class="story-title">27 : 제나의 위험한 광폭행보 외전</div>
+            <div class="story-desc">"천재는 다 스물일곱에 요절한다지? 바보도 스물일곱에 죽으면 천재가 될까?" 2005년 홍대로 떠난 시간여행자 이제나. 스물일곱 살 엄마의 밴드 27에 잠입하는데...</div>
+            <a href="https://posty.pe/ss17pmu" target="_blank" rel="noopener" class="story-link">Read →</a>
+        </div>
     </div>
-    <div class="story-item">
-      <img class="story-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/36/5d7c7213088691798976405375.jpg?w=1000&q=90" alt="27 외전">
-      <div class="story-title">27 : 제나의 위험한 광폭행보 외전</div>
-      <div class="story-desc">"천재는 다 스물일곱에 요절한다지? 바보도 스물일곱에 죽으면 천재가 될까?" 2005년 홍대로 떠난 시간여행자 이제나. 스물일곱 살 엄마의 밴드 27에 잠입하는데...</div>
-      <a href="https://posty.pe/ss17pmu" target="_blank" rel="noopener" class="story-link">Read →</a>
-    </div>
-  </div>
 </section>
-
-<!-- LINKS -->
 
 <section id="links">
-  <div class="label">Related Links</div>
-  <div class="links-grid">
-    <a href="https://instagram.com/official_vluw" target="_blank" rel="noopener" class="link-item">
-      <span class="link-name">Instagram</span><span class="link-arrow">→</span>
-    </a>
-    <a href="https://www.tiktok.com/@official_vluw" target="_blank" rel="noopener" class="link-item">
-      <span class="link-name">TikTok</span><span class="link-arrow">→</span>
-    </a>
-    <a href="https://www.youtube.com/@official_vluw" target="_blank" rel="noopener" class="link-item">
-      <span class="link-name">YouTube</span><span class="link-arrow">→</span>
-    </a>
-    <a href="https://www.threads.com/@official_vluw" target="_blank" rel="noopener" class="link-item">
-      <span class="link-name">Threads</span><span class="link-arrow">→</span>
-    </a>
-    <a href="https://x.com/official_vluw" target="_blank" rel="noopener" class="link-item">
-      <span class="link-name">X</span><span class="link-arrow">→</span>
-    </a>
-  </div>
+    <div class="label">Related Links</div>
+    <div class="links-grid">
+        <a href="https://instagram.com/official_vluw" target="_blank" rel="noopener" class="link-item">
+            <span class="link-name">Instagram</span><span class="link-arrow">→</span>
+        </a>
+        <a href="https://www.tiktok.com/@official_vluw" target="_blank" rel="noopener" class="link-item">
+            <span class="link-name">TikTok</span><span class="link-arrow">→</span>
+        </a>
+        <a href="https://www.youtube.com/@official_vluw" target="_blank" rel="noopener" class="link-item">
+            <span class="link-name">YouTube</span><span class="link-arrow">→</span>
+        </a>
+        <a href="https://www.threads.com/@official_vluw" target="_blank" rel="noopener" class="link-item">
+            <span class="link-name">Threads</span><span class="link-arrow">→</span>
+        </a>
+        <a href="https://x.com/official_vluw" target="_blank" rel="noopener" class="link-item">
+            <span class="link-name">X</span><span class="link-arrow">→</span>
+        </a>
+    </div>
 </section>
 
-<!-- CONTACT -->
-
 <section id="contact">
-  <div class="label">Contact</div>
-  <p class="contact-sub">협업, 파트너십, 투자 제안을 환영합니다.</p>
-  <a href="mailto:hi.thinkerz@gmail.com" class="contact-email">hi.thinkerz@gmail.com</a>
+    <div class="label">Contact</div>
+    <p class="contact-sub">협업, 파트너십, 투자 제안을 환영합니다.</p>
+    <a href="mailto:hi.thinkerz@gmail.com" class="contact-email">hi.thinkerz@gmail.com</a>
 </section>
 
 <footer>
-  <div class="footer-logo">Thinkerz Studio © 2026</div>
-  <div class="footer-copy">All Rights Reserved</div>
+    <div class="footer-logo">Thinkerz Studio © 2026</div>
+    <div class="footer-copy">All Rights Reserved</div>
 </footer>
 
 <script>
-  const els = document.querySelectorAll('section, .vluw-hero, .vluw-divider');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.05 });
-  els.forEach(el => io.observe(el));
+    // 스크롤 시 페이드인 애니메이션 타겟 설정
+    const els = document.querySelectorAll('section, .vluw-hero, .vluw-divider');
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { 
+            if (e.isIntersecting) e.target.classList.add('visible'); 
+        });
+    }, { threshold: 0.05 });
+    els.forEach(el => io.observe(el));
+
+    // 스크롤 시 현재 위치 기반 상단 내비게이션 바 링크 활성화 기능
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sectionsForNav = document.querySelectorAll('#about, #vluw, #music, #story, #contact');
+
+    window.addEventListener('scroll', () => {
+        let currentSectionId = 'about';
+        sectionsForNav.forEach(section => {
+            const sectionTop = section.offsetTop;
+            // 150px 오차를 두어 네비게이션이 조금 일찍 켜지도록 세팅
+            if (window.scrollY >= sectionTop - 150) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSectionId}`) {
+                link.classList.add('active');
+            }
+        });
+    });
 </script>
 
 </body>
