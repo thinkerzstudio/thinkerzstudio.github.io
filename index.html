@@ -193,15 +193,17 @@
     line-height: 0.9;
   }
 
-  /* ─── VLUW HERO ─── */
+  /* ─── VLUW HERO (정사각형 비율 업데이트) ─── */
   .vluw-hero {
-    min-height: 60vh;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* 가로세로 1:1 정사각형 비율 고정 */
+    max-height: 85vh; /* 화면을 너무 많이 가리지 않도록 최대 높이 제한 한계 설정 */
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 56px var(--gutter);
+    padding: var(--gutter);
     border-bottom: 1px solid var(--g2);
   }
 
@@ -209,7 +211,7 @@
     position: absolute;
     inset: 0;
     background-color: var(--g1);
-    background-image: url('images/VLUW_Group_Profile.jpeg'); /* 그룹 프로필 이미지 지정 */
+    background-image: url('images/VLUW_Group_Profile.jpeg');
     background-size: cover;
     background-position: center;
   }
@@ -220,7 +222,7 @@
     inset: 0;
     background: linear-gradient(to top,
       rgba(10,10,10,1) 0%,
-      rgba(10,10,10,0.5) 40%,
+      rgba(10,10,10,0.6) 45%,
       rgba(10,10,10,0.05) 100%);
     z-index: 1;
   }
@@ -231,11 +233,12 @@
   }
 
   .vluw-hero-hook {
-    font-size: clamp(13px, 1.5vw, 16px);
-    font-weight: 300;
-    color: var(--g4);
+    font-size: clamp(13px, 1.6vw, 16px);
+    font-weight: 400; /* 조금 더 선명하도록 두께 소폭 조정 */
+    color: #ffffff; /* 슬로건 텍스트 화이트로 변경 */
     line-height: 1.7;
     margin-bottom: 16px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5); /* 가독성을 위한 은은한 그림자 추가 */
   }
 
   .vluw-hero-title {
@@ -618,7 +621,7 @@
 
 <!-- VLUW HERO -->
 <div class="vluw-hero">
-  <div class="vluw-hero-bg"></div> <!-- 텍스트 플레이스홀더 태그를 제거하고 CSS 배경으로 통합 -->
+  <div class="vluw-hero-bg"></div>
   <div class="vluw-hero-content">
     <p class="vluw-hero-hook">슬퍼도 상관없어. 하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</p>
     <h2 class="vluw-hero-title">VLUW<br>IS BLUE.</h2>
