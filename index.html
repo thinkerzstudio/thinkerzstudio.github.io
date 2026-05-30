@@ -85,7 +85,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 56px 48px;
+            padding: 120px 48px 56px 48px;
             border-bottom: 1px solid var(--gray-2);
             position: relative;
         }
@@ -168,13 +168,15 @@
             line-height: 0.9;
         }
 
-        /* SECTIONS */
+        /* SECTIONS GENERAL */
         section {
             padding: 100px 48px 60px 48px;
             border-bottom: 1px solid var(--gray-1);
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;
+            display: block; /* 흐름 차단 방지 */
+            clear: both;
         }
 
         section.visible { opacity: 1; transform: none; }
@@ -189,37 +191,44 @@
             margin-bottom: 40px;
         }
 
-        /* HERO — VLUW (정사각형 비율 레이아웃 복원) */
+        /* HERO — VLUW (정사각형 박스 완전 격리 구조) */
         .vluw-hero {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 56px 48px;
+            padding: 48px;
             border-bottom: 1px solid var(--gray-2);
-            position: relative;
-            overflow: hidden;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;
-            
-            /* 정사각형 비율 설정 */
-            aspect-ratio: 1/1; 
-            max-height: 80vh; /* 화면을 너무 많이 가리지 않도록 최대 높이 제한 */
+            display: block;
         }
 
         .vluw-hero.visible { opacity: 1; transform: none; }
+
+        /* 다른 레이아웃을 해치지 않는 완전한 1:1 정사각형 이미지 컨테이너 */
+        .vluw-hero-box {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* 너무 커지지 않도록 캡 제한 */
+            aspect-ratio: 1 / 1;
+            margin: 0 auto;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 48px;
+        }
 
         .vluw-hero-img {
             position: absolute;
             inset: 0;
             background: url('images/VLUW_Group_Profile.jpg') center/cover no-repeat;
+            z-index: 0;
         }
 
         .vluw-hero-img::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.55) 50%, rgba(10,10,10,0.05) 100%);
+            background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.5) 60%, rgba(10,10,10,0.1) 100%);
         }
 
         .vluw-hero-content {
@@ -237,9 +246,9 @@
 
         .vluw-hero-title {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: clamp(48px, 10vw, 100px); /* 정사각형에 맞춰 폰트 크기 미세 최적화 */
+            font-size: clamp(40px, 8vw, 88px);
             font-weight: 900;
-            line-height: 0.88;
+            line-height: 0.9;
             letter-spacing: -0.02em;
             text-transform: uppercase;
             color: var(--white);
@@ -330,7 +339,7 @@
         }
 
         /* MUSIC */
-        .music-block { margin-bottom: 64px; }
+        .music-block { margin-bottom: 64px; display: block; }
 
         .music-block-title {
             font-family: 'Barlow Condensed', sans-serif;
@@ -586,7 +595,8 @@
 
         @media (max-width: 600px) {
             section { padding: 80px 24px 40px 24px; }
-            .vluw-hero { padding: 40px 24px; } /* 비율 유지를 위해 모바일 패딩 조정 */
+            .vluw-hero { padding: 24px; }
+            .vluw-hero-box { padding: 24px; }
             .vluw-divider { padding: 80px 24px 40px 24px; }
             footer { padding: 30px 24px; }
         }
@@ -629,12 +639,14 @@
     <div class="vluw-divider-title">VLUW</div>
 </div>
 
-<!-- VLUW HERO (1:1 정사각형 복원) -->
+<!-- VLUW HERO (완벽하게 격리된 1:1 정사각형 구조) -->
 <div class="vluw-hero">
-    <div class="vluw-hero-img"></div>
-    <div class="vluw-hero-content">
-        <p class="vluw-hero-hook">슬퍼도 상관없어. 하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</p>
-        <h2 class="vluw-hero-title">VLUW<br>IS BLUE.</h2>
+    <div class="vluw-hero-box">
+        <div class="vluw-hero-img"></div>
+        <div class="vluw-hero-content">
+            <p class="vluw-hero-hook">슬퍼도 상관없어. 하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</p>
+            <h2 class="vluw-hero-title">VLUW<br>IS BLUE.</h2>
+        </div>
     </div>
 </div>
 
@@ -739,7 +751,7 @@
             <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="춤">
             <div>
                 <div class="track-title">2. 춤 Grunge</div>
-                <div class="track-desc">생존을 위한 몸부림은 처절한 춤이 됐다. 죽음의 폐허 속으로 떨어지는 희망의 음식들. 굶주림 and 두려움도 쓰러뜨리지 못한 강인한 심장은 아직도 뛰고 있다.</div>
+                <div class="track-desc">생존을 위한 몸부림은 처절한 춤이 됐다. 죽음의 폐허 속으로 떨어지는 희망의 음식들. 굶주림과 두려움도 쓰러뜨리지 못한 강인한 심장은 아직도 뛰고 있다.</div>
                 <a href="https://youtu.be/BvsDH6P4SX8" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
             </div>
         </div>
@@ -755,7 +767,7 @@
             <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Mirror">
             <div>
                 <div class="track-title">4. Mirror (Interlude)</div>
-                <div class="track-desc">분노 tobacco 슬픔이 휘몰아친 다음날. 말 없이 마주보던 거울. 선명하던 얼굴이 미끄러지듯 번지다 청명한 감정의 실금소리에 흐려진다.</div>
+                <div class="track-desc">분노와 슬픔이 휘몰아친 다음날. 말 없이 마주보던 거울. 선명하던 얼굴이 미끄러지듯 번지다 청명한 감정의 실금소리에 흐려진다.</div>
                 <a href="https://youtu.be/4BFoOLKRmG8" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
             </div>
         </div>
