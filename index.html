@@ -193,18 +193,28 @@
     line-height: 0.9;
   }
 
-  /* ─── VLUW HERO (정사각형 비율 업데이트) ─── */
+  /* ─── VLUW HERO (가로 모드 및 정사각형 비율 강화) ─── */
   .vluw-hero {
     width: 100%;
-    aspect-ratio: 1 / 1; /* 가로세로 1:1 정사각형 비율 고정 */
-    max-height: 85vh; /* 화면을 너무 많이 가리지 않도록 최대 높이 제한 한계 설정 */
+    aspect-ratio: 1 / 1; /* 철저한 1:1 고정 */
+    max-width: 85vh; /* 가로가 무한히 넓어질 때 화면 높이를 기준으로 정사각형 한계 지정 */
+    margin: 0 auto; /* 가로가 넓은 모니터/가로모드에서 중앙 배치 */
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: var(--gutter);
+    border-left: 1px solid var(--g2);  /* 가로 모드 박스 밸런스를 위한 좌우 선 추가 */
+    border-right: 1px solid var(--g2);
     border-bottom: 1px solid var(--g2);
+  }
+
+  /* 데스크톱이나 일반 뷰포트에서 박스가 깨지지 않게 보완 */
+  @media (min-aspect-ratio: 1/1) {
+    .vluw-hero {
+      width: 85vh; /* 가로가 더 긴 환경(가로모드)에서는 높이를 기준으로 가로 너비를 동기화 */
+    }
   }
 
   .vluw-hero-bg {
@@ -230,15 +240,16 @@
   .vluw-hero-content {
     position: relative;
     z-index: 2;
+    width: 100%;
   }
 
   .vluw-hero-hook {
     font-size: clamp(13px, 1.6vw, 16px);
-    font-weight: 400; /* 조금 더 선명하도록 두께 소폭 조정 */
-    color: #ffffff; /* 슬로건 텍스트 화이트로 변경 */
-    line-height: 1.7;
-    margin-bottom: 16px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5); /* 가독성을 위한 은은한 그림자 추가 */
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
   }
 
   .vluw-hero-title {
@@ -623,7 +634,8 @@
 <div class="vluw-hero">
   <div class="vluw-hero-bg"></div>
   <div class="vluw-hero-content">
-    <p class="vluw-hero-hook">슬퍼도 상관없어. 하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</p>
+    <!-- 문구 줄바꿈 반영 완료 -->
+    <p class="vluw-hero-hook">슬퍼도 상관없어.<br>하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</p>
     <h2 class="vluw-hero-title">VLUW<br>IS BLUE.</h2>
   </div>
 </div>
