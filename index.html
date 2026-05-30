@@ -166,23 +166,15 @@ border-bottom: 1px solid var(–g2);
 section {
 padding: 80px var(–gutter);
 border-bottom: 1px solid var(–g2);
-opacity: 0;
-transform: translateY(20px);
-transition: opacity 0.6s ease, transform 0.6s ease;
-}
 
-section.visible { opacity: 1; transform: none; }
+}
 
 /* ─── VLUW DIVIDER ─── */
 .vluw-divider {
 padding: 56px var(–gutter);
 border-bottom: 1px solid var(–g2);
-opacity: 0;
-transform: translateY(20px);
-transition: opacity 0.6s ease, transform 0.6s ease;
-}
 
-.vluw-divider.visible { opacity: 1; transform: none; }
+}
 
 .vluw-divider-label {
 font-family: ‘Inter’, sans-serif;
@@ -214,12 +206,8 @@ flex-direction: column;
 justify-content: flex-end;
 padding: 56px var(–gutter);
 border-bottom: 1px solid var(–g2);
-opacity: 0;
-transform: translateY(20px);
-transition: opacity 0.6s ease, transform 0.6s ease;
-}
 
-.vluw-hero.visible { opacity: 1; transform: none; }
+}
 
 .vluw-hero-bg {
 position: absolute;
@@ -873,11 +861,7 @@ color: var(–g3);
 </footer>
 
 <script>
-  const targets = document.querySelectorAll('section, .vluw-hero, .vluw-divider');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.05 });
-  targets.forEach(t => io.observe(t));
+  // scroll reveal removed for compatibility
 </script>
 
 </body>
