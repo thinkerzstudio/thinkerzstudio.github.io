@@ -1,843 +1,245 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THINKERZ STUDIO</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-<style>
-  /* ─── TOKENS ─── */
-  :root {
-    --black:  #0a0a0a;
-    --white:  #f0f0ee;
-    --g1:     #161616;
-    --g2:     #2a2a2a;
-    --g3:     #666;
-    --g4:     #999;
-    --g5:     #bbb;
-    --g6:     #ddd;
-    --gutter: 48px;
-    --nav-h:  56px;
-  }
-  @media (max-width: 768px) { :root { --gutter: 32px; --nav-h: 52px; } }
-  @media (max-width: 480px) { :root { --gutter: 20px; --nav-h: 96px; } }
-
-  /* ─── RESET ─── */
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html {
-    scroll-behavior: smooth;
-    background: #0a0a0a;
-    -webkit-text-size-adjust: 100%;
-  }
-  body {
-    background: #0a0a0a !important;
-    color: var(--g6);
-    font-family: 'Pretendard', 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-  a { color: inherit; text-decoration: none; }
-  img { display: block; max-width: 100%; border: none; outline: none; } /* 이미지 기본 테두리 제거 */
-
-  /* ─── TYPOGRAPHY SCALE ─── */
-  .t-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--g4);
-    margin-bottom: 32px;
-  }
-
-  .t-hero-en {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(56px, 12vw, 130px);
-    font-weight: 900;
-    line-height: 0.88;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    color: var(--white);
-  }
-
-  .t-tagline {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(14px, 2.5vw, 22px);
-    font-weight: 300;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--g4);
-    margin-top: 24px;
-    margin-bottom: 32px;
-  }
-
-  .t-body-lg {
-    font-size: clamp(14px, 1.8vw, 17px);
-    font-weight: 300;
-    line-height: 1.85;
-    color: var(--g6);
-    max-width: 600px;
-  }
-
-  .t-body {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.85;
-    color: var(--g5);
-  }
-
-  .t-small {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--g4);
-    letter-spacing: 0.03em;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 200;
-    height: var(--nav-h);
-    padding: 0 var(--gutter);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-    background: rgba(10,10,10,0.95);
-    border-bottom: 1px solid var(--g2);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  .nav-logo {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--white);
-    flex-shrink: 0;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 28px;
-    list-style: none;
-    flex-wrap: wrap;
-  }
-
-  .nav-links a {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--g4);
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--white); }
-
-  @media (max-width: 480px) {
-    nav { padding: 12px var(--gutter); height: auto; min-height: var(--nav-h); align-items: flex-start; }
-    .nav-links { gap: 16px; }
-  }
-
-  /* ─── SECTIONS ─── */
-  .hero-studio {
-    min-height: 100vh;
-    padding: calc(var(--nav-h) + 80px) var(--gutter) 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    border-bottom: 1px solid var(--g2);
-  }
-
-  section {
-    padding: 80px var(--gutter);
-    border-bottom: 1px solid var(--g2);
-  }
-
-  /* ─── VLUW DIVIDER ─── */
-  .vluw-divider {
-    padding: 56px var(--gutter);
-    border-bottom: 1px solid var(--g2);
-  }
-
-  .vluw-divider-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--g4);
-    margin-bottom: 12px;
-  }
-
-  .vluw-divider-title {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(48px, 10vw, 100px);
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    color: var(--white);
-    line-height: 0.9;
-  }
-
-  /* ─── VLUW HERO ─── */
-  .vluw-hero {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: var(--gutter);
-    border-bottom: 1px solid var(--g2);
-  }
-
-  .vluw-hero-bg {
-    position: absolute;
-    inset: 0;
-    background-color: var(--g1);
-    background-image: url('images/VLUW_Group_Profile.jpeg');
-    background-size: cover;
-    background-position: center;
-    border: none;
-  }
-
-  .vluw-hero-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top,
-      rgba(10,10,10,1) 0%,
-      rgba(10,10,10,0.6) 45%,
-      rgba(10,10,10,0.05) 100%);
-    z-index: 1;
-  }
-
-  .vluw-hero-content {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-  }
-
-  .vluw-hero-hook {
-    font-size: clamp(13px, 1.6vw, 16px);
-    font-weight: 400;
-    color: #ffffff;
-    line-height: 1.6;
-    margin-bottom: 18px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-  }
-
-  .vluw-hero-title {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(52px, 12vw, 120px);
-    font-weight: 900;
-    line-height: 0.88;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    color: var(--white);
-  }
-
-  /* ─── WHO IS VLUW ─── */
-  .world-text {
-    font-size: clamp(14px, 1.8vw, 17px);
-    font-weight: 300;
-    line-height: 1.85;
-    color: var(--g6);
-    max-width: 640px;
-    margin-bottom: 64px;
-  }
-
-  /* ─── MEMBERS ─── */
-  .members {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid var(--g2);
-  }
-
-  .member {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 48px;
-    padding: 48px 0;
-    border-bottom: 1px solid var(--g2);
-    transition: background 0.2s;
-  }
-
-  .member:hover { background: var(--g1); }
-
-  @media (max-width: 640px) {
-    .member { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
-  }
-
-  .member-photo {
-    width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-    border: none; /* 선 제거 */
-  }
-
-  .member-info { padding-top: 2px; }
-
-  .member-name-en {
-    font-family: 'Inter', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .member-name-kr {
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--g5);
-    margin-bottom: 8px;
-  }
-
-  .member-role {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--g5);
-    margin-bottom: 16px;
-  }
-
-  .member-tags {
-    font-size: 11px;
-    font-weight: 300;
-    color: var(--g4);
-    line-height: 1.8;
-    margin-bottom: 20px;
-    letter-spacing: 0.02em;
-  }
-
-  .member-desc {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.85;
-    color: var(--g6);
-  }
-
-  /* ─── MUSIC ─── */
-  .music-block { margin-bottom: 72px; }
-  .music-block:last-child { margin-bottom: 0; }
-
-  .music-block-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--g4);
-    margin-bottom: 32px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--g2);
-  }
-
-  .album-intro {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.85;
-    color: var(--g6);
-    max-width: 640px;
-    margin-bottom: 40px;
-  }
-
-  .tracklist-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--g4);
-    margin-bottom: 8px;
-  }
-
-  .track {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 28px;
-    padding: 24px 0;
-    border-bottom: 1px solid var(--g1);
-    align-items: start;
-  }
-
-  @media (max-width: 480px) {
-    .track { grid-template-columns: 80px 1fr; gap: 20px; }
-  }
-
-  .track-cover {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border: none; /* 선 제거 */
-  }
-
-  .track-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--white);
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-
-  .track-desc {
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 1.75;
-    color: var(--g5);
-    margin-bottom: 12px;
-  }
-
-  .track-link {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--g4);
-    border-bottom: 1px solid var(--g2);
-    padding-bottom: 2px;
-    transition: color 0.15s, border-color 0.15s;
-    display: inline-block;
-  }
-
-  .track-link:hover { color: var(--white); border-color: var(--white); }
-
-  .music-platforms {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid var(--g2);
-  }
-
-  .btn {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 10px 20px;
-    transition: all 0.15s;
-    display: inline-block;
-  }
-
-  .btn-fill { background: var(--white); color: var(--black); }
-  .btn-fill:hover { background: var(--g5); }
-  .btn-outline { border: 1px solid var(--g2); color: var(--g5); }
-  .btn-outline:hover { border-color: var(--white); color: var(--white); }
-
-  /* ─── STORY ─── */
-  .story-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--g2);
-    border: 1px solid var(--g2);
-    max-width: 720px;
-  }
-
-  @media (max-width: 560px) { .story-grid { grid-template-columns: 1fr; } }
-
-  .story-item {
-    background: var(--black);
-    padding: 32px 28px;
-    transition: background 0.2s;
-  }
-
-  .story-item:hover { background: var(--g1); }
-
-  .story-cover {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: none; /* 선 제거 */
-  }
-
-  .story-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--white);
-    line-height: 1.5;
-    margin-bottom: 12px;
-  }
-
-  .story-desc {
-    font-size: 12px;
-    font-weight: 300;
-    line-height: 1.75;
-    color: var(--g5);
-    margin-bottom: 20px;
-  }
-
-  .story-link {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--g5);
-    border-bottom: 1px solid var(--g2);
-    padding-bottom: 2px;
-    transition: color 0.15s, border-color 0.15s;
-    display: inline-block;
-  }
-
-  .story-link:hover { color: var(--white); border-color: var(--white); }
-
-  /* ─── LINKS ─── */
-  .links-list {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--g2);
-    max-width: 360px;
-  }
-
-  .link-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--g2);
-    transition: background 0.2s;
-  }
-
-  .link-row:last-child { border-bottom: none; }
-  .link-row:hover { background: var(--g1); }
-
-  .link-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--g6);
-  }
-
-  .link-arrow { font-size: 12px; color: var(--g3); }
-
-  /* ─── CONTACT ─── */
-  .contact-sub {
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--g4);
-    line-height: 1.7;
-    margin-bottom: 24px;
-  }
-
-  .contact-email {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(18px, 3.5vw, 36px);
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    color: var(--white);
-    border-bottom: 1px solid var(--g2);
-    padding-bottom: 4px;
-    transition: border-color 0.2s;
-    display: inline-block;
-  }
-
-  .contact-email:hover { border-color: var(--white); }
-
-  /* ─── FOOTER ─── */
-  footer {
-    padding: 32px var(--gutter);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    border-top: 1px solid var(--g2);
-  }
-
-  .footer-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--g3);
-  }
-
-  .footer-copy {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    color: var(--g3);
-  }
-
-  /* ─── SCROLL REVEAL ─── */
-  ::-webkit-scrollbar { width: 2px; }
-  ::-webkit-scrollbar-track { background: var(--black); }
-  ::-webkit-scrollbar-thumb { background: var(--g2); }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THINKERZ STUDIO | VLUW</title>
+    <style>
+        /* 기본 스타일 리셋 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0b0b0b;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 메인 네비게이션 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(11,11,11,0.8), transparent);
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* 1. 히어로 섹션 */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* 업데이트된 그룹 프로필 이미지 주소 */
+            background: url('images/VLUW_Group_Profile.jpg') center/cover no-repeat;
+            filter: brightness(0.4);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            color: #aaaaaa;
+            text-transform: uppercase;
+        }
+
+        /* 2. 멤버 소개 섹션 */
+        .members-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 20px;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 80px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .member-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 100px;
+            gap: 60px;
+        }
+        .member-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .member-photo-container {
+            flex: 1;
+            overflow: hidden;
+            border-radius: 4px;
+            background-color: #1a1a1a;
+        }
+        .member-photo {
+            width: 100%;
+            /* 기존의 세로형 구도를 원본 1200*896 비율에 맞춰 가로형(4:3)으로 다듬었습니다 */
+            aspect-ratio: 4/3; 
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .member-photo:hover {
+            transform: scale(1.03);
+        }
+        .member-info {
+            flex: 1;
+            padding: 20px 0;
+        }
+        .member-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .member-role {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #00e5ff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .member-bio {
+            color: #bcbcbc;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* 푸터 */
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666666;
+            border-top: 1px solid #1a1a1a;
+            letter-spacing: 1px;
+        }
+
+        /* 반응형 모바일 레이아웃 */
+        @media (max-width: 768px) {
+            nav { padding: 20px; }
+            .hero-title { font-size: 3rem; }
+            .member-card, .member-card:nth-child(even) {
+                flex-direction: column;
+                gap: 30px;
+                margin-bottom: 80px;
+            }
+            .member-info { text-align: center; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">Thinkerz Studio</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#vluw">VLUW</a></li>
-    <li><a href="#music">Music</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+    <!-- 상단 네비게이션 -->
+    <nav>
+        <div class="logo">THINKERZ STUDIO</div>
+    </nav>
 
-<!-- STUDIO HERO -->
-<div class="hero-studio" id="about">
-  <p class="t-label">Virtual Entertainment Studio</p>
-  <h1 class="t-hero-en">Thinkerz<br>Studio</h1>
-  <p class="t-tagline">A Shelter for Misfits</p>
-  <p class="t-body-lg">Thinkerz Studio는 AI 기술 기반의 Virtual Entertainment 제작사입니다. 인간의 창의성과 AI의 제작 역량을 결합한 Human-Led AI Production을 통해 스토리·비주얼·음악이 유기적으로 연결된 엔터테인먼트 IP를 구축합니다.</p>
-</div>
+    <!-- 히어로 섹션 -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">VLUW</h1>
+            <p class="hero-subtitle">Virtual Alternative Band</p>
+        </div>
+    </header>
 
-<!-- VLUW DIVIDER -->
-<div class="vluw-divider" id="vluw">
-  <div class="vluw-divider-label">Project 01</div>
-  <div class="vluw-divider-title">VLUW</div>
-</div>
+    <!-- 멤버 소개 섹션 -->
+    <main class="members-section">
+        <h2 class="section-title">Members</h2>
 
-<!-- VLUW HERO -->
-<div class="vluw-hero">
-  <div class="vluw-hero-bg"></div>
-  <div class="vluw-hero-content">
-    <p class="vluw-hero-hook">슬퍼도 상관없어.<br>하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</p>
-    <h2 class="vluw-hero-title">VLUW<br>IS BLUE.</h2>
-  </div>
-</div>
+        <!-- 1. 이제나 -->
+        <div class="member-card">
+            <div class="member-photo-container">
+                <img class="member-photo" src="images/VLUW_JeNa_Profile.jpg" alt="이제나 (JeNa)">
+            </div>
+            <div class="member-info">
+                <h3 class="member-name">이제나 (JeNa)</h3>
+                <div class="member-role">Vocal / Leader</div>
+                <p class="member-bio">VLUW의 프런트 퍼슨이자 정체성을 이끄는 리더입니다. 매력적인 보이스 톤과 독보적인 감성으로 밴드의 중심을 잡아줍니다.</p>
+            </div>
+        </div>
 
-<!-- WHO IS VLUW -->
-<section id="who">
-  <p class="t-label">Who is VLUW</p>
-  <p class="world-text">VLUW는 타임머신이 존재하는 평행우주에서 탄생한 4인조 밴드다. 이 세계에서 타임머신은 역사를 바꾸거나 미래를 지배하는 데 쓰이지 않는다. 과거에서 아파하는 누군가를 집으로 데려와 밥을 먹이고, 미래에서 방황하는 존재에게 삶의 이유를 되찾아준다. 슬퍼도 오늘을 신나게 살아가는데 쓰이는 지극히 사적인 타임머신. 그 세계에서 VLUW는 태어났다.</p>
+        <!-- 2. 나선 -->
+        <div class="member-card">
+            <div class="member-photo-container">
+                <img class="member-photo" src="images/VLUW_NaSeon_Profile.jpg" alt="나선 (NaSeon)">
+            </div>
+            <div class="member-info">
+                <h3 class="member-name">나선 (NaSeon)</h3>
+                <div class="member-role">Guitar</div>
+                <p class="member-bio">묵직한 리프와 날카로운 사운드를 책임지는 기타리스트입니다. 얼터너티브 록과 헤비한 메탈 사운드의 경계를 넘나드는 연주를 선보입니다.</p>
+            </div>
+        </div>
 
-  <div class="members">
-    <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/762a3210828282699651566163.jpg?w=1000&q=90" alt="이제나">
-      <div class="member-info">
-        <div class="member-name-en">Jena</div>
-        <div class="member-name-kr">이제나</div>
-        <div class="member-role">Guitar</div>
-        <div class="member-tags">#VLUW_를_연결하는_핵심축 #시간여행자 #비자발적_책임의_아이콘 #2026</div>
-        <div class="member-desc">2026년에 살고 있는 시간여행자. 대안학교 출신 고졸자라며 괄시하는 할머니의 맹비난을 피하기 위해 취업한 태봉전자에서 타임머신 '광폭행보'를 만났다. 그녀는 광폭행보를 보고픈 사람들을 만나러 가는 교통수단처럼 사용한다. 과거에서 좌절했던 어린 엄마와 만나고 미래에 버려져 있던 로봇을 집으로 데려온다. 제나는 그렇게 여러 시간을 오가며 상처입은 영혼들을 연결한다. 기타 한 번 쳐본 적 없던 그녀가 늘 경거망동하는 여정 속에서 어느새 밴드 VLUW의 기타리스트가 됐다.</div>
-      </div>
-    </div>
-    <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/f0ce6c38442131805861183.jpg?w=1000&q=90" alt="나선">
-      <div class="member-info">
-        <div class="member-name-en">Naseon</div>
-        <div class="member-name-kr">나선</div>
-        <div class="member-role">Vocal · Bass</div>
-        <div class="member-tags">#VLUW_창작의_첫_불씨 #시작은_늘_서늘한_마이너_코드 #습관적_존댓말 #2006</div>
-        <div class="member-desc">2006년 홍대에 살고 있는 재미교포 뮤지션. 세상에 태어난 것 자체를 수치스러워하던 그녀는 자신의 영혼을 달랠 수 있는 유일한 방법이 음악뿐이었다. 한국에서 만난 드러머 고호정과 27클럽의 천재들처럼 스물일곱 살까지만 살겠다며 밴드 '27'을 결성한다. 하지만 정작 스물일곱이 될 때까지 기타리스트를 못 찾아 제대로 된 데뷔도 못 한다. 어느 날 시간을 건너온 기타리스트 이제나를 만나 거짓말처럼 팀을 완성한다. 스물여덟이 되자 죽지 않고 팀명을 VLUW로 수정한다. VLUW의 리더.</div>
-      </div>
-    </div>
-    <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/da67c7762575580052176070.jpg?w=1000&q=90" alt="고호정">
-      <div class="member-info">
-        <div class="member-name-en">Hojeong</div>
-        <div class="member-name-kr">고호정</div>
-        <div class="member-role">Drums</div>
-        <div class="member-tags">#VLUW_사운드의_중심축 #행동으로_말한다 #2006</div>
-        <div class="member-desc">2006년 도봉구에 살고 있는 비밀이 많은 드러머. 나선과 나이도 생일도 같아 주변인들은 둘을 영혼의 쌍둥이처럼 여긴다. 그렇게 무너지려는 나선을 처음으로 붙잡아준 존재. 하지만 나선과는 다르게 과묵하고 대부분 행동으로 말한다. 열아홉에 갑작스레 생겨버린 딸을 홀로 키워야하는 현실 속에서도 음악을 놓지 않았다. 그 딸이 훗날 시간을 건너와 27과 VLUW의 기타리스트가 됐다. 밴드 27의 공동 창립자.</div>
-      </div>
-    </div>
-    <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/59/e5976a2041799531719999091.jpg?w=1000&q=90" alt="2AR">
-      <div class="member-info">
-        <div class="member-name-en">2AR</div>
-        <div class="member-name-kr">투에이알</div>
-        <div class="member-role">Sound Engineer · All Features</div>
-        <div class="member-tags">#VLUW_음악이_완성되는_마지막_터치 #내향적_휴머노이드 #2036</div>
-        <div class="member-desc">2035년에서 온 휴머노이드형 사운드 엔지니어. 문명이 망해버린 미래에서 홀로 노래를 만들고 있었다. 아무도 듣지 않던 그 노래를 처음 들어준 것이 제나였다. 제나는 부서진 2AR을 2025년으로 데려오며 황량한 미래에 작별을 고했다. 2AR은 납치되다시피 팀에 합류했지만, 지금은 자신의 시간대로 돌아가길 거부하고 있다. 멤버들이 원하는 모든 세션과 피처링을 거침없이 해내고 사운드를 정리한다. VLUW의 음악이 완성되는 마지막 자리를 늘 지키고 있다.</div>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- 3. 호정 -->
+        <div class="member-card">
+            <div class="member-photo-container">
+                <img class="member-photo" src="images/VLUW_HoJeong_Profile.jpg" alt="호정 (HoJeong)">
+            </div>
+            <div class="member-info">
+                <h3 class="member-name">호정 (HoJeong)</h3>
+                <div class="member-role">Bass</div>
+                <p class="member-bio">팀의 음악적 리듬과 뼈대를 잡아주는 베이스 연주자입니다. 로파이(Lo-Fi)한 힙합 비트 위로 얹어지는 그루비하고 깊은 베이스 라인이 특징입니다.</p>
+            </div>
+        </div>
 
-<!-- MUSIC -->
-<section id="music">
-  <p class="t-label">Music</p>
+        <!-- 4. 2AR -->
+        <div class="member-card">
+            <div class="member-photo-container">
+                <img class="member-photo" src="images/VLUW_2AR_Profile.jpg" alt="2AR">
+            </div>
+            <div class="member-info">
+                <h3 class="member-name">2AR</h3>
+                <div class="member-role">Drums / Synth</div>
+                <p class="member-bio">일렉트로닉 사운드와 테크니컬한 드럼 비트를 구축하는 멤버입니다. 휴먼과 머신의 경계에서 VLUW만의 미래지향적인 무드를 완성합니다.</p>
+            </div>
+        </div>
+    </main>
 
-  <div class="music-block">
-    <div class="music-block-title">Single</div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/5661ef6413647086862365706.jpg?w=1000&q=90" alt="Blue">
-      <div>
-        <div class="track-title">Blue</div>
-        <div class="track-desc">누군가를 잃은 뒤의 밤. 슬픔은 희석되지 않고 그리움은 삼켜도 멈춰지지 않는다. 그럼에도 내일은 온다. VLUW의 첫 번째 싱글.</div>
-        <a href="https://youtu.be/M7rsSC1eDfo" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/0b8a8e9094151469088288066.jpg?w=1000&q=90" alt="Quiet Children">
-      <div>
-        <div class="track-title">Quiet Children</div>
-        <div class="track-desc">태어날 때부터 자유로웠지만 짓밟히고 길들여진 사람들에게. 순종을 강요하는 모든 목소리에 맞서 자신의 진짜 적을 똑바로 보라는 곡. VLUW의 두 번째 싱글.</div>
-        <a href="https://youtu.be/ShYq-PzHVnA" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/33a8a76149491780090169717.jpg?w=1000&q=90" alt="Little Bird">
-      <div>
-        <div class="track-title">Little Bird</div>
-        <div class="track-desc">추락해도 괜찮다. 잠시 떨어지면 어떠냐고 묻는 곡. 작은 날개로 태양을 향해 날아가는 것을 아무것도 막을 수 없다. VLUW의 세 번째 싱글.</div>
-        <a href="https://youtu.be/5YosU51MyTg" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="music-block">
-    <div class="music-block-title">1st EP — Crush Hug</div>
-    <p class="album-intro">오늘도 세상 어딘가에서 감당할 수 없는 무자비한 폭력 속에서 선량한 누군가가 죽어가고 있다. 분노해도, 슬퍼해도, 아무것도 막을 수 없다는 무력감. 이 앨범은 그 감정들을 있는 그대로 담았다. 상처투성이인 3곡의 록과 그것을 비추는 거울 속에는 그 상처을 안아주는 3곡의 보사노바. 그 사이 어딘가에서 우리는 발을 구르며 서성이고만 있다.</p>
-    <div class="tracklist-label">Track List</div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Stone">
-      <div>
-        <div class="track-title">1. Stone</div>
-        <div class="track-desc">돌은 무기가 되고, 잔해가 되고, 묘비가 된다. 침묵이 죽음의 버튼을 누르는 동안 우리는 어떻게 돌이 되어가는가. EP의 첫 번째 충돌.</div>
-        <a href="https://youtu.be/ha35i1GmBUA" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="춤 Grunge">
-      <div>
-        <div class="track-title">2. 춤 Grunge</div>
-        <div class="track-desc">생존을 위한 몸부림은 처절한 춤이 됐다. 죽음의 폐허 속으로 떨어지는 희망의 음식들. 굶주림 and 두려움도 쓰러뜨리지 못한 강인한 심장은 아직도 뛰고 있다.</div>
-        <a href="https://youtu.be/BvsDH6P4SX8" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Screwballs">
-      <div>
-        <div class="track-title">3. Screwballs</div>
-        <div class="track-desc">세상의 관심 밖으로 밀려난 존재들은 서로의 존재를 발견한 것만으로도 위로가 된다. 현실의 모든게 엉망이지만 함께 울고 웃다보면 결코 쓰러지지 않는다.</div>
-        <a href="https://youtu.be/m9c8dYFx2_k" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Mirror">
-      <div>
-        <div class="track-title">4. Mirror (Interlude)</div>
-        <div class="track-desc">분노와 슬픔이 휘몰아친 다음날. 말 없이 마주보던 거울. 선명하던 얼굴이 미끄러지듯 번지다 청명한 감정의 실금소리에 흐려진다.</div>
-        <a href="https://youtu.be/4BFoOLKRmG8" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Screwballs Fingerstyle">
-      <div>
-        <div class="track-title">5. Screwballs (Fingerstyle)</div>
-        <div class="track-desc">함성이 잦아든 자리에서 같이 울고 웃던 그 순간들을 손끝으로 더듬어 본다. 잔인한 세상은 여전히 처연하지만, 차분한 낙오자들의 신나는 리듬은 멈추지 않는다.</div>
-        <a href="https://youtu.be/8Fmfw_Gz1b0" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="춤 Bossa Nova">
-      <div>
-        <div class="track-title">6. 춤 Bossa Nova</div>
-        <div class="track-desc">처절한 춤을 추며 살아남은 사람은 그날을 어떻게 기억할까. 심장은 여전히 그날처럼 강인하게 뛰고 있지만, 이제는 담담히 속삭여 본다.</div>
-        <a href="https://youtu.be/a7H85czeqlg" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-    <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Stone Bossa Blues">
-      <div>
-        <div class="track-title">7. Stone (Bossa Blues)</div>
-        <div class="track-desc">바위처럼 쏟아지던 분노는 결국 긴 슬픔이 되어버렸다. "God damn"이란 한탄은 "Endless"한 반복에 서서히 무너져간다.</div>
-        <a href="https://youtu.be/c51eWLXQ-t4" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
-      </div>
-    </div>
-
-    <div class="music-platforms">
-      <a href="https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN" target="_blank" rel="noopener" class="btn btn-fill">Spotify</a>
-      <a href="https://music.apple.com/kr/artist/vluw/1864445735" target="_blank" rel="noopener" class="btn btn-outline">Apple Music</a>
-      <a href="https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag" target="_blank" rel="noopener" class="btn btn-outline">Youtube Music</a>
-    </div>
-  </div>
-</section>
-
-<!-- STORY -->
-<section id="story">
-  <p class="t-label">Story</p>
-  <div class="story-grid">
-    <div class="story-item">
-      <img class="story-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/38/e2f1b818037744882393561093.png?w=1000&q=90" alt="제나의 위험한 광폭행보">
-      <div class="story-title">제나의 위험한 광폭행보</div>
-      <div class="story-desc">타임머신을 만들고도 무서워 못 타는 나태봉. 그의 1인 기업에 입사한 이제나는 걸핏하면 자신의 이팔청춘을 돌려달라는 할머니에게 분노해 실제 16세 때 할머니를 잡아다 대령하는데…</div>
-      <a href="https://posty.pe/s5da383" target="_blank" rel="noopener" class="story-link">Read →</a>
-    </div>
-    <div class="story-item">
-      <img class="story-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/36/5d7c7213088691798976405375.jpg?w=1000&q=90" alt="27 외전">
-      <div class="story-title">27 : 제나의 위험한 광폭행보 외전</div>
-      <div class="story-desc">"천재는 다 스물일곱에 요절한다지? 바보도 스물일곱에 죽으면 천재가 될까?" 2005년 홍대로 떠난 시간여행자 이제나. 스물일곱 살 엄마의 밴드 27에 잠입하는데...</div>
-      <a href="https://posty.pe/ss17pmu" target="_blank" rel="noopener" class="story-link">Read →</a>
-    </div>
-  </div>
-</section>
-
-<!-- LINKS -->
-<section id="links">
-  <p class="t-label">Related Links</p>
-  <div class="links-list">
-    <a href="https://instagram.com/official_vluw" target="_blank" rel="noopener" class="link-row">
-      <span class="link-name">Instagram</span><span class="link-arrow">→</span>
-    </a>
-    <a href="https://www.tiktok.com/@official_vluw" target="_blank" rel="noopener" class="link-row">
-      <span class="link-name">TikTok</span><span class="link-arrow">→</span>
-    </a>
-    <a href="https://www.youtube.com/@official_vluw" target="_blank" rel="noopener" class="link-row">
-      <span class="link-name">YouTube</span><span class="link-arrow">→</span>
-    </a>
-    <a href="https://www.threads.com/@official_vluw" target="_blank" rel="noopener" class="link-row">
-      <span class="link-name">Threads</span><span class="link-arrow">→</span>
-    </a>
-    <a href="https://x.com/official_vluw" target="_blank" rel="noopener" class="link-row">
-      <span class="link-name">X</span><span class="link-arrow">→</span>
-    </a>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <p class="t-label">Contact</p>
-  <p class="contact-sub">협업, 파트너십, 투자 제안을 환영합니다.</p>
-  <a href="mailto:hi.thinkerz@gmail.com" class="contact-email">hi.thinkerz@gmail.com</a>
-</section>
-
-<footer>
-  <div class="footer-name">Thinkerz Studio © 2026</div>
-  <div class="footer-copy">All Rights Reserved</div>
-</footer>
-
-<script>
-  // scroll reveal removed for compatibility
-</script>
+    <!-- 푸터 영역 -->
+    <footer>
+        <p>&copy; 2026 THINKERZ STUDIO. All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>
