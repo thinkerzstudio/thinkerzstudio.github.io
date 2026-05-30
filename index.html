@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>THINKERZ STUDIO</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+<link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+<link href="[https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap)" rel="stylesheet">
+<link rel="stylesheet" href="[https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css](https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css)">
 <style>
   /* ─── TOKENS ─── */
   :root {
@@ -26,587 +25,584 @@
   @media (max-width: 768px) { :root { --gutter: 32px; --nav-h: 52px; } }
   @media (max-width: 480px) { :root { --gutter: 20px; --nav-h: 96px; } }
 
-/* ─── RESET ─── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html {
-scroll-behavior: smooth;
-background: #0a0a0a;
--webkit-text-size-adjust: 100%;
-}
-body {
-background: #0a0a0a !important;
-color: var(–g6);
-font-family: ‘Pretendard’, ‘Inter’, sans-serif;
-font-weight: 300;
-font-size: 15px;
-line-height: 1.7;
-overflow-x: hidden;
-}
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
-
-/* ─── TYPOGRAPHY SCALE ─── */
-.t-label {
-font-family: ‘Inter’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.35em;
-text-transform: uppercase;
-color: var(–g4);
-margin-bottom: 32px;
-}
-
-.t-hero-en {
-font-family: ‘Inter’, sans-serif;
-font-size: clamp(56px, 12vw, 130px);
-font-weight: 900;
-line-height: 0.88;
-letter-spacing: -0.03em;
-text-transform: uppercase;
-color: var(–white);
-}
-
-.t-tagline {
-font-family: ‘Inter’, sans-serif;
-font-size: clamp(14px, 2.5vw, 22px);
-font-weight: 300;
-letter-spacing: 0.12em;
-text-transform: uppercase;
-color: var(–g4);
-margin-top: 24px;
-margin-bottom: 32px;
-}
-
-.t-body-lg {
-font-size: clamp(14px, 1.8vw, 17px);
-font-weight: 300;
-line-height: 1.85;
-color: var(–g6);
-max-width: 600px;
-}
-
-.t-body {
-font-size: 14px;
-font-weight: 300;
-line-height: 1.85;
-color: var(–g5);
-}
-
-.t-small {
-font-family: ‘Inter’, sans-serif;
-font-size: 11px;
-font-weight: 400;
-line-height: 1.6;
-color: var(–g4);
-letter-spacing: 0.03em;
-}
-
-/* ─── NAV ─── */
-nav {
-position: fixed;
-top: 0; left: 0; right: 0;
-z-index: 200;
-height: var(–nav-h);
-padding: 0 var(–gutter);
-display: flex;
-align-items: center;
-justify-content: space-between;
-flex-wrap: wrap;
-gap: 8px;
-background: rgba(10,10,10,0.95);
-border-bottom: 1px solid var(–g2);
-backdrop-filter: blur(8px);
--webkit-backdrop-filter: blur(8px);
-}
-
-.nav-logo {
-font-family: ‘Inter’, sans-serif;
-font-size: 13px;
-font-weight: 700;
-letter-spacing: 0.18em;
-text-transform: uppercase;
-color: var(–white);
-flex-shrink: 0;
-}
-
-.nav-links {
-display: flex;
-gap: 28px;
-list-style: none;
-flex-wrap: wrap;
-}
-
-.nav-links a {
-font-family: ‘Inter’, sans-serif;
-font-size: 11px;
-font-weight: 500;
-letter-spacing: 0.18em;
-text-transform: uppercase;
-color: var(–g4);
-transition: color 0.2s;
-}
-
-.nav-links a:hover { color: var(–white); }
-
-@media (max-width: 480px) {
-nav { padding: 12px var(–gutter); height: auto; min-height: var(–nav-h); align-items: flex-start; }
-.nav-links { gap: 16px; }
-}
-
-/* ─── SECTIONS ─── */
-.hero-studio {
-min-height: 100vh;
-padding: calc(var(–nav-h) + 80px) var(–gutter) 80px;
-display: flex;
-flex-direction: column;
-justify-content: flex-end;
-border-bottom: 1px solid var(–g2);
-}
-
-section {
-padding: 80px var(–gutter);
-border-bottom: 1px solid var(–g2);
-
-}
-
-/* ─── VLUW DIVIDER ─── */
-.vluw-divider {
-padding: 56px var(–gutter);
-border-bottom: 1px solid var(–g2);
-
-}
-
-.vluw-divider-label {
-font-family: ‘Inter’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.35em;
-text-transform: uppercase;
-color: var(–g4);
-margin-bottom: 12px;
-}
-
-.vluw-divider-title {
-font-family: ‘Inter’, sans-serif;
-font-size: clamp(48px, 10vw, 100px);
-font-weight: 900;
-letter-spacing: -0.03em;
-text-transform: uppercase;
-color: var(–white);
-line-height: 0.9;
-}
-
-/* ─── VLUW HERO ─── */
-.vluw-hero {
-min-height: 60vh;
-position: relative;
-overflow: hidden;
-display: flex;
-flex-direction: column;
-justify-content: flex-end;
-padding: 56px var(–gutter);
-border-bottom: 1px solid var(–g2);
-
-}
-
-.vluw-hero-bg {
-position: absolute;
-inset: 0;
-background: var(–g1);
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.vluw-hero-bg-label {
-font-family: ‘Inter’, sans-serif;
-font-size: 10px;
-font-weight: 400;
-letter-spacing: 0.3em;
-color: var(–g3);
-text-transform: uppercase;
-text-align: center;
-line-height: 2.4;
-}
-
-.vluw-hero-bg::after {
-content: ‘’;
-position: absolute;
-inset: 0;
-background: linear-gradient(to top,
-rgba(10,10,10,1) 0%,
-rgba(10,10,10,0.5) 40%,
-rgba(10,10,10,0.05) 100%);
-}
-
-.vluw-hero-content {
-position: relative;
-z-index: 1;
-}
-
-.vluw-hero-hook {
-font-size: clamp(13px, 1.5vw, 16px);
-font-weight: 300;
-color: var(–g4);
-line-height: 1.7;
-margin-bottom: 16px;
-}
-
-.vluw-hero-title {
-font-family: ‘Inter’, sans-serif;
-font-size: clamp(52px, 12vw, 120px);
-font-weight: 900;
-line-height: 0.88;
-letter-spacing: -0.03em;
-text-transform: uppercase;
-color: var(–white);
-}
-
-/* ─── WHO IS VLUW ─── */
-.world-text {
-font-size: clamp(14px, 1.8vw, 17px);
-font-weight: 300;
-line-height: 1.85;
-color: var(–g6);
-max-width: 640px;
-margin-bottom: 64px;
-}
-
-/* ─── MEMBERS ─── */
-.members {
-display: flex;
-flex-direction: column;
-border-top: 1px solid var(–g2);
-}
-
-.member {
-display: grid;
-grid-template-columns: 200px 1fr;
-gap: 48px;
-padding: 48px 0;
-border-bottom: 1px solid var(–g2);
-transition: background 0.2s;
-}
-
-.member:hover { background: var(–g1); }
-
-@media (max-width: 640px) {
-.member { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
-}
-
-.member-photo {
-width: 100%;
-aspect-ratio: 3/4;
-object-fit: cover;
-}
-
-.member-info { padding-top: 2px; }
-
-.member-name-en {
-font-family: ‘Inter’, sans-serif;
-font-size: 26px;
-font-weight: 700;
-letter-spacing: 0.04em;
-text-transform: uppercase;
-color: var(–white);
-line-height: 1;
-margin-bottom: 4px;
-}
-
-.member-name-kr {
-font-size: 12px;
-font-weight: 400;
-color: var(–g5);
-margin-bottom: 8px;
-}
-
-.member-role {
-font-family: ‘Inter’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(–g5);
-margin-bottom: 16px;
-}
-
-.member-tags {
-font-size: 11px;
-font-weight: 300;
-color: var(–g4);
-line-height: 1.8;
-margin-bottom: 20px;
-letter-spacing: 0.02em;
-}
-
-.member-desc {
-font-size: 14px;
-font-weight: 300;
-line-height: 1.85;
-color: var(–g6);
-}
-
-/* ─── MUSIC ─── */
-.music-block { margin-bottom: 72px; }
-.music-block:last-child { margin-bottom: 0; }
-
-.music-block-title {
-font-family: ‘Inter’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.35em;
-text-transform: uppercase;
-color: var(–g4);
-margin-bottom: 32px;
-padding-bottom: 16px;
-border-bottom: 1px solid var(–g2);
-}
-
-.album-intro {
-font-size: 14px;
-font-weight: 300;
-line-height: 1.85;
-color: var(–g6);
-max-width: 640px;
-margin-bottom: 40px;
-}
-
-.tracklist-label {
-font-family: ‘Inter’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.3em;
-text-transform: uppercase;
-color: var(–g4);
-margin-bottom: 8px;
-}
-
-.track {
-display: grid;
-grid-template-columns: 100px 1fr;
-gap: 28px;
-padding: 24px 0;
-border-bottom: 1px solid var(–g1);
-align-items: start;
-}
-
-@media (max-width: 480px) {
-.track { grid-template-columns: 80px 1fr; gap: 20px; }
-}
-
-.track-cover {
-width: 100%;
-aspect-ratio: 1;
-object-fit: cover;
-}
-
-.track-title {
-font-family: ‘Inter’, sans-serif;
-font-size: 16px;
-font-weight: 600;
-letter-spacing: 0.02em;
-color: var(–white);
-margin-bottom: 8px;
-line-height: 1.3;
-}
-
-.track-desc {
-font-size: 13px;
-font-weight: 300;
-line-height: 1.75;
-color: var(–g5);
-margin-bottom: 12px;
-}
-
-.track-link {
-font-family: ‘Inter’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(–g4);
-border-bottom: 1px solid var(–g2);
-padding-bottom: 2px;
-transition: color 0.15s, border-color 0.15s;
-display: inline-block;
-}
-
-.track-link:hover { color: var(–white); border-color: var(–white); }
-
-.music-platforms {
-display: flex;
-gap: 10px;
-flex-wrap: wrap;
-margin-top: 48px;
-padding-top: 32px;
-border-top: 1px solid var(–g2);
-}
-
-.btn {
-font-family: ‘Inter’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-padding: 10px 20px;
-transition: all 0.15s;
-display: inline-block;
-}
-
-.btn-fill { background: var(–white); color: var(–black); }
-.btn-fill:hover { background: var(–g5); }
-.btn-outline { border: 1px solid var(–g2); color: var(–g5); }
-.btn-outline:hover { border-color: var(–white); color: var(–white); }
-
-/* ─── STORY ─── */
-.story-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 1px;
-background: var(–g2);
-border: 1px solid var(–g2);
-max-width: 720px;
-}
-
-@media (max-width: 560px) { .story-grid { grid-template-columns: 1fr; } }
-
-.story-item {
-background: var(–black);
-padding: 32px 28px;
-transition: background 0.2s;
-}
-
-.story-item:hover { background: var(–g1); }
-
-.story-cover {
-width: 100%;
-aspect-ratio: 16/9;
-object-fit: cover;
-margin-bottom: 20px;
-}
-
-.story-title {
-font-size: 14px;
-font-weight: 500;
-color: var(–white);
-line-height: 1.5;
-margin-bottom: 12px;
-}
-
-.story-desc {
-font-size: 12px;
-font-weight: 300;
-line-height: 1.75;
-color: var(–g5);
-margin-bottom: 20px;
-}
-
-.story-link {
-font-family: ‘Inter’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(–g5);
-border-bottom: 1px solid var(–g2);
-padding-bottom: 2px;
-transition: color 0.15s, border-color 0.15s;
-display: inline-block;
-}
-
-.story-link:hover { color: var(–white); border-color: var(–white); }
-
-/* ─── LINKS ─── */
-.links-list {
-display: flex;
-flex-direction: column;
-border: 1px solid var(–g2);
-max-width: 360px;
-}
-
-.link-row {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 14px 20px;
-border-bottom: 1px solid var(–g2);
-transition: background 0.2s;
-}
-
-.link-row:last-child { border-bottom: none; }
-.link-row:hover { background: var(–g1); }
-
-.link-name {
-font-family: ‘Inter’, sans-serif;
-font-size: 11px;
-font-weight: 600;
-letter-spacing: 0.18em;
-text-transform: uppercase;
-color: var(–g6);
-}
-
-.link-arrow { font-size: 12px; color: var(–g3); }
-
-/* ─── CONTACT ─── */
-.contact-sub {
-font-size: 13px;
-font-weight: 300;
-color: var(–g4);
-line-height: 1.7;
-margin-bottom: 24px;
-}
-
-.contact-email {
-font-family: ‘Inter’, sans-serif;
-font-size: clamp(18px, 3.5vw, 36px);
-font-weight: 700;
-letter-spacing: 0.02em;
-color: var(–white);
-border-bottom: 1px solid var(–g2);
-padding-bottom: 4px;
-transition: border-color 0.2s;
-display: inline-block;
-}
-
-.contact-email:hover { border-color: var(–white); }
-
-/* ─── FOOTER ─── */
-footer {
-padding: 32px var(–gutter);
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 6px;
-border-top: 1px solid var(–g2);
-}
-
-.footer-name {
-font-family: ‘Inter’, sans-serif;
-font-size: 12px;
-font-weight: 600;
-letter-spacing: 0.18em;
-text-transform: uppercase;
-color: var(–g3);
-}
-
-.footer-copy {
-font-family: ‘Inter’, sans-serif;
-font-size: 11px;
-font-weight: 300;
-letter-spacing: 0.1em;
-color: var(–g3);
-}
-
-/* ─── SCROLL REVEAL ─── */
-::-webkit-scrollbar { width: 2px; }
-::-webkit-scrollbar-track { background: var(–black); }
-::-webkit-scrollbar-thumb { background: var(–g2); }
+  /* ─── RESET ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html {
+    scroll-behavior: smooth;
+    background: #0a0a0a;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: #0a0a0a !important;
+    color: var(--g6);
+    font-family: 'Pretendard', 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  /* ─── TYPOGRAPHY SCALE ─── */
+  .t-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--g4);
+    margin-bottom: 32px;
+  }
+
+  .t-hero-en {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(56px, 12vw, 130px);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .t-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(14px, 2.5vw, 22px);
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--g4);
+    margin-top: 24px;
+    margin-bottom: 32px;
+  }
+
+  .t-body-lg {
+    font-size: clamp(14px, 1.8vw, 17px);
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--g6);
+    max-width: 600px;
+  }
+
+  .t-body {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--g5);
+  }
+
+  .t-small {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--g4);
+    letter-spacing: 0.03em;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    height: var(--nav-h);
+    padding: 0 var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: rgba(10,10,10,0.95);
+    border-bottom: 1px solid var(--g2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--g4);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  @media (max-width: 480px) {
+    nav { padding: 12px var(--gutter); height: auto; min-height: var(--nav-h); align-items: flex-start; }
+    .nav-links { gap: 16px; }
+  }
+
+  /* ─── SECTIONS ─── */
+  .hero-studio {
+    min-height: 100vh;
+    padding: calc(var(--nav-h) + 80px) var(--gutter) 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-bottom: 1px solid var(--g2);
+  }
+
+  section {
+    padding: 80px var(--gutter);
+    border-bottom: 1px solid var(--g2);
+  }
+
+  /* ─── VLUW DIVIDER ─── */
+  .vluw-divider {
+    padding: 56px var(--gutter);
+    border-bottom: 1px solid var(--g2);
+  }
+
+  .vluw-divider-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--g4);
+    margin-bottom: 12px;
+  }
+
+  .vluw-divider-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(48px, 10vw, 100px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 0.9;
+  }
+
+  /* ─── VLUW HERO ─── */
+  .vluw-hero {
+    min-height: 60vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 56px var(--gutter);
+    border-bottom: 1px solid var(--g2);
+  }
+
+  .vluw-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--g1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vluw-hero-bg-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    color: var(--g3);
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 2.4;
+    position: relative;
+    z-index: 2; /* 오버레이보다 위로 배치 */
+  }
+
+  .vluw-hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+      rgba(10,10,10,1) 0%,
+      rgba(10,10,10,0.5) 40%,
+      rgba(10,10,10,0.05) 100%);
+    z-index: 1;
+  }
+
+  .vluw-hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .vluw-hero-hook {
+    font-size: clamp(13px, 1.5vw, 16px);
+    font-weight: 300;
+    color: var(--g4);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .vluw-hero-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(52px, 12vw, 120px);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  /* ─── WHO IS VLUW ─── */
+  .world-text {
+    font-size: clamp(14px, 1.8vw, 17px);
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--g6);
+    max-width: 640px;
+    margin-bottom: 64px;
+  }
+
+  /* ─── MEMBERS ─── */
+  .members {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--g2);
+  }
+
+  .member {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    padding: 48px 0;
+    border-bottom: 1px solid var(--g2);
+    transition: background 0.2s;
+  }
+
+  .member:hover { background: var(--g1); }
+
+  @media (max-width: 640px) {
+    .member { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
+  }
+
+  .member-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
+
+  .member-info { padding-top: 2px; }
+
+  .member-name-en {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .member-name-kr {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--g5);
+    margin-bottom: 8px;
+  }
+
+  .member-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--g5);
+    margin-bottom: 16px;
+  }
+
+  .member-tags {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--g4);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  .member-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--g6);
+  }
+
+  /* ─── MUSIC ─── */
+  .music-block { margin-bottom: 72px; }
+  .music-block:last-child { margin-bottom: 0; }
+
+  .music-block-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--g4);
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--g2);
+  }
+
+  .album-intro {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--g6);
+    max-width: 640px;
+    margin-bottom: 40px;
+  }
+
+  .tracklist-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--g4);
+    margin-bottom: 8px;
+  }
+
+  .track {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 28px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--g1);
+    align-items: start;
+  }
+
+  @media (max-width: 480px) {
+    .track { grid-template-columns: 80px 1fr; gap: 20px; }
+  }
+
+  .track-cover {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  .track-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .track-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--g5);
+    margin-bottom: 12px;
+  }
+
+  .track-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--g4);
+    border-bottom: 1px solid var(--g2);
+    padding-bottom: 2px;
+    transition: color 0.15s, border-color 0.15s;
+    display: inline-block;
+  }
+
+  .track-link:hover { color: var(--white); border-color: var(--white); }
+
+  .music-platforms {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--g2);
+  }
+
+  .btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    transition: all 0.15s;
+    display: inline-block;
+  }
+
+  .btn-fill { background: var(--white); color: var(--black); }
+  .btn-fill:hover { background: var(--g5); }
+  .btn-outline { border: 1px solid var(--g2); color: var(--g5); }
+  .btn-outline:hover { border-color: var(--white); color: var(--white); }
+
+  /* ─── STORY ─── */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--g2);
+    border: 1px solid var(--g2);
+    max-width: 720px;
+  }
+
+  @media (max-width: 560px) { .story-grid { grid-template-columns: 1fr; } }
+
+  .story-item {
+    background: var(--black);
+    padding: 32px 28px;
+    transition: background 0.2s;
+  }
+
+  .story-item:hover { background: var(--g1); }
+
+  .story-cover {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+
+  .story-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .story-desc {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--g5);
+    margin-bottom: 20px;
+  }
+
+  .story-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--g5);
+    border-bottom: 1px solid var(--g2);
+    padding-bottom: 2px;
+    transition: color 0.15s, border-color 0.15s;
+    display: inline-block;
+  }
+
+  .story-link:hover { color: var(--white); border-color: var(--white); }
+
+  /* ─── LINKS ─── */
+  .links-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--g2);
+    max-width: 360px;
+  }
+
+  .link-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--g2);
+    transition: background 0.2s;
+  }
+
+  .link-row:last-child { border-bottom: none; }
+  .link-row:hover { background: var(--g1); }
+
+  .link-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--g6);
+  }
+
+  .link-arrow { font-size: 12px; color: var(--g3); }
+
+  /* ─── CONTACT ─── */
+  .contact-sub {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--g4);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .contact-email {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(18px, 3.5vw, 36px);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    border-bottom: 1px solid var(--g2);
+    padding-bottom: 4px;
+    transition: border-color 0.2s;
+    display: inline-block;
+  }
+
+  .contact-email:hover { border-color: var(--white); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 32px var(--gutter);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    border-top: 1px solid var(--g2);
+  }
+
+  .footer-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--g3);
+  }
+
+  .footer-copy {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--g3);
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  ::-webkit-scrollbar { width: 2px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--g2); }
 </style>
-
 </head>
 <body>
-
-<!-- NAV -->
 
 <nav>
   <a href="#" class="nav-logo">Thinkerz Studio</a>
@@ -618,8 +614,6 @@ color: var(–g3);
   </ul>
 </nav>
 
-<!-- STUDIO HERO -->
-
 <div class="hero-studio" id="about">
   <p class="t-label">Virtual Entertainment Studio</p>
   <h1 class="t-hero-en">Thinkerz<br>Studio</h1>
@@ -627,14 +621,10 @@ color: var(–g3);
   <p class="t-body-lg">Thinkerz Studio는 AI 기술 기반의 Virtual Entertainment 제작사입니다. 인간의 창의성과 AI의 제작 역량을 결합한 Human-Led AI Production을 통해 스토리·비주얼·음악이 유기적으로 연결된 엔터테인먼트 IP를 구축합니다.</p>
 </div>
 
-<!-- VLUW DIVIDER -->
-
 <div class="vluw-divider" id="vluw">
   <div class="vluw-divider-label">Project 01</div>
   <div class="vluw-divider-title">VLUW</div>
 </div>
-
-<!-- VLUW HERO -->
 
 <div class="vluw-hero">
   <div class="vluw-hero-bg">
@@ -649,15 +639,13 @@ color: var(–g3);
   </div>
 </div>
 
-<!-- WHO IS VLUW -->
-
 <section id="who">
   <p class="t-label">Who is VLUW</p>
   <p class="world-text">VLUW는 타임머신이 존재하는 평행우주에서 탄생한 4인조 밴드다. 이 세계에서 타임머신은 역사를 바꾸거나 미래를 지배하는 데 쓰이지 않는다. 과거에서 아파하는 누군가를 집으로 데려와 밥을 먹이고, 미래에서 방황하는 존재에게 삶의 이유를 되찾아준다. 슬퍼도 오늘을 신나게 살아가는데 쓰이는 지극히 사적인 타임머신. 그 세계에서 VLUW는 태어났다.</p>
 
   <div class="members">
     <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/762a3210828282699651566163.jpg?w=1000&q=90" alt="이제나">
+      <img class="member-photo" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/762a3210828282699651566163.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/762a3210828282699651566163.jpg?w=1000&q=90)" alt="이제나">
       <div class="member-info">
         <div class="member-name-en">Jena</div>
         <div class="member-name-kr">이제나</div>
@@ -667,7 +655,7 @@ color: var(–g3);
       </div>
     </div>
     <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/f0ce6c38442131805861183.jpg?w=1000&q=90" alt="나선">
+      <img class="member-photo" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/f0ce6c38442131805861183.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/f0ce6c38442131805861183.jpg?w=1000&q=90)" alt="나선">
       <div class="member-info">
         <div class="member-name-en">Naseon</div>
         <div class="member-name-kr">나선</div>
@@ -677,7 +665,7 @@ color: var(–g3);
       </div>
     </div>
     <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/da67c7762575580052176070.jpg?w=1000&q=90" alt="고호정">
+      <img class="member-photo" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/da67c7762575580052176070.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/da67c7762575580052176070.jpg?w=1000&q=90)" alt="고호정">
       <div class="member-info">
         <div class="member-name-en">Hojeong</div>
         <div class="member-name-kr">고호정</div>
@@ -687,7 +675,7 @@ color: var(–g3);
       </div>
     </div>
     <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/59/e5976a2041799531719999091.jpg?w=1000&q=90" alt="2AR">
+      <img class="member-photo" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/59/e5976a2041799531719999091.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/59/e5976a2041799531719999091.jpg?w=1000&q=90)" alt="2AR">
       <div class="member-info">
         <div class="member-name-en">2AR</div>
         <div class="member-name-kr">투에이알</div>
@@ -699,35 +687,33 @@ color: var(–g3);
   </div>
 </section>
 
-<!-- MUSIC -->
-
 <section id="music">
   <p class="t-label">Music</p>
 
   <div class="music-block">
     <div class="music-block-title">Single</div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/5661ef6413647086862365706.jpg?w=1000&q=90" alt="Blue">
+      <img class="track-cover" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/5661ef6413647086862365706.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/5661ef6413647086862365706.jpg?w=1000&q=90)" alt="Blue">
       <div>
         <div class="track-title">Blue</div>
         <div class="track-desc">누군가를 잃은 뒤의 밤. 슬픔은 희석되지 않고 그리움은 삼켜도 멈춰지지 않는다. 그럼에도 내일은 온다. VLUW의 첫 번째 싱글.</div>
-        <a href="https://youtu.be/M7rsSC1eDfo" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="[https://youtu.be/M7rsSC1eDfo](https://youtu.be/M7rsSC1eDfo)" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/0b8a8e9094151469088288066.jpg?w=1000&q=90" alt="Quiet Children">
+      <img class="track-cover" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/0b8a8e9094151469088288066.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/0b8a8e9094151469088288066.jpg?w=1000&q=90)" alt="Quiet Children">
       <div>
         <div class="track-title">Quiet Children</div>
         <div class="track-desc">태어날 때부터 자유로웠지만 짓밟히고 길들여진 사람들에게. 순종을 강요하는 모든 목소리에 맞서 자신의 진짜 적을 똑바로 보라는 곡. VLUW의 두 번째 싱글.</div>
-        <a href="https://youtu.be/ShYq-PzHVnA" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="[https://youtu.be/ShYq-PzHVnA](https://youtu.be/ShYq-PzHVnA)" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/33a8a76149491780090169717.jpg?w=1000&q=90" alt="Little Bird">
+      <img class="track-cover" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/33a8a76149491780090169717.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/33a8a76149491780090169717.jpg?w=1000&q=90)" alt="Little Bird">
       <div>
         <div class="track-title">Little Bird</div>
         <div class="track-desc">추락해도 괜찮다. 잠시 떨어지면 어떠냐고 묻는 곡. 작은 날개로 태양을 향해 날아가는 것을 아무것도 막을 수 없다. VLUW의 세 번째 싱글.</div>
-        <a href="https://youtu.be/5YosU51MyTg" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="[https://youtu.be/5YosU51MyTg](https://youtu.be/5YosU51MyTg)" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
       </div>
     </div>
   </div>
@@ -737,117 +723,108 @@ color: var(–g3);
     <p class="album-intro">오늘도 세상 어딘가에서 감당할 수 없는 무자비한 폭력 속에서 선량한 누군가가 죽어가고 있다. 분노해도, 슬퍼해도, 아무것도 막을 수 없다는 무력감. 이 앨범은 그 감정들을 있는 그대로 담았다. 상처투성이인 3곡의 록과 그것을 비추는 거울 속에는 그 상처를 안아주는 3곡의 보사노바. 그 사이 어딘가에서 우리는 발을 구르며 서성이고만 있다.</p>
     <div class="tracklist-label">Track List</div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Stone">
+      <img class="track-cover" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90)" alt="Stone">
       <div>
         <div class="track-title">1. Stone</div>
         <div class="track-desc">돌은 무기가 되고, 잔해가 되고, 묘비가 된다. 침묵이 죽음의 버튼을 누르는 동안 우리는 어떻게 돌이 되어가는가. EP의 첫 번째 충돌.</div>
-        <a href="https://youtu.be/ha35i1GmBUA" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="[https://youtu.be/ha35i1GmBUA](https://youtu.be/ha35i1GmBUA)" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="춤 Grunge">
+      <img class="track-cover" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90)" alt="춤 Grunge">
       <div>
         <div class="track-title">2. 춤 Grunge</div>
         <div class="track-desc">생존을 위한 몸부림은 처절한 춤이 됐다. 죽음의 폐허 속으로 떨어지는 희망의 음식들. 굶주림과 두려움도 쓰러뜨리지 못한 강인한 심장은 아직도 뛰고 있다.</div>
-        <a href="https://youtu.be/BvsDH6P4SX8" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="[https://youtu.be/BvsDH6P4SX8](https://youtu.be/BvsDH6P4SX8)" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Screwballs">
+      <img class="track-cover" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90)" alt="Screwballs">
       <div>
         <div class="track-title">3. Screwballs</div>
         <div class="track-desc">세상의 관심 밖으로 밀려난 존재들은 서로의 존재를 발견한 것만으로도 위로가 된다. 현실의 모든게 엉망이지만 함께 울고 웃다보면 결코 쓰러지지 않는다.</div>
-        <a href="https://youtu.be/m9c8dYFx2_k" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="[https://youtu.be/m9c8dYFx2_k](https://youtu.be/m9c8dYFx2_k)" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Mirror">
+      <img class="track-cover" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90)" alt="Mirror">
       <div>
         <div class="track-title">4. Mirror (Interlude)</div>
         <div class="track-desc">분노와 슬픔이 휘몰아친 다음날. 말 없이 마주보던 거울. 선명하던 얼굴이 미끄러지듯 번지다 청명한 감정의 실금소리에 흐려진다.</div>
-        <a href="https://youtu.be/4BFoOLKRmG8" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="[https://youtu.be/4BFoOLKRmG8](https://youtu.be/4BFoOLKRmG8)" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Screwballs Fingerstyle">
+      <img class="track-cover" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90)" alt="Screwballs Fingerstyle">
       <div>
         <div class="track-title">5. Screwballs (Fingerstyle)</div>
         <div class="track-desc">함성이 잦아든 자리에서 같이 울고 웃던 그 순간들을 손끝으로 더듬어 본다. 잔인한 세상은 여전히 처연하지만, 차분한 낙오자들의 신나는 리듬은 멈추지 않는다.</div>
-        <a href="https://youtu.be/8Fmfw_Gz1b0" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="[https://youtu.be/8Fmfw_Gz1b0](https://youtu.be/8Fmfw_Gz1b0)" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="춤 Bossa Nova">
+      <img class="track-cover" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90)" alt="춤 Bossa Nova">
       <div>
         <div class="track-title">6. 춤 Bossa Nova</div>
         <div class="track-desc">처절한 춤을 추며 살아남은 사람은 그날을 어떻게 기억할까. 심장은 여전히 그날처럼 강인하게 뛰고 있지만, 이제는 담담히 속삭여 본다.</div>
-        <a href="https://youtu.be/a7H85czeqlg" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="[https://youtu.be/a7H85czeqlg](https://youtu.be/a7H85czeqlg)" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Stone Bossa Blues">
+      <img class="track-cover" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90)" alt="Stone Bossa Blues">
       <div>
         <div class="track-title">7. Stone (Bossa Blues)</div>
         <div class="track-desc">바위처럼 쏟아지던 분노는 결국 긴 슬픔이 되어버렸다. "God damn"이란 한탄은 "Endless"한 반복에 서서히 무너져간다.</div>
-        <a href="https://youtu.be/c51eWLXQ-t4" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="[https://youtu.be/c51eWLXQ-t4](https://youtu.be/c51eWLXQ-t4)" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
       </div>
     </div>
 
-```
-<div class="music-platforms">
-  <a href="https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN" target="_blank" rel="noopener" class="btn btn-fill">Spotify</a>
-  <a href="https://music.apple.com/kr/artist/vluw/1864445735" target="_blank" rel="noopener" class="btn btn-outline">Apple Music</a>
-  <a href="https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag" target="_blank" rel="noopener" class="btn btn-outline">Youtube Music</a>
-</div>
-```
-
+    <div class="music-platforms">
+      <a href="[https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN](https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN)" target="_blank" rel="noopener" class="btn btn-fill">Spotify</a>
+      <a href="[https://music.apple.com/kr/artist/vluw/1864445735](https://music.apple.com/kr/artist/vluw/1864445735)" target="_blank" rel="noopener" class="btn btn-outline">Apple Music</a>
+      <a href="[https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag](https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag)" target="_blank" rel="noopener" class="btn btn-outline">Youtube Music</a>
+    </div>
   </div>
 </section>
-
-<!-- STORY -->
 
 <section id="story">
   <p class="t-label">Story</p>
   <div class="story-grid">
     <div class="story-item">
-      <img class="story-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/38/e2f1b818037744882393561093.png?w=1000&q=90" alt="제나의 위험한 광폭행보">
+      <img class="story-cover" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/38/e2f1b818037744882393561093.png?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/38/e2f1b818037744882393561093.png?w=1000&q=90)" alt="제나의 위험한 광폭행보">
       <div class="story-title">제나의 위험한 광폭행보</div>
       <div class="story-desc">타임머신을 만들고도 무서워 못 타는 나태봉. 그의 1인 기업에 입사한 이제나는 걸핏하면 자신의 이팔청춘을 돌려달라는 할머니에게 분노해 실제 16세 때 할머니를 잡아다 대령하는데…</div>
-      <a href="https://posty.pe/s5da383" target="_blank" rel="noopener" class="story-link">Read →</a>
+      <a href="[https://posty.pe/s5da383](https://posty.pe/s5da383)" target="_blank" rel="noopener" class="story-link">Read →</a>
     </div>
     <div class="story-item">
-      <img class="story-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/36/5d7c7213088691798976405375.jpg?w=1000&q=90" alt="27 외전">
+      <img class="story-cover" src="[https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/36/5d7c7213088691798976405375.jpg?w=1000&q=90](https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/36/5d7c7213088691798976405375.jpg?w=1000&q=90)" alt="27 외전">
       <div class="story-title">27 : 제나의 위험한 광폭행보 외전</div>
       <div class="story-desc">"천재는 다 스물일곱에 요절한다지? 바보도 스물일곱에 죽으면 천재가 될까?" 2005년 홍대로 떠난 시간여행자 이제나. 스물일곱 살 엄마의 밴드 27에 잠입하는데...</div>
-      <a href="https://posty.pe/ss17pmu" target="_blank" rel="noopener" class="story-link">Read →</a>
+      <a href="[https://posty.pe/ss17pmu](https://posty.pe/ss17pmu)" target="_blank" rel="noopener" class="story-link">Read →</a>
     </div>
   </div>
 </section>
-
-<!-- LINKS -->
 
 <section id="links">
   <p class="t-label">Related Links</p>
   <div class="links-list">
-    <a href="https://instagram.com/official_vluw" target="_blank" rel="noopener" class="link-row">
+    <a href="[https://instagram.com/official_vluw](https://instagram.com/official_vluw)" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">Instagram</span><span class="link-arrow">→</span>
     </a>
-    <a href="https://www.tiktok.com/@official_vluw" target="_blank" rel="noopener" class="link-row">
+    <a href="[https://www.tiktok.com/@official_vluw](https://www.tiktok.com/@official_vluw)" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">TikTok</span><span class="link-arrow">→</span>
     </a>
-    <a href="https://www.youtube.com/@official_vluw" target="_blank" rel="noopener" class="link-row">
+    <a href="[https://www.youtube.com/@official_vluw](https://www.youtube.com/@official_vluw)" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">YouTube</span><span class="link-arrow">→</span>
     </a>
-    <a href="https://www.threads.com/@official_vluw" target="_blank" rel="noopener" class="link-row">
+    <a href="[https://www.threads.com/@official_vluw](https://www.threads.com/@official_vluw)" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">Threads</span><span class="link-arrow">→</span>
     </a>
-    <a href="https://x.com/official_vluw" target="_blank" rel="noopener" class="link-row">
+    <a href="[https://x.com/official_vluw](https://x.com/official_vluw)" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">X</span><span class="link-arrow">→</span>
     </a>
   </div>
 </section>
-
-<!-- CONTACT -->
 
 <section id="contact">
   <p class="t-label">Contact</p>
