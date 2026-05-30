@@ -242,7 +242,7 @@
   .vluw-hero-hook {
     font-size: clamp(13px, 1.5vw, 16px);
     font-weight: 300;
-    color: var(--g4);
+    color: var(--white); /* 수정: 폰트 색상 화이트로 변경 */
     line-height: 1.7;
     margin-bottom: 16px;
   }
@@ -280,6 +280,11 @@
     gap: 48px;
     padding: 48px 0;
     border-bottom: 1px solid var(--g2);
+  }
+
+  /* 수정: 2AR 부분(마지막 member 요소)만 언더라인(border-bottom) 제거 */
+  .member:last-child {
+    border-bottom: none;
   }
 
   @media (max-width: 640px) {
@@ -546,13 +551,13 @@
     font-weight: 700;
     letter-spacing: 0.02em;
     color: var(--white);
-    border-bottom: 1px solid var(--g2);
+    border-bottom: none; /* 수정: 하단 언더라인 삭제 */
     padding-bottom: 4px;
-    transition: border-color 0.2s;
     display: inline-block;
+    text-decoration: none; /* 확실한 언더라인 제거 */
   }
 
-  .contact-email:hover { border-color: var(--white); }
+  .contact-email:hover { border-color: transparent; text-decoration: none; } /* 수정: 호버 시에도 언더라인 비활성화 */
 
   /* ─── FOOTER ─── */
   footer {
@@ -596,6 +601,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#vluw">VLUW</a></li>
     <li><a href="#music">Music</a></li>
+    <li><a href="#story">Story</a></li> <!-- 수정: 네비게이션 메뉴에 Story 추가 -->
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -618,7 +624,8 @@
 <div class="vluw-hero">
   <div class="vluw-hero-bg"></div>
   <div class="vluw-hero-content">
-    <p class="vluw-hero-hook">슬퍼도 상관없어. 하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</p>
+    <!-- 수정: 글자색상 화이트 적용 및 문장 줄바꿈(<br>) 추가 -->
+    <p class="vluw-hero-hook">슬퍼도 상관없어.<br>하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</p>
     <h2 class="vluw-hero-title">VLUW<br>IS BLUE.</h2>
   </div>
 </div>
@@ -659,6 +666,7 @@
         <div class="member-desc">2006년 도봉구에 살고 있는 비밀이 많은 드러머. 나선과 나이도 생일도 같아 주변인들은 둘을 영혼의 쌍둥이처럼 여긴다. 그렇게 무너지려는 나선을 처음으로 붙잡아준 존재. 하지만 나선과는 다르게 과묵하고 대부분 행동으로 말한다. 열아홉에 갑작스레 생겨버린 딸을 홀로 키워야하는 현실 속에서도 음악을 놓지 않았다. 그 딸이 훗날 시간을 건너와 27과 VLUW의 기타리스트가 됐다. 밴드 27의 공동 창립자.</div>
       </div>
     </div>
+    <!-- CSS .member:last-child 규칙에 따라 2AR 하단의 언더라인(경계선)이 삭제됩니다 -->
     <div class="member">
       <img class="member-photo" src="images/VLUW_2AR_Profile.jpg" alt="2AR">
       <div class="member-info">
@@ -679,7 +687,8 @@
   <div class="music-block">
     <div class="music-block-title">Single</div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/5661ef6413647086862365706.jpg?w=1000&q=90" alt="Blue">
+      <!-- 수정: Blue 앨범 커버 경로 수정 -->
+      <img class="track-cover" src="images/VLUW_BLUE_Cover.jpg" alt="Blue">
       <div>
         <div class="track-title">Blue</div>
         <div class="track-desc">누군가를 잃은 뒤의 밤. 슬픔은 희석되지 않고 그리움은 삼켜도 멈춰지지 않는다. 그럼에도 내일은 온다. VLUW의 첫 번째 싱글.</div>
@@ -687,7 +696,8 @@
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/0b8a8e9094151469088288066.jpg?w=1000&q=90" alt="Quiet Children">
+      <!-- 수정: Quiet Children 앨범 커버 경로 수정 -->
+      <img class="track-cover" src="images/VLUW_QuietChildren_Cover.jpg" alt="Quiet Children">
       <div>
         <div class="track-title">Quiet Children</div>
         <div class="track-desc">태어날 때부터 자유로웠지만 짓밟히고 길들여진 사람들에게. 순종을 강요하는 모든 목소리에 맞서 자신의 진짜 적을 똑바로 보라는 곡. VLUW의 두 번째 싱글.</div>
@@ -695,7 +705,8 @@
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/33a8a76149491780090169717.jpg?w=1000&q=90" alt="Little Bird">
+      <!-- 수정: Little Bird 앨범 커버 경로 수정 -->
+      <img class="track-cover" src="images/VLUW_LittleBird_Cover.jpg" alt="Little Bird">
       <div>
         <div class="track-title">Little Bird</div>
         <div class="track-desc">추락해도 괜찮다. 잠시 떨어지면 어떠냐고 묻는 곡. 작은 날개로 태양을 향해 날아가는 것을 아무것도 막을 수 없다. VLUW의 세 번째 싱글.</div>
@@ -709,7 +720,8 @@
     <p class="album-intro">오늘도 세상 어딘가에서 감당할 수 없는 무자비한 폭력 속에서 선량한 누군가가 죽어가고 있다. 분노해도, 슬퍼해도, 아무것도 막을 수 없다는 무력감. 이 앨범은 그 감정들을 있는 그대로 담았다. 상처투성이인 3곡의 록과 그것을 비추는 거울 속에는 그 상처을 안아주는 3곡의 보사노바. 그 사이 어딘가에서 우리는 발을 구르며 서성이고만 있다.</p>
     <div class="tracklist-label">Track List</div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Stone">
+      <!-- 수정: EP 수록곡 앨범 커버 경로 일괄 수정 -->
+      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Stone">
       <div>
         <div class="track-title">1. Stone</div>
         <div class="track-desc">돌은 무기가 되고, 잔해가 되고, 묘비가 된다. 침묵이 죽음의 버튼을 누르는 동안 우리는 어떻게 돌이 되어가는가. EP의 첫 번째 충돌.</div>
@@ -717,7 +729,7 @@
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="춤 Grunge">
+      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="춤 Grunge">
       <div>
         <div class="track-title">2. 춤 Grunge</div>
         <div class="track-desc">생존을 위한 몸부림은 처절한 춤이 됐다. 죽음의 폐허 속으로 떨어지는 희망의 음식들. 굶주림과 두려움도 쓰러뜨리지 못한 강인한 심장은 아직도 뛰고 있다.</div>
@@ -725,7 +737,7 @@
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Screwballs">
+      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Screwballs">
       <div>
         <div class="track-title">3. Screwballs</div>
         <div class="track-desc">세상의 관심 밖으로 밀려난 존재들은 서로의 존재를 발견한 것만으로도 위로가 된다. 현실의 모든게 엉망이지만 함께 울고 웃다보면 결코 쓰러지지 않는다.</div>
@@ -733,7 +745,7 @@
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Mirror">
+      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Mirror">
       <div>
         <div class="track-title">4. Mirror (Interlude)</div>
         <div class="track-desc">분노와 슬픔이 휘몰아친 다음날. 말 없이 마주보던 거울. 선명하던 얼굴이 미끄러지듯 번지다 청명한 감정의 실금소리에 흐려진다.</div>
@@ -741,7 +753,7 @@
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Screwballs Fingerstyle">
+      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Screwballs Fingerstyle">
       <div>
         <div class="track-title">5. Screwballs (Fingerstyle)</div>
         <div class="track-desc">함성이 잦아든 자리에서 같이 울고 웃던 그 순간들을 손끝으로 더듬어 본다. 잔인한 세상은 여전히 처연하지만, 차분한 낙오자들의 신나는 리듬은 멈추지 않는다.</div>
@@ -749,7 +761,7 @@
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="춤 Bossa Nova">
+      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="춤 Bossa Nova">
       <div>
         <div class="track-title">6. 춤 Bossa Nova</div>
         <div class="track-desc">처절한 춤을 추며 살아남은 사람은 그날을 어떻게 기억할까. 심장은 여전히 그날처럼 강인하게 뛰고 있지만, 이제는 담담히 속삭여 본다.</div>
@@ -757,7 +769,7 @@
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Stone Bossa Blues">
+      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Stone Bossa Blues">
       <div>
         <div class="track-title">7. Stone (Bossa Blues)</div>
         <div class="track-desc">바위처럼 쏟아지던 분노는 결국 긴 슬픔이 되어버렸다. "God damn"이란 한탄은 "Endless"한 반복에 서서히 무너져간다.</div>
