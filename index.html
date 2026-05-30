@@ -11,15 +11,15 @@
 <style>
   /* ─── TOKENS ─── */
   :root {
-    --black:  #0a0a0a;
+    /* 수정: 완전한 블랙 대신 가독성을 확보한 세련된 짙은 회색으로 변경 */
+    --black:  #121212; 
     --white:  #f0f0ee;
-    --g1:     #161616;
-    --g2:     #2a2a2a;
+    --g1:     #1c1c1c;
+    --g2:     #2e2e2e;
     --g3:     #666;
     --g4:     #999;
     --g5:     #bbb;
     --g6:     #ddd;
-    /* 수정: 모든 오버롤 및 포인트 컬러를 #FFE96A로 설정 */
     --point:  #FFE96A;
     --gutter: 48px;
     --nav-h:  56px;
@@ -31,11 +31,11 @@
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html {
     scroll-behavior: smooth;
-    background: #0a0a0a;
+    background: var(--black);
     -webkit-text-size-adjust: 100%;
   }
   body {
-    background: #0a0a0a !important;
+    background: var(--black) !important;
     color: var(--g6);
     font-family: 'Pretendard', 'Inter', sans-serif;
     font-weight: 300;
@@ -46,7 +46,6 @@
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
 
-  /* 모달 클릭 유도를 위한 커서 스타일 (히어로 제외 이미지) */
   .clickable-img { cursor: pointer; transition: opacity 0.2s; }
   .clickable-img:hover { opacity: 0.85; }
 
@@ -57,7 +56,6 @@
     font-weight: 600;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    /* 수정: 주요 큰제목(라벨) 컬러를 #FFE96A로 변경 */
     color: var(--point);
     margin-bottom: 32px;
   }
@@ -91,22 +89,6 @@
     max-width: 600px;
   }
 
-  .t-body {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.85;
-    color: var(--g5);
-  }
-
-  .t-small {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--g4);
-    letter-spacing: 0.03em;
-  }
-
   /* ─── NAV ─── */
   nav {
     position: fixed;
@@ -119,7 +101,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 8px;
-    background: rgba(10,10,10,0.95);
+    background: rgba(18,18,18,0.95);
     border-bottom: 1px solid var(--g2);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -132,7 +114,6 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--white);
-    flex-shrink: 0;
   }
 
   .nav-links {
@@ -151,8 +132,6 @@
     color: var(--g4);
     transition: color 0.2s;
   }
-
-  /* 수정: 오버롤 컬러 호버 적용 */
   .nav-links a:hover { color: var(--point); }
 
   @media (max-width: 480px) {
@@ -187,7 +166,6 @@
     font-weight: 600;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    /* 수정: 주요 큰제목 컬러 #FFE96A로 변경 */
     color: var(--point);
     margin-bottom: 12px;
   }
@@ -213,10 +191,8 @@
     justify-content: flex-end;
     padding: 56px var(--gutter);
     border-bottom: 1px solid var(--g2);
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    left: 50%; right: 50%;
+    margin-left: -50vw; margin-right: -50vw;
   }
 
   .vluw-hero-bg {
@@ -224,9 +200,6 @@
     inset: 0;
     background: url('images/VLUW_Group_Profile.jpg') no-repeat center center;
     background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .vluw-hero-bg::after {
@@ -234,16 +207,12 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(to top,
-      rgba(10,10,10,1) 0%,
-      rgba(10,10,10,0.5) 40%,
-      rgba(10,10,10,0.05) 100%);
+      rgba(18,18,18,1) 0%,
+      rgba(18,18,18,0.5) 40%,
+      rgba(18,18,18,0.05) 100%);
   }
 
-  .vluw-hero-content {
-    position: relative;
-    z-index: 1;
-  }
-
+  .vluw-hero-content { position: relative; z-index: 1; }
   .vluw-hero-hook {
     font-size: clamp(13px, 1.5vw, 16px);
     font-weight: 300;
@@ -272,13 +241,7 @@
     margin-bottom: 64px;
   }
 
-  /* ─── MEMBERS ─── */
-  .members {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid var(--g2);
-  }
-
+  .members { display: flex; flex-direction: column; border-top: 1px solid var(--g2); }
   .member {
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -286,23 +249,14 @@
     padding: 48px 0;
     border-bottom: 1px solid var(--g2);
   }
-
-  .member:last-child {
-    border-bottom: none;
-  }
+  .member:last-child { border-bottom: none; }
 
   @media (max-width: 640px) {
     .member { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
   }
 
-  .member-photo {
-    width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-  }
-
+  .member-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
   .member-info { padding-top: 2px; }
-
   .member-name-en {
     font-family: 'Inter', sans-serif;
     font-size: 26px;
@@ -313,14 +267,7 @@
     line-height: 1;
     margin-bottom: 4px;
   }
-
-  .member-name-kr {
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--g5);
-    margin-bottom: 8px;
-  }
-
+  .member-name-kr { font-size: 12px; font-weight: 400; color: var(--g5); margin-bottom: 8px; }
   .member-role {
     font-family: 'Inter', sans-serif;
     font-size: 10px;
@@ -330,22 +277,8 @@
     color: var(--g5);
     margin-bottom: 16px;
   }
-
-  .member-tags {
-    font-size: 11px;
-    font-weight: 300;
-    color: var(--g4);
-    line-height: 1.8;
-    margin-bottom: 20px;
-    letter-spacing: 0.02em;
-  }
-
-  .member-desc {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.85;
-    color: var(--g6);
-  }
+  .member-tags { font-size: 11px; font-weight: 300; color: var(--g4); line-height: 1.8; margin-bottom: 20px; }
+  .member-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--g6); }
 
   /* ─── MUSIC ─── */
   .music-block { margin-bottom: 72px; }
@@ -357,32 +290,15 @@
     font-weight: 600;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    /* 수정: 주요 타이틀 컬러 #FFE96A로 변경 */
     color: var(--point);
     margin-bottom: 32px;
     padding-bottom: 16px;
     border-bottom: 1px solid var(--g2);
   }
 
-  .album-intro {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.85;
-    color: var(--g6);
-    max-width: 640px;
-    margin-bottom: 40px;
-  }
-
-  .tracklist-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--g4);
-    margin-bottom: 8px;
-  }
-
+  .album-intro { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--g6); max-width: 640px; margin-bottom: 40px; }
+  .tracklist-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--g4); margin-bottom: 8px; }
+  
   .track {
     display: grid;
     grid-template-columns: 100px 1fr;
@@ -391,35 +307,12 @@
     border-bottom: 1px solid var(--g1);
     align-items: start;
   }
+  @media (max-width: 480px) { .track { grid-template-columns: 80px 1fr; gap: 20px; } }
 
-  @media (max-width: 480px) {
-    .track { grid-template-columns: 80px 1fr; gap: 20px; }
-  }
-
-  .track-cover {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-  }
-
-  .track-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--white);
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-
-  .track-desc {
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 1.75;
-    color: var(--g5);
-    margin-bottom: 12px;
-  }
-
+  .track-cover { width: 100%; aspect-ratio: 1; object-fit: cover; }
+  .track-title { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .track-desc { font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--g5); margin-bottom: 12px; }
+  
   .track-link {
     font-family: 'Inter', sans-serif;
     font-size: 10px;
@@ -429,80 +322,70 @@
     color: var(--g4);
     border-bottom: 1px solid var(--g2);
     padding-bottom: 2px;
-    transition: color 0.15s, border-color 0.15s;
+    transition: all 0.15s;
     display: inline-block;
   }
-
-  /* 수정: 링크 호버 시 오버롤 컬러(#FFE96A) 적용 */
   .track-link:hover { color: var(--point); border-color: var(--point); }
 
   .music-platforms {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
     margin-top: 48px;
     padding-top: 32px;
     border-top: 1px solid var(--g2);
   }
 
+  /* ─── BUTTONS SYSTEM ─── */
+  /* 수정: 모든 플랫폼 및 일반 사각버튼의 기본 규칙 및 오버롤 디자인 완벽 통일 */
   .btn {
     font-family: 'Inter', sans-serif;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    padding: 10px 20px;
-    transition: all 0.15s;
+    padding: 12px 24px;
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--g6);
+    transition: all 0.25s ease;
     display: inline-block;
+    cursor: pointer;
   }
-
-  /* 수정: Apple Music, Youtube Music 버튼도 스포티파이처럼 하얀색 배경으로 통일 */
-  .btn-fill { background: var(--white); color: var(--black); }
-  .btn-fill:hover { background: var(--point); color: var(--black); } /* 호버 시 오버롤 적용 */
+  
+  /* 마우스 오버(호버)시: 배경색 #FFE96A, 글씨 검정색, 테두리 #FFE96A로 변환 */
+  .btn:hover {
+    background: var(--point) !important;
+    color: #000000 !important;
+    border-color: var(--point) !important;
+  }
 
   /* ─── STORY ─── */
   .story-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--g2);
-    border: 1px solid var(--g2);
+    gap: 24px;
     max-width: 720px;
   }
-
-  @media (max-width: 560px) { .story-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .story-grid { grid-template-columns: 1fr; gap: 40px; } }
 
   .story-item {
-    background: var(--black);
-    padding: 32px 28px;
-    transition: background 0.2s;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
   }
 
-  .story-item:hover { background: var(--g1); }
-
+  /* 수정: 스토리 포스터를 원본의 고유 종횡비(비율)대로 보여주도록 세팅 */
   .story-cover {
     width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     margin-bottom: 20px;
   }
 
-  .story-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--white);
-    line-height: 1.5;
-    margin-bottom: 12px;
-  }
-
-  .story-desc {
-    font-size: 12px;
-    font-weight: 300;
-    line-height: 1.75;
-    color: var(--g5);
-    margin-bottom: 20px;
-  }
-
+  .story-title { font-size: 14px; font-weight: 500; color: var(--white); line-height: 1.5; margin-bottom: 12px; }
+  .story-desc { font-size: 12px; font-weight: 300; line-height: 1.75; color: var(--g5); margin-bottom: 20px; }
+  
   .story-link {
     font-family: 'Inter', sans-serif;
     font-size: 10px;
@@ -512,21 +395,13 @@
     color: var(--g5);
     border-bottom: 1px solid var(--g2);
     padding-bottom: 2px;
-    transition: color 0.15s, border-color 0.15s;
-    display: inline-block;
+    transition: all 0.15s;
+    align-self: flex-start;
   }
-
-  /* 수정: 스토리 링크 호버 시 오버롤 컬러 적용 */
   .story-link:hover { color: var(--point); border-color: var(--point); }
 
   /* ─── LINKS ─── */
-  .links-list {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--g2);
-    max-width: 360px;
-  }
-
+  .links-list { display: flex; flex-direction: column; border: 1px solid var(--g2); max-width: 360px; }
   .link-row {
     display: flex;
     justify-content: space-between;
@@ -535,10 +410,8 @@
     border-bottom: 1px solid var(--g2);
     transition: background 0.2s;
   }
-
   .link-row:last-child { border-bottom: none; }
   .link-row:hover { background: var(--g1); }
-  /* 수정: SNS 링크 호버 시 텍스트 오버롤 컬러 적용 */
   .link-row:hover .link-name { color: var(--point); }
 
   .link-name {
@@ -550,7 +423,6 @@
     color: var(--g6);
     transition: color 0.2s;
   }
-
   .link-arrow { font-size: 12px; color: var(--g3); }
 
   /* ─── CONTACT ─── */
@@ -558,71 +430,52 @@
     font-family: 'Inter', sans-serif;
     font-size: clamp(18px, 3.5vw, 36px);
     font-weight: 700;
-    letter-spacing: 0.02em;
     color: var(--white);
-    border-bottom: none;
-    padding-bottom: 4px;
     display: inline-block;
-    text-decoration: none;
     transition: color 0.2s;
   }
-
-  /* 수정: 이메일 호버 시 오버롤 컬러 적용 */
-  .contact-email:hover { color: var(--point); text-decoration: none; }
+  .contact-email:hover { color: var(--point); }
 
   /* ─── FOOTER ─── */
-  footer {
-    padding: 32px var(--gutter);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    border-top: 1px solid var(--g2);
-  }
-
-  .footer-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--g3);
-  }
-
-  .footer-copy {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    color: var(--g3);
-  }
+  footer { padding: 32px var(--gutter); display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--g2); }
+  .footer-name { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--g3); }
+  .footer-copy { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 300; color: var(--g3); }
 
   /* ─── MODAL SYSTEM ─── */
+  /* 수정: Flexbox 시스템을 구현하여 내부 이미지가 완벽하게 화면 중앙(정중앙)에 배치되도록 수정 */
   .image-modal {
     display: none;
     position: fixed;
     z-index: 1000;
-    padding-top: 60px;
     left: 0; top: 0;
     width: 100%; height: 100%;
-    overflow: auto;
-    background-color: rgba(10, 10, 10, 0.9);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(10, 10, 10, 0.93);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
   }
 
   .modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 800px;
-    max-height: 80vh;
+    max-width: 90%;
+    max-height: 85vh;
     object-fit: contain;
-    animation: zoom 0.3s ease-out;
+    animation: zoom 0.25s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   @keyframes zoom {
-    from { transform: scale(0.95); opacity: 0; }
+    from { transform: scale(0.96); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
   }
 
@@ -630,21 +483,23 @@
     position: absolute;
     top: 24px; right: 32px;
     color: var(--g5);
-    font-size: 36px;
-    font-weight: 300;
+    font-size: 38px;
+    font-weight: 200;
     cursor: pointer;
     transition: color 0.2s;
+    line-height: 1;
+    z-index: 1010;
   }
-
   .modal-close:hover { color: var(--point); }
 
   @media (max-width: 768px) {
-    .modal-content { width: 92%; }
-    .modal-close { top: 16px; right: 20px; font-size: 32px; }
+    .modal-wrapper { padding: 20px; }
+    .modal-content { max-width: 95%; max-height: 80vh; }
+    .modal-close { top: 16px; right: 20px; font-size: 34px; }
   }
 
   /* SCROLLBAR */
-  ::-webkit-scrollbar { width: 2px; }
+  ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--black); }
   ::-webkit-scrollbar-thumb { background: var(--g2); }
 </style>
@@ -665,7 +520,7 @@
 
 <!-- STUDIO HERO -->
 <div class="hero-studio" id="about">
-  <p class="t-label">Virtual Entertainment Studio</p> <!-- 주요 큰제목 컬러 반영 완료 -->
+  <p class="t-label">Virtual Entertainment Studio</p>
   <h1 class="t-hero-en">Thinkerz<br>Studio</h1>
   <p class="t-tagline">A Shelter for Misfits</p>
   <p class="t-body-lg">Thinkerz Studio는 AI 기술 기반의 Virtual Entertainment 제작사입니다. 인간의 창의성과 AI의 제작 역량을 결합한 Human-Led AI Production을 통해 스토리·비주얼·음악이 유기적으로 연결된 엔터테인먼트 IP를 구축합니다.</p>
@@ -673,11 +528,11 @@
 
 <!-- VLUW DIVIDER -->
 <div class="vluw-divider" id="vluw">
-  <div class="vluw-divider-label">Project 01</div> <!-- 주요 큰제목 컬러 반영 완료 -->
+  <div class="vluw-divider-label">Project 01</div>
   <div class="vluw-divider-title">VLUW</div>
 </div>
 
-<!-- VLUW HERO (배경 이미지는 모달 뷰 제외) -->
+<!-- VLUW HERO -->
 <div class="vluw-hero">
   <div class="vluw-hero-bg"></div>
   <div class="vluw-hero-content">
@@ -688,7 +543,7 @@
 
 <!-- WHO IS VLUW -->
 <section id="who">
-  <p class="t-label">Who is VLUW</p> <!-- 주요 큰제목 컬러 반영 완료 -->
+  <p class="t-label">Who is VLUW</p>
   <p class="world-text">VLUW는 타임머신이 존재하는 평행우주에서 탄생한 4인조 밴드다. 이 세계에서 타임머신은 역사를 바꾸거나 미래를 지배하는 데 쓰이지 않는다. 과거에서 아파하는 누군가를 집으로 데려와 밥을 먹이고, 미래에서 방황하는 존재에게 삶의 이유를 되찾아준다. 슬퍼도 오늘을 신나게 살아가는데 쓰이는 지극히 사적인 타임머신. 그 세계에서 VLUW는 태어났다.</p>
 
   <div class="members">
@@ -699,7 +554,7 @@
         <div class="member-name-kr">이제나</div>
         <div class="member-role">Guitar</div>
         <div class="member-tags">#VLUW_를_연결하는_핵심축 #시간여행자 #비자발적_책임의_아이콘 #2026</div>
-        <div class="member-desc">2026년에 살고 있는 시간여행자. 대안학교 출신 고졸자라며 괄시하는 할머니의 맹비난을 피하기 위해 취업한 태봉전자에서 타임머신 '광폭행보'를 만났다. 그녀는 광폭행보를 보고픈 사람들을 만나러 가는 교통수단처럼 사용한다. 과거에서 좌절했던 어린 엄마와 만나고 미래에 버려져 있던 로봇을 집으로 데려온다. 제나는 그렇게 여러 시간을 오가며 상처입은 영혼들을 연결한다. 기타 한 번 쳐본 적 없던 그녀가 늘 경거망동하는 여정 속에서 어느새 밴드 VLUW의 기타리스트가 됐다.</div>
+        <div class="member-desc">2026년에 살고 있는 시간여행자. 대안학교 출신 고졸자라며 괄시하는 할머니의 맹비난을 피하기 위해 취업한 태봉전자에서 타임머신 '광폭행보'를 만났다. 과거에서 좌절했던 어린 엄마와 만나고 미래에 버려져 있던 로봇을 집으로 데려온다. 제나는 그렇게 여러 시간을 오가며 상처입은 영혼들을 연결한다. 기타 한 번 쳐본 적 없던 그녀가 늘 경거망동하는 여정 속에서 어느새 밴드 VLUW의 기타리스트가 됐다.</div>
       </div>
     </div>
     <div class="member">
@@ -737,16 +592,15 @@
 
 <!-- MUSIC -->
 <section id="music">
-  <p class="t-label">Music</p> <!-- 주요 큰제목 컬러 반영 완료 -->
+  <p class="t-label">Music</p>
 
   <div class="music-block">
-    <div class="music-block-title">Single</div> <!-- 주요 큰제목 컬러 반영 완료 -->
+    <div class="music-block-title">Single</div>
     <div class="track">
       <img class="track-cover clickable-img" src="images/VLUW_BLUE_Cover.jpg" alt="Blue">
       <div>
         <div class="track-title">Blue</div>
         <div class="track-desc">누군가를 잃은 뒤의 밤. 슬픔은 희석되지 않고 그리움은 삼켜도 멈춰지지 않는다. 그럼에도 내일은 온다. VLUW의 첫 번째 싱글.</div>
-        <!-- 수정: Watch on YouTube -> Listen Now 변환 완료 -->
         <a href="https://youtu.be/M7rsSC1eDfo" target="_blank" rel="noopener" class="track-link">Listen Now →</a>
       </div>
     </div>
@@ -769,7 +623,7 @@
   </div>
 
   <div class="music-block">
-    <div class="music-block-title">1st EP — Crush Hug</div> <!-- 주요 큰제목 컬러 반영 완료 -->
+    <div class="music-block-title">1st EP — Crush Hug</div>
     <p class="album-intro">오늘도 세상 어딘가에서 감당할 수 없는 무자비한 폭력 속에서 선량한 누군가가 죽어가고 있다. 분노해도, 슬퍼해도, 아무것도 막을 수 없다는 무력감. 이 앨범은 그 감정들을 있는 그대로 담았다. 상처투성이인 3곡의 록과 그것을 비추는 거울 속에는 그 상처을 안아주는 3곡의 보사노바. 그 사이 어딘가에서 우리는 발을 구르며 서성이고만 있다.</p>
     <div class="tracklist-label">Track List</div>
     <div class="track">
@@ -829,28 +683,27 @@
       </div>
     </div>
 
-    <!-- 수정: 모든 버튼 클래스를 btn-fill(하얀색 배경)로 변경 완료 -->
+    <!-- 수정: Spotify, Apple, Youtube 뮤직 버튼을 모두 동일 규격의 클래스(.btn)로 병합 완료 -->
     <div class="music-platforms">
-      <a href="https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN" target="_blank" rel="noopener" class="btn btn-fill">Spotify</a>
-      <a href="https://music.apple.com/kr/artist/vluw/1864445735" target="_blank" rel="noopener" class="btn btn-fill">Apple Music</a>
-      <a href="https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag" target="_blank" rel="noopener" class="btn btn-fill">Youtube Music</a>
+      <a href="https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN" target="_blank" rel="noopener" class="btn">Spotify</a>
+      <a href="https://music.apple.com/kr/artist/vluw/1864445735" target="_blank" rel="noopener" class="btn">Apple Music</a>
+      <a href="https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag" target="_blank" rel="noopener" class="btn">Youtube Music</a>
     </div>
   </div>
 </section>
 
 <!-- STORY -->
 <section id="story">
-  <p class="t-label">Story</p> <!-- 주요 큰제목 컬러 반영 완료 -->
+  <p class="t-label">Story</p>
   <div class="story-grid">
     <div class="story-item">
-      <!-- 수정: 지정된 포스터 이미지(VLUW_GPHB_Poster.png) 적용 완료 -->
+      <!-- 수정: 원본 이미지 고유 비율 유지를 위한 스타일 적용 완료 -->
       <img class="story-cover clickable-img" src="images/VLUW_GPHB_Poster.png" alt="제나의 위험한 광폭행보">
       <div class="story-title">제나의 위험한 광폭행보</div>
       <div class="story-desc">타임머신을 만들고도 무서워 못 타는 나태봉. 그의 1인 기업에 입사한 이제나는 걸핏하면 자신의 이팔청춘을 돌려달라는 할머니에게 분노해 실제 16세 때 할머니를 잡아다 대령하는데…</div>
       <a href="https://posty.pe/s5da383" target="_blank" rel="noopener" class="story-link">Read →</a>
     </div>
     <div class="story-item">
-      <!-- 수정: 지정된 포스터 이미지(VLUW_27_Poster.png) 적용 완료 -->
       <img class="story-cover clickable-img" src="images/VLUW_27_Poster.png" alt="27 외전">
       <div class="story-title">27 : 제나의 위험한 광폭행보 외전</div>
       <div class="story-desc">"천재는 다 스물일곱에 요절한다지? 바보도 스물일곱에 죽으면 천재가 될까?" 2005년 홍대로 떠난 시간여행자 이제나. 스물일곱 살 엄마의 밴드 27에 잠입하는데...</div>
@@ -861,7 +714,7 @@
 
 <!-- LINKS -->
 <section id="links">
-  <p class="t-label">Related Links</p> <!-- 주요 큰제목 컬러 반영 완료 -->
+  <p class="t-label">Related Links</p>
   <div class="links-list">
     <a href="https://instagram.com/official_vluw" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">Instagram</span><span class="link-arrow">→</span>
@@ -883,7 +736,7 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <p class="t-label">Contact</p> <!-- 주요 큰제목 컬러 반영 완료 -->
+  <p class="t-label">Contact</p>
   <a href="mailto:hi.thinkerz@gmail.com" class="contact-email">hi.thinkerz@gmail.com</a>
 </section>
 
@@ -892,14 +745,15 @@
   <div class="footer-copy">All Rights Reserved</div>
 </footer>
 
-<!-- 원본이미지 모달 구조 (정밀 렌더링용) -->
-<div id="imageModal" class="image-modal">
-  <span class="modal-close" id="modalClose">&times;</span>
-  <img class="modal-content" id="modalTargetImg">
+<!-- 원본이미지 모달 구조 (수정: 정중앙 정렬을 위해 wrapper 추가 스타일 대응) -->
+<div id="imageModal" class="image-modal" style="display: none;">
+  <div class="modal-wrapper">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <img class="modal-content" id="modalTargetImg">
+  </div>
 </div>
 
 <script>
-  // 모달 제어용 자바스크립트 구현 완료
   const modal = document.getElementById('imageModal');
   const modalImg = document.getElementById('modalTargetImg');
   const closeBtn = document.getElementById('modalClose');
@@ -907,30 +761,27 @@
 
   clickableImages.forEach(img => {
     img.addEventListener('click', function() {
-      modal.style.display = 'block';
+      modal.style.display = 'flex'; // 수정: 정중앙 정렬(flex) 유지를 위해 block 대신 flex로 오픈
       modalImg.src = this.src;
       modalImg.alt = this.alt;
-      document.body.style.overflow = 'hidden'; // 뒷배경 스크롤 방지
+      document.body.style.overflow = 'hidden';
     });
   });
 
-  // 닫기 버튼 클릭 시
   closeBtn.addEventListener('click', function() {
     modal.style.display = 'none';
     document.body.style.overflow = '';
   });
 
-  // 모달 바깥 어두운 배경 클릭 시 닫기
   modal.addEventListener('click', function(e) {
-    if (e.target === modal) {
+    if (e.target === modal || e.target.classList.contains('modal-wrapper')) {
       modal.style.display = 'none';
       document.body.style.overflow = '';
     }
   });
 
-  // ESC 키 눌렀을 때 닫기
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && modal.style.display === 'block') {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
       modal.style.display = 'none';
       document.body.style.overflow = '';
     }
