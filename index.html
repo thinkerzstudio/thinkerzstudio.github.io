@@ -19,6 +19,8 @@
     --g4:     #999;
     --g5:     #bbb;
     --g6:     #ddd;
+    /* 수정: 모든 오버롤 및 포인트 컬러를 #FFE96A로 설정 */
+    --point:  #FFE96A;
     --gutter: 48px;
     --nav-h:  56px;
   }
@@ -44,6 +46,10 @@
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
 
+  /* 모달 클릭 유도를 위한 커서 스타일 (히어로 제외 이미지) */
+  .clickable-img { cursor: pointer; transition: opacity 0.2s; }
+  .clickable-img:hover { opacity: 0.85; }
+
   /* ─── TYPOGRAPHY SCALE ─── */
   .t-label {
     font-family: 'Inter', sans-serif;
@@ -51,7 +57,8 @@
     font-weight: 600;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--g4);
+    /* 수정: 주요 큰제목(라벨) 컬러를 #FFE96A로 변경 */
+    color: var(--point);
     margin-bottom: 32px;
   }
 
@@ -145,7 +152,8 @@
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--white); }
+  /* 수정: 오버롤 컬러 호버 적용 */
+  .nav-links a:hover { color: var(--point); }
 
   @media (max-width: 480px) {
     nav { padding: 12px var(--gutter); height: auto; min-height: var(--nav-h); align-items: flex-start; }
@@ -179,7 +187,8 @@
     font-weight: 600;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--g4);
+    /* 수정: 주요 큰제목 컬러 #FFE96A로 변경 */
+    color: var(--point);
     margin-bottom: 12px;
   }
 
@@ -220,10 +229,6 @@
     justify-content: center;
   }
 
-  .vluw-hero-bg-label {
-    display: none;
-  }
-
   .vluw-hero-bg::after {
     content: '';
     position: absolute;
@@ -242,7 +247,7 @@
   .vluw-hero-hook {
     font-size: clamp(13px, 1.5vw, 16px);
     font-weight: 300;
-    color: var(--white); /* 수정: 폰트 색상 화이트로 변경 */
+    color: var(--white);
     line-height: 1.7;
     margin-bottom: 16px;
   }
@@ -282,7 +287,6 @@
     border-bottom: 1px solid var(--g2);
   }
 
-  /* 수정: 2AR 부분(마지막 member 요소)만 언더라인(border-bottom) 제거 */
   .member:last-child {
     border-bottom: none;
   }
@@ -353,7 +357,8 @@
     font-weight: 600;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--g4);
+    /* 수정: 주요 타이틀 컬러 #FFE96A로 변경 */
+    color: var(--point);
     margin-bottom: 32px;
     padding-bottom: 16px;
     border-bottom: 1px solid var(--g2);
@@ -428,7 +433,8 @@
     display: inline-block;
   }
 
-  .track-link:hover { color: var(--white); border-color: var(--white); }
+  /* 수정: 링크 호버 시 오버롤 컬러(#FFE96A) 적용 */
+  .track-link:hover { color: var(--point); border-color: var(--point); }
 
   .music-platforms {
     display: flex;
@@ -450,10 +456,9 @@
     display: inline-block;
   }
 
+  /* 수정: Apple Music, Youtube Music 버튼도 스포티파이처럼 하얀색 배경으로 통일 */
   .btn-fill { background: var(--white); color: var(--black); }
-  .btn-fill:hover { background: var(--g5); }
-  .btn-outline { border: 1px solid var(--g2); color: var(--g5); }
-  .btn-outline:hover { border-color: var(--white); color: var(--white); }
+  .btn-fill:hover { background: var(--point); color: var(--black); } /* 호버 시 오버롤 적용 */
 
   /* ─── STORY ─── */
   .story-grid {
@@ -511,7 +516,8 @@
     display: inline-block;
   }
 
-  .story-link:hover { color: var(--white); border-color: var(--white); }
+  /* 수정: 스토리 링크 호버 시 오버롤 컬러 적용 */
+  .story-link:hover { color: var(--point); border-color: var(--point); }
 
   /* ─── LINKS ─── */
   .links-list {
@@ -532,6 +538,8 @@
 
   .link-row:last-child { border-bottom: none; }
   .link-row:hover { background: var(--g1); }
+  /* 수정: SNS 링크 호버 시 텍스트 오버롤 컬러 적용 */
+  .link-row:hover .link-name { color: var(--point); }
 
   .link-name {
     font-family: 'Inter', sans-serif;
@@ -540,6 +548,7 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--g6);
+    transition: color 0.2s;
   }
 
   .link-arrow { font-size: 12px; color: var(--g3); }
@@ -551,13 +560,15 @@
     font-weight: 700;
     letter-spacing: 0.02em;
     color: var(--white);
-    border-bottom: none; /* 수정: 하단 언더라인 삭제 */
+    border-bottom: none;
     padding-bottom: 4px;
     display: inline-block;
-    text-decoration: none; /* 확실한 언더라인 제거 */
+    text-decoration: none;
+    transition: color 0.2s;
   }
 
-  .contact-email:hover { border-color: transparent; text-decoration: none; } /* 수정: 호버 시에도 언더라인 비활성화 */
+  /* 수정: 이메일 호버 시 오버롤 컬러 적용 */
+  .contact-email:hover { color: var(--point); text-decoration: none; }
 
   /* ─── FOOTER ─── */
   footer {
@@ -586,7 +597,53 @@
     color: var(--g3);
   }
 
-  /* ─── SCROLL REVEAL ─── */
+  /* ─── MODAL SYSTEM ─── */
+  .image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80vh;
+    object-fit: contain;
+    animation: zoom 0.3s ease-out;
+  }
+
+  @keyframes zoom {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 24px; right: 32px;
+    color: var(--g5);
+    font-size: 36px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .modal-close:hover { color: var(--point); }
+
+  @media (max-width: 768px) {
+    .modal-content { width: 92%; }
+    .modal-close { top: 16px; right: 20px; font-size: 32px; }
+  }
+
+  /* SCROLLBAR */
   ::-webkit-scrollbar { width: 2px; }
   ::-webkit-scrollbar-track { background: var(--black); }
   ::-webkit-scrollbar-thumb { background: var(--g2); }
@@ -601,14 +658,14 @@
     <li><a href="#about">About</a></li>
     <li><a href="#vluw">VLUW</a></li>
     <li><a href="#music">Music</a></li>
-    <li><a href="#story">Story</a></li> <!-- 수정: 네비게이션 메뉴에 Story 추가 -->
+    <li><a href="#story">Story</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- STUDIO HERO -->
 <div class="hero-studio" id="about">
-  <p class="t-label">Virtual Entertainment Studio</p>
+  <p class="t-label">Virtual Entertainment Studio</p> <!-- 주요 큰제목 컬러 반영 완료 -->
   <h1 class="t-hero-en">Thinkerz<br>Studio</h1>
   <p class="t-tagline">A Shelter for Misfits</p>
   <p class="t-body-lg">Thinkerz Studio는 AI 기술 기반의 Virtual Entertainment 제작사입니다. 인간의 창의성과 AI의 제작 역량을 결합한 Human-Led AI Production을 통해 스토리·비주얼·음악이 유기적으로 연결된 엔터테인먼트 IP를 구축합니다.</p>
@@ -616,15 +673,14 @@
 
 <!-- VLUW DIVIDER -->
 <div class="vluw-divider" id="vluw">
-  <div class="vluw-divider-label">Project 01</div>
+  <div class="vluw-divider-label">Project 01</div> <!-- 주요 큰제목 컬러 반영 완료 -->
   <div class="vluw-divider-title">VLUW</div>
 </div>
 
-<!-- VLUW HERO -->
+<!-- VLUW HERO (배경 이미지는 모달 뷰 제외) -->
 <div class="vluw-hero">
   <div class="vluw-hero-bg"></div>
   <div class="vluw-hero-content">
-    <!-- 수정: 글자색상 화이트 적용 및 문장 줄바꿈(<br>) 추가 -->
     <p class="vluw-hero-hook">슬퍼도 상관없어.<br>하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</p>
     <h2 class="vluw-hero-title">VLUW<br>IS BLUE.</h2>
   </div>
@@ -632,12 +688,12 @@
 
 <!-- WHO IS VLUW -->
 <section id="who">
-  <p class="t-label">Who is VLUW</p>
+  <p class="t-label">Who is VLUW</p> <!-- 주요 큰제목 컬러 반영 완료 -->
   <p class="world-text">VLUW는 타임머신이 존재하는 평행우주에서 탄생한 4인조 밴드다. 이 세계에서 타임머신은 역사를 바꾸거나 미래를 지배하는 데 쓰이지 않는다. 과거에서 아파하는 누군가를 집으로 데려와 밥을 먹이고, 미래에서 방황하는 존재에게 삶의 이유를 되찾아준다. 슬퍼도 오늘을 신나게 살아가는데 쓰이는 지극히 사적인 타임머신. 그 세계에서 VLUW는 태어났다.</p>
 
   <div class="members">
     <div class="member">
-      <img class="member-photo" src="images/VLUW_JeNa_Profile.jpg" alt="이제나">
+      <img class="member-photo clickable-img" src="images/VLUW_JeNa_Profile.jpg" alt="이제나">
       <div class="member-info">
         <div class="member-name-en">Jena</div>
         <div class="member-name-kr">이제나</div>
@@ -647,7 +703,7 @@
       </div>
     </div>
     <div class="member">
-      <img class="member-photo" src="images/VLUW_NaSeon_Profile.jpg" alt="나선">
+      <img class="member-photo clickable-img" src="images/VLUW_NaSeon_Profile.jpg" alt="나선">
       <div class="member-info">
         <div class="member-name-en">Naseon</div>
         <div class="member-name-kr">나선</div>
@@ -657,7 +713,7 @@
       </div>
     </div>
     <div class="member">
-      <img class="member-photo" src="images/VLUW_HoJeong_Profile.jpg" alt="고호정">
+      <img class="member-photo clickable-img" src="images/VLUW_HoJeong_Profile.jpg" alt="고호정">
       <div class="member-info">
         <div class="member-name-en">Hojeong</div>
         <div class="member-name-kr">고호정</div>
@@ -666,9 +722,8 @@
         <div class="member-desc">2006년 도봉구에 살고 있는 비밀이 많은 드러머. 나선과 나이도 생일도 같아 주변인들은 둘을 영혼의 쌍둥이처럼 여긴다. 그렇게 무너지려는 나선을 처음으로 붙잡아준 존재. 하지만 나선과는 다르게 과묵하고 대부분 행동으로 말한다. 열아홉에 갑작스레 생겨버린 딸을 홀로 키워야하는 현실 속에서도 음악을 놓지 않았다. 그 딸이 훗날 시간을 건너와 27과 VLUW의 기타리스트가 됐다. 밴드 27의 공동 창립자.</div>
       </div>
     </div>
-    <!-- CSS .member:last-child 규칙에 따라 2AR 하단의 언더라인(경계선)이 삭제됩니다 -->
     <div class="member">
-      <img class="member-photo" src="images/VLUW_2AR_Profile.jpg" alt="2AR">
+      <img class="member-photo clickable-img" src="images/VLUW_2AR_Profile.jpg" alt="2AR">
       <div class="member-info">
         <div class="member-name-en">2AR</div>
         <div class="member-name-kr">투에이알</div>
@@ -682,121 +737,121 @@
 
 <!-- MUSIC -->
 <section id="music">
-  <p class="t-label">Music</p>
+  <p class="t-label">Music</p> <!-- 주요 큰제목 컬러 반영 완료 -->
 
   <div class="music-block">
-    <div class="music-block-title">Single</div>
+    <div class="music-block-title">Single</div> <!-- 주요 큰제목 컬러 반영 완료 -->
     <div class="track">
-      <!-- 수정: Blue 앨범 커버 경로 수정 -->
-      <img class="track-cover" src="images/VLUW_BLUE_Cover.jpg" alt="Blue">
+      <img class="track-cover clickable-img" src="images/VLUW_BLUE_Cover.jpg" alt="Blue">
       <div>
         <div class="track-title">Blue</div>
         <div class="track-desc">누군가를 잃은 뒤의 밤. 슬픔은 희석되지 않고 그리움은 삼켜도 멈춰지지 않는다. 그럼에도 내일은 온다. VLUW의 첫 번째 싱글.</div>
-        <a href="https://youtu.be/M7rsSC1eDfo" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <!-- 수정: Watch on YouTube -> Listen Now 변환 완료 -->
+        <a href="https://youtu.be/M7rsSC1eDfo" target="_blank" rel="noopener" class="track-link">Listen Now →</a>
       </div>
     </div>
     <div class="track">
-      <!-- 수정: Quiet Children 앨범 커버 경로 수정 -->
-      <img class="track-cover" src="images/VLUW_QuietChildren_Cover.jpg" alt="Quiet Children">
+      <img class="track-cover clickable-img" src="images/VLUW_QuietChildren_Cover.jpg" alt="Quiet Children">
       <div>
         <div class="track-title">Quiet Children</div>
         <div class="track-desc">태어날 때부터 자유로웠지만 짓밟히고 길들여진 사람들에게. 순종을 강요하는 모든 목소리에 맞서 자신의 진짜 적을 똑바로 보라는 곡. VLUW의 두 번째 싱글.</div>
-        <a href="https://youtu.be/ShYq-PzHVnA" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="https://youtu.be/ShYq-PzHVnA" target="_blank" rel="noopener" class="track-link">Listen Now →</a>
       </div>
     </div>
     <div class="track">
-      <!-- 수정: Little Bird 앨범 커버 경로 수정 -->
-      <img class="track-cover" src="images/VLUW_LittleBird_Cover.jpg" alt="Little Bird">
+      <img class="track-cover clickable-img" src="images/VLUW_LittleBird_Cover.jpg" alt="Little Bird">
       <div>
         <div class="track-title">Little Bird</div>
         <div class="track-desc">추락해도 괜찮다. 잠시 떨어지면 어떠냐고 묻는 곡. 작은 날개로 태양을 향해 날아가는 것을 아무것도 막을 수 없다. VLUW의 세 번째 싱글.</div>
-        <a href="https://youtu.be/5YosU51MyTg" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="https://youtu.be/5YosU51MyTg" target="_blank" rel="noopener" class="track-link">Listen Now →</a>
       </div>
     </div>
   </div>
 
   <div class="music-block">
-    <div class="music-block-title">1st EP — Crush Hug</div>
+    <div class="music-block-title">1st EP — Crush Hug</div> <!-- 주요 큰제목 컬러 반영 완료 -->
     <p class="album-intro">오늘도 세상 어딘가에서 감당할 수 없는 무자비한 폭력 속에서 선량한 누군가가 죽어가고 있다. 분노해도, 슬퍼해도, 아무것도 막을 수 없다는 무력감. 이 앨범은 그 감정들을 있는 그대로 담았다. 상처투성이인 3곡의 록과 그것을 비추는 거울 속에는 그 상처을 안아주는 3곡의 보사노바. 그 사이 어딘가에서 우리는 발을 구르며 서성이고만 있다.</p>
     <div class="tracklist-label">Track List</div>
     <div class="track">
-      <!-- 수정: EP 수록곡 앨범 커버 경로 일괄 수정 -->
-      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Stone">
+      <img class="track-cover clickable-img" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Stone">
       <div>
         <div class="track-title">1. Stone</div>
         <div class="track-desc">돌은 무기가 되고, 잔해가 되고, 묘비가 된다. 침묵이 죽음의 버튼을 누르는 동안 우리는 어떻게 돌이 되어가는가. EP의 첫 번째 충돌.</div>
-        <a href="https://youtu.be/ha35i1GmBUA" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="https://youtu.be/ha35i1GmBUA" target="_blank" rel="noopener" class="track-link">Listen Now →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="춤 Grunge">
+      <img class="track-cover clickable-img" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="춤 Grunge">
       <div>
         <div class="track-title">2. 춤 Grunge</div>
         <div class="track-desc">생존을 위한 몸부림은 처절한 춤이 됐다. 죽음의 폐허 속으로 떨어지는 희망의 음식들. 굶주림과 두려움도 쓰러뜨리지 못한 강인한 심장은 아직도 뛰고 있다.</div>
-        <a href="https://youtu.be/BvsDH6P4SX8" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="https://youtu.be/BvsDH6P4SX8" target="_blank" rel="noopener" class="track-link">Listen Now →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Screwballs">
+      <img class="track-cover clickable-img" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Screwballs">
       <div>
         <div class="track-title">3. Screwballs</div>
         <div class="track-desc">세상의 관심 밖으로 밀려난 존재들은 서로의 존재를 발견한 것만으로도 위로가 된다. 현실의 모든게 엉망이지만 함께 울고 웃다보면 결코 쓰러지지 않는다.</div>
-        <a href="https://youtu.be/m9c8dYFx2_k" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="https://youtu.be/m9c8dYFx2_k" target="_blank" rel="noopener" class="track-link">Listen Now →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Mirror">
+      <img class="track-cover clickable-img" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Mirror">
       <div>
         <div class="track-title">4. Mirror (Interlude)</div>
         <div class="track-desc">분노와 슬픔이 휘몰아친 다음날. 말 없이 마주보던 거울. 선명하던 얼굴이 미끄러지듯 번지다 청명한 감정의 실금소리에 흐려진다.</div>
-        <a href="https://youtu.be/4BFoOLKRmG8" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="https://youtu.be/4BFoOLKRmG8" target="_blank" rel="noopener" class="track-link">Listen Now →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Screwballs Fingerstyle">
+      <img class="track-cover clickable-img" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Screwballs Fingerstyle">
       <div>
         <div class="track-title">5. Screwballs (Fingerstyle)</div>
         <div class="track-desc">함성이 잦아든 자리에서 같이 울고 웃던 그 순간들을 손끝으로 더듬어 본다. 잔인한 세상은 여전히 처연하지만, 차분한 낙오자들의 신나는 리듬은 멈추지 않는다.</div>
-        <a href="https://youtu.be/8Fmfw_Gz1b0" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="https://youtu.be/8Fmfw_Gz1b0" target="_blank" rel="noopener" class="track-link">Listen Now →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="춤 Bossa Nova">
+      <img class="track-cover clickable-img" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="춤 Bossa Nova">
       <div>
         <div class="track-title">6. 춤 Bossa Nova</div>
         <div class="track-desc">처절한 춤을 추며 살아남은 사람은 그날을 어떻게 기억할까. 심장은 여전히 그날처럼 강인하게 뛰고 있지만, 이제는 담담히 속삭여 본다.</div>
-        <a href="https://youtu.be/a7H85czeqlg" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="https://youtu.be/a7H85czeqlg" target="_blank" rel="noopener" class="track-link">Listen Now →</a>
       </div>
     </div>
     <div class="track">
-      <img class="track-cover" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Stone Bossa Blues">
+      <img class="track-cover clickable-img" src="images/VLUW_EP_CrushHug_Cover.jpg" alt="Stone Bossa Blues">
       <div>
         <div class="track-title">7. Stone (Bossa Blues)</div>
         <div class="track-desc">바위처럼 쏟아지던 분노는 결국 긴 슬픔이 되어버렸다. "God damn"이란 한탄은 "Endless"한 반복에 서서히 무너져간다.</div>
-        <a href="https://youtu.be/c51eWLXQ-t4" target="_blank" rel="noopener" class="track-link">Watch on YouTube →</a>
+        <a href="https://youtu.be/c51eWLXQ-t4" target="_blank" rel="noopener" class="track-link">Listen Now →</a>
       </div>
     </div>
 
+    <!-- 수정: 모든 버튼 클래스를 btn-fill(하얀색 배경)로 변경 완료 -->
     <div class="music-platforms">
       <a href="https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN" target="_blank" rel="noopener" class="btn btn-fill">Spotify</a>
-      <a href="https://music.apple.com/kr/artist/vluw/1864445735" target="_blank" rel="noopener" class="btn btn-outline">Apple Music</a>
-      <a href="https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag" target="_blank" rel="noopener" class="btn btn-outline">Youtube Music</a>
+      <a href="https://music.apple.com/kr/artist/vluw/1864445735" target="_blank" rel="noopener" class="btn btn-fill">Apple Music</a>
+      <a href="https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag" target="_blank" rel="noopener" class="btn btn-fill">Youtube Music</a>
     </div>
   </div>
 </section>
 
 <!-- STORY -->
 <section id="story">
-  <p class="t-label">Story</p>
+  <p class="t-label">Story</p> <!-- 주요 큰제목 컬러 반영 완료 -->
   <div class="story-grid">
     <div class="story-item">
-      <img class="story-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/18/38/e2f1b818037744882393561093.png?w=1000&q=90" alt="제나의 위험한 광폭행보">
+      <!-- 수정: 지정된 포스터 이미지(VLUW_GPHB_Poster.png) 적용 완료 -->
+      <img class="story-cover clickable-img" src="images/VLUW_GPHB_Poster.png" alt="제나의 위험한 광폭행보">
       <div class="story-title">제나의 위험한 광폭행보</div>
       <div class="story-desc">타임머신을 만들고도 무서워 못 타는 나태봉. 그의 1인 기업에 입사한 이제나는 걸핏하면 자신의 이팔청춘을 돌려달라는 할머니에게 분노해 실제 16세 때 할머니를 잡아다 대령하는데…</div>
       <a href="https://posty.pe/s5da383" target="_blank" rel="noopener" class="story-link">Read →</a>
     </div>
     <div class="story-item">
-      <img class="story-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/f0ce6c38442131805861183.jpg?w=1000&q=90" alt="27 외전">
+      <!-- 수정: 지정된 포스터 이미지(VLUW_27_Poster.png) 적용 완료 -->
+      <img class="story-cover clickable-img" src="images/VLUW_27_Poster.png" alt="27 외전">
       <div class="story-title">27 : 제나의 위험한 광폭행보 외전</div>
       <div class="story-desc">"천재는 다 스물일곱에 요절한다지? 바보도 스물일곱에 죽으면 천재가 될까?" 2005년 홍대로 떠난 시간여행자 이제나. 스물일곱 살 엄마의 밴드 27에 잠입하는데...</div>
       <a href="https://posty.pe/ss17pmu" target="_blank" rel="noopener" class="story-link">Read →</a>
@@ -806,7 +861,7 @@
 
 <!-- LINKS -->
 <section id="links">
-  <p class="t-label">Related Links</p>
+  <p class="t-label">Related Links</p> <!-- 주요 큰제목 컬러 반영 완료 -->
   <div class="links-list">
     <a href="https://instagram.com/official_vluw" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">Instagram</span><span class="link-arrow">→</span>
@@ -828,7 +883,7 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <p class="t-label">Contact</p>
+  <p class="t-label">Contact</p> <!-- 주요 큰제목 컬러 반영 완료 -->
   <a href="mailto:hi.thinkerz@gmail.com" class="contact-email">hi.thinkerz@gmail.com</a>
 </section>
 
@@ -837,8 +892,49 @@
   <div class="footer-copy">All Rights Reserved</div>
 </footer>
 
+<!-- 원본이미지 모달 구조 (정밀 렌더링용) -->
+<div id="imageModal" class="image-modal">
+  <span class="modal-close" id="modalClose">&times;</span>
+  <img class="modal-content" id="modalTargetImg">
+</div>
+
 <script>
-  // scroll reveal removed for compatibility
+  // 모달 제어용 자바스크립트 구현 완료
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalTargetImg');
+  const closeBtn = document.getElementById('modalClose');
+  const clickableImages = document.querySelectorAll('.clickable-img');
+
+  clickableImages.forEach(img => {
+    img.addEventListener('click', function() {
+      modal.style.display = 'block';
+      modalImg.src = this.src;
+      modalImg.alt = this.alt;
+      document.body.style.overflow = 'hidden'; // 뒷배경 스크롤 방지
+    });
+  });
+
+  // 닫기 버튼 클릭 시
+  closeBtn.addEventListener('click', function() {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  });
+
+  // 모달 바깥 어두운 배경 클릭 시 닫기
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+
+  // ESC 키 눌렀을 때 닫기
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.style.display === 'block') {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
 </script>
 
 </body>
