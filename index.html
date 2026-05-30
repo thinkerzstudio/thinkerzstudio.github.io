@@ -196,8 +196,7 @@
   /* ─── VLUW HERO ─── */
   .vluw-hero {
     width: 100vw;
-    aspect-ratio: 1 / 1;
-    max-height: 100vw;
+    height: 100vw;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -205,27 +204,24 @@
     justify-content: flex-end;
     padding: 56px var(--gutter);
     border-bottom: 1px solid var(--g2);
-    margin-left: calc(-1 * var(--gutter));
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
   }
 
   .vluw-hero-bg {
     position: absolute;
     inset: 0;
-    background: var(--g1);
+    background: url('images/VLUW_Group_Profile.jpg') no-repeat center center;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .vluw-hero-bg-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 0.3em;
-    color: var(--g3);
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 2.4;
+    display: none;
   }
 
   .vluw-hero-bg::after {
@@ -593,6 +589,7 @@
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Thinkerz Studio</a>
   <ul class="nav-links">
@@ -603,6 +600,7 @@
   </ul>
 </nav>
 
+<!-- STUDIO HERO -->
 <div class="hero-studio" id="about">
   <p class="t-label">Virtual Entertainment Studio</p>
   <h1 class="t-hero-en">Thinkerz<br>Studio</h1>
@@ -610,31 +608,29 @@
   <p class="t-body-lg">Thinkerz Studio는 AI 기술 기반의 Virtual Entertainment 제작사입니다. 인간의 창의성과 AI의 제작 역량을 결합한 Human-Led AI Production을 통해 스토리·비주얼·음악이 유기적으로 연결된 엔터테인먼트 IP를 구축합니다.</p>
 </div>
 
+<!-- VLUW DIVIDER -->
 <div class="vluw-divider" id="vluw">
   <div class="vluw-divider-label">Project 01</div>
   <div class="vluw-divider-title">VLUW</div>
 </div>
 
+<!-- VLUW HERO -->
 <div class="vluw-hero">
-  <div class="vluw-hero-bg">
-    <div class="vluw-hero-bg-label">
-      Image Placeholder<br>
-      허름한 그런지 패션 · 뒷골목 · 비 · 연주
-    </div>
-  </div>
+  <div class="vluw-hero-bg"></div>
   <div class="vluw-hero-content">
     <p class="vluw-hero-hook">슬퍼도 상관없어. 하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</p>
     <h2 class="vluw-hero-title">VLUW<br>IS BLUE.</h2>
   </div>
 </div>
 
+<!-- WHO IS VLUW -->
 <section id="who">
   <p class="t-label">Who is VLUW</p>
   <p class="world-text">VLUW는 타임머신이 존재하는 평행우주에서 탄생한 4인조 밴드다. 이 세계에서 타임머신은 역사를 바꾸거나 미래를 지배하는 데 쓰이지 않는다. 과거에서 아파하는 누군가를 집으로 데려와 밥을 먹이고, 미래에서 방황하는 존재에게 삶의 이유를 되찾아준다. 슬퍼도 오늘을 신나게 살아가는데 쓰이는 지극히 사적인 타임머신. 그 세계에서 VLUW는 태어났다.</p>
 
   <div class="members">
     <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/762a3210828282699651566163.jpg?w=1000&q=90" alt="이제나">
+      <img class="member-photo" src="images/VLUW_JeNa_Profile.jpg" alt="이제나">
       <div class="member-info">
         <div class="member-name-en">Jena</div>
         <div class="member-name-kr">이제나</div>
@@ -644,7 +640,7 @@
       </div>
     </div>
     <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/f0ce6c38442131805861183.jpg?w=1000&q=90" alt="나선">
+      <img class="member-photo" src="images/VLUW_NaSeon_Profile.jpg" alt="나선">
       <div class="member-info">
         <div class="member-name-en">Naseon</div>
         <div class="member-name-kr">나선</div>
@@ -654,7 +650,7 @@
       </div>
     </div>
     <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/54/da67c7762575580052176070.jpg?w=1000&q=90" alt="고호정">
+      <img class="member-photo" src="images/VLUW_HoJeong_Profile.jpg" alt="고호정">
       <div class="member-info">
         <div class="member-name-en">Hojeong</div>
         <div class="member-name-kr">고호정</div>
@@ -664,7 +660,7 @@
       </div>
     </div>
     <div class="member">
-      <img class="member-photo" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/04/13/59/e5976a2041799531719999091.jpg?w=1000&q=90" alt="2AR">
+      <img class="member-photo" src="images/VLUW_2AR_Profile.jpg" alt="2AR">
       <div class="member-info">
         <div class="member-name-en">2AR</div>
         <div class="member-name-kr">투에이알</div>
@@ -676,6 +672,7 @@
   </div>
 </section>
 
+<!-- MUSIC -->
 <section id="music">
   <p class="t-label">Music</p>
 
@@ -709,7 +706,7 @@
 
   <div class="music-block">
     <div class="music-block-title">1st EP — Crush Hug</div>
-    <p class="album-intro">오늘도 세상 어딘가에서 감당할 수 없는 무자비한 폭력 속에서 선량한 누군가가 죽어가고 있다. 분노해도, 슬퍼해도, 아무것도 막을 수 없다는 무력감. 이 앨범은 그 감정들을 있는 그대로 담았다. 상처투성이인 3곡의 록과 그것을 비추는 거울 속에는 그 상처를 안아주는 3곡의 보사노바. 그 사이 어딘가에서 우리는 발을 구르며 서성이고만 있다.</p>
+    <p class="album-intro">오늘도 세상 어딘가에서 감당할 수 없는 무자비한 폭력 속에서 선량한 누군가가 죽어가고 있다. 분노해도, 슬퍼해도, 아무것도 막을 수 없다는 무력감. 이 앨범은 그 감정들을 있는 그대로 담았다. 상처투성이인 3곡의 록과 그것을 비추는 거울 속에는 그 상처을 안아주는 3곡의 보사노바. 그 사이 어딘가에서 우리는 발을 구르며 서성이고만 있다.</p>
     <div class="tracklist-label">Track List</div>
     <div class="track">
       <img class="track-cover" src="https://d2ufj6gm1gtdrc.cloudfront.net/2026/05/29/19/05/16dc8b9362932685545467585.jpg?w=1000&q=90" alt="Stone">
@@ -776,6 +773,7 @@
   </div>
 </section>
 
+<!-- STORY -->
 <section id="story">
   <p class="t-label">Story</p>
   <div class="story-grid">
@@ -794,6 +792,7 @@
   </div>
 </section>
 
+<!-- LINKS -->
 <section id="links">
   <p class="t-label">Related Links</p>
   <div class="links-list">
@@ -815,6 +814,7 @@
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <p class="t-label">Contact</p>
   <a href="mailto:hi.thinkerz@gmail.com" class="contact-email">hi.thinkerz@gmail.com</a>
