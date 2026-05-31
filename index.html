@@ -138,16 +138,40 @@
     .nav-links { gap: 16px; }
   }
 
-  /* ─── SECTIONS ─── */
+  /* ─── STUDIO HERO (벡터 애니메이션 적용을 위한 구조 수정) ─── */
   .hero-studio {
+    position: relative;
     min-height: 100vh;
     padding: calc(var(--nav-h) + 80px) var(--gutter) 80px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     border-bottom: 1px solid var(--g2);
+    overflow: hidden;
   }
 
+  /* 벡터 애니메이션 캔버스 레이어 추가 */
+  .hero-bg-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+
+  /* 텍스트 콘텐츠가 캔버스 그래픽 위로 올라오도록 보호 */
+  .hero-studio .t-label,
+  .hero-studio .t-hero-en,
+  .hero-studio .t-tagline,
+  .hero-studio .t-body-lg {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ─── SECTIONS ─── */
   section {
     padding: 80px var(--gutter);
     border-bottom: 1px solid var(--g2);
@@ -283,7 +307,6 @@
   .music-block { margin-bottom: 72px; }
   .music-block:last-child { margin-bottom: 0; }
 
-  /* 수정: 음악파트 제목(Single, 1st EP) 색상을 화이트로 수정 */
   .music-block-title {
     font-family: 'Inter', sans-serif;
     font-size: 10px;
@@ -332,17 +355,16 @@
     display: flex; 
     flex-direction: column; 
     max-width: 360px; 
-    gap: 0; /* 테두리가 겹치지 않게 연결 처리 */
+    gap: 0; 
   }
   
-  /* 수정: 노멀 상태에서 상하좌우 모든 방향에 테두리(Border)가 활성화되도록 대응 */
   .link-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 14px 20px;
     border: 1px solid var(--g2); 
-    margin-top: -1px; /* 테두리가 겹쳐서 두꺼워지는 현상 방지 */
+    margin-top: -1px; 
     background: transparent;
     transition: all 0.25s ease;
     cursor: pointer;
@@ -506,6 +528,9 @@
 
 <!-- STUDIO HERO -->
 <div class="hero-studio" id="about">
+  <!-- 애니메이션을 위한 캔버스 배치 -->
+  <canvas id="heroCanvas" class="hero-bg-canvas"></canvas>
+  
   <p class="t-label">Virtual Entertainment Studio</p>
   <h1 class="t-hero-en">Thinkerz<br>Studio</h1>
   <p class="t-tagline">A Shelter for Misfits</p>
@@ -581,7 +606,6 @@
   <p class="t-label">Music</p>
 
   <div class="music-block">
-    <!-- 수정: 글자색 화이트 반영됨 -->
     <div class="music-block-title">Single</div>
     <div class="track">
       <img class="track-cover clickable-img" src="images/VLUW_BLUE_Cover.jpg" alt="Blue">
@@ -610,7 +634,6 @@
   </div>
 
   <div class="music-block">
-    <!-- 수정: 글자색 화이트 반영됨 -->
     <div class="music-block-title">1st EP — Crush Hug</div>
     <p class="album-intro">오늘도 세상 어딘가에서 감당할 수 없는 무자비한 폭력 속에서 선량한 누군가가 죽어가고 있다. 분노해도, 슬퍼해도, 아무것도 막을 수 없다는 무력감. 이 앨범은 그 감정들을 있는 그대로 담았다. 상처투성이인 3곡의 록과 그것을 비추는 거울 속에는 그 상처을 안아주는 3곡의 보사노바. 그 사이 어딘가에서 우리는 발을 구르며 서성이고만 있다.</p>
     <div class="tracklist-label">Track List</div>
@@ -671,7 +694,6 @@
       </div>
     </div>
 
-    <!-- 수정: 상하좌우 완전한 박스 테두리로 구성된 음원 사이트 링크 목록 -->
     <div class="links-list" style="margin-top: 48px;">
       <a href="https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN" target="_blank" rel="noopener" class="link-row">
         <span class="link-name">Spotify</span><span class="link-arrow">→</span>
@@ -708,7 +730,6 @@
 <!-- LINKS -->
 <section id="links">
   <p class="t-label">Links</p>
-  <!-- 수정: 상하좌우 완전한 박스 테두리로 구성된 SNS 링크 목록 -->
   <div class="links-list">
     <a href="https://instagram.com/official_vluw" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">Instagram</span><span class="link-arrow">→</span>
@@ -748,6 +769,7 @@
 </div>
 
 <script>
+  /* ─── 1. 기존 이미지 모달 및 기본 인터랙션 스크립트 ─── */
   const modal = document.getElementById('imageModal');
   const modalImg = document.getElementById('modalTargetImg');
   const closeBtn = document.getElementById('modalClose');
@@ -779,6 +801,105 @@
       modal.style.display = 'none';
       document.body.style.overflow = '';
     }
+  });
+
+  /* ─── 2. ABOUT 섹션 캔버스 벡터 애니메이션 엔진 (추가) ─── */
+  window.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+    const container = canvas.parentElement;
+
+    function resize() {
+      canvas.width = container.offsetWidth;
+      canvas.height = container.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const particles = [];
+    const particleCount = 60; 
+    const connectionDistance = 120; 
+
+    let mouse = { x: null, y: null, radius: 150 };
+    window.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+
+    window.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 1.5 + 0.5;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) {
+            const force = (mouse.radius - dist) / mouse.radius;
+            this.x -= (dx / dist) * force * 0.6;
+            this.y -= (dy / dist) * force * 0.6;
+          }
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 233, 106, 0.3)'; 
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < connectionDistance) {
+            const alpha = (1 - dist / connectionDistance) * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(240, 240, 238, ${alpha})`; 
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
   });
 </script>
 
