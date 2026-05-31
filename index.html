@@ -13,6 +13,7 @@
   :root {
     --black:  #141a1b; 
     --white:  #f9f9f9; 
+    --point:  #FFE96A; /* 복원된 핵심 포인트 컬러 */
     --g1:     #1d2426; 
     --g2:     #2a3335;
     --g3:     #556265;
@@ -54,9 +55,9 @@
     font-weight: 600;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--point); /* 포인트 컬러 강조 */
     margin-bottom: 32px;
-    opacity: 0.7;
+    opacity: 0.9;
   }
 
   .t-hero-en {
@@ -135,7 +136,7 @@
     color: var(--g4);
     transition: color 0.2s, opacity 0.2s;
   }
-  .nav-links a:hover { color: var(--white); opacity: 1; }
+  .nav-links a:hover { color: var(--point); opacity: 1; }
 
   @media (max-width: 480px) {
     nav { padding: 12px var(--gutter); height: auto; min-height: var(--nav-h); align-items: center; }
@@ -157,10 +158,8 @@
 
   .hero-bg-canvas {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     z-index: 1;
     pointer-events: auto; 
   }
@@ -193,7 +192,7 @@
     font-weight: 600;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--g4);
+    color: var(--point);
     margin-bottom: 12px;
   }
 
@@ -277,7 +276,7 @@
     border-bottom: 1px solid var(--g2);
   }
   
-  /* 3. 2AR(마지막 멤버) 파트의 하단 여백 및 마진 최적화 정돈 */
+  /* 2AR 하단 최적화 밸런스 유지 */
   .member:last-child { 
     border-bottom: none; 
     padding-bottom: 0; 
@@ -307,7 +306,7 @@
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--g4);
+    color: var(--point); /* 멤버 역할 포인트 부여 */
     margin-bottom: 16px;
   }
   .member-tags { font-size: 11px; font-weight: 300; color: var(--g3); line-height: 1.8; margin-bottom: 20px; }
@@ -352,13 +351,13 @@
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--g4);
-    border-bottom: 1px solid var(--g2);
+    color: var(--point);
+    border-bottom: 1px solid transparent;
     padding-bottom: 2px;
     transition: all 0.15s;
     display: inline-block;
   }
-  .track-link:hover { color: var(--white); border-color: var(--white); }
+  .track-link:hover { border-color: var(--point); }
 
   /* ─── BUTTONS & LINKS LIST SYSTEM ─── */
   .links-list { 
@@ -397,8 +396,8 @@
   }
 
   .link-row:hover {
-    background: var(--white) !important;
-    border-color: var(--white) !important;
+    background: var(--point) !important;
+    border-color: var(--point) !important;
   }
   .link-row:hover .link-name {
     color: var(--black) !important;
@@ -440,24 +439,42 @@
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--g4);
-    border-bottom: 1px solid var(--g2);
+    color: var(--point);
+    border-bottom: 1px solid transparent;
     padding-bottom: 2px;
     transition: all 0.15s;
     align-self: flex-start;
   }
-  .story-link:hover { color: var(--white); border-color: var(--white); }
+  .story-link:hover { border-color: var(--point); }
 
   /* ─── CONTACT ─── */
+  .contact-section {
+    position: relative;
+    padding: 120px var(--gutter);
+    border-bottom: 1px solid var(--g2);
+    overflow: hidden;
+  }
+  .contact-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.45;
+  }
+  .contact-content {
+    position: relative;
+    z-index: 2;
+  }
   .contact-email {
     font-family: 'Inter', sans-serif;
     font-size: clamp(18px, 3.5vw, 36px);
     font-weight: 700;
     color: var(--white);
     display: inline-block;
-    transition: opacity 0.2s;
+    transition: color 0.2s;
   }
-  .contact-email:hover { opacity: 0.6; }
+  .contact-email:hover { color: var(--point); }
 
   /* ─── FOOTER ─── */
   footer { padding: 32px var(--gutter); display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--g2); }
@@ -512,7 +529,7 @@
     line-height: 1;
     z-index: 1010;
   }
-  .modal-close:hover { color: var(--white); }
+  .modal-close:hover { color: var(--point); }
 
   @media (max-width: 768px) {
     .modal-wrapper { padding: 20px; }
@@ -620,7 +637,7 @@
         <div class="member-name-kr">투에이알</div>
         <div class="member-role">Sound Engineer · All Features</div>
         <div class="member-tags">#VLUW_음악이_완성되는_마지막_터치 #내향적_휴머노이드 #2036</div>
-        <div class="member-desc">2035년에서 온 휴머노이드형 사운드 엔지니어. 문명이 망해버린 미래에서 홀로 노래를 만들고 있었다. 아무도 듣지 않던 그 노래를 처음 들어준 것이 제나였다. 제나는 부서진 2AR을 2025년으로 데려오며 황량한 미래에 작별을 고했다. 2AR은 납치되다시피 팀에 합류했지만, 지금은 자신의 시간대로 돌아가길 거부하고 있다. 멤버들이 원하는 모든 세션과 피처링을 거침없이 해내고 사운드를 정리한다. VLUW의 음악이 완성되는 마지막 자리를 늘 지키고 있다.</div>
+        <div class="member-desc">2035년에서 온 휴머노이드형 사운드 엔지니어. 문명이 망해버린 미래에서 홀로 노래를 만들고 있었다. 아무도 듣지 않던 그 노래를 처음 들어준 것이 제나였다. 제나는 부서진 2AR을 2025년으로 데려오며 황량한 미래에 작별을 고했다. 2AR은 납치되다시피 팀에 합류했지만, 지금은 자신의 시간대로 돌아가길 거부하고 있다. 멤버들이 원하는 모든 세션และ 피처링을 거침없이 해내고 사운드를 정리한다. VLUW의 음악이 완성되는 마지막 자리를 늘 지키고 있다.</div>
       </div>
     </div>
   </div>
@@ -771,10 +788,13 @@
   </div>
 </section>
 
-<section id="contact">
-  <p class="t-label">Contact</p>
-  <a href="mailto:hi.thinkerz@gmail.com" class="contact-email">hi.thinkerz@gmail.com</a>
-</section>
+<div class="contact-section" id="contact">
+  <canvas id="contactCanvas" class="contact-canvas"></canvas>
+  <div class="contact-content">
+    <p class="t-label">Contact</p>
+    <a href="mailto:hi.thinkerz@gmail.com" class="contact-email">hi.thinkerz@gmail.com</a>
+  </div>
+</div>
 
 <footer>
   <div class="footer-name">Thinkerz Studio © 2026</div>
@@ -823,7 +843,7 @@
     }
   });
 
-  /* ─── 2. 컨셉 B: 오피셜 로고 매핑 인공 신경망 (Logo-Targeted Neural Networks) ─── */
+  /* ─── 2. 어바웃 히어로: 평행우주 & 소실점 초고속 하이퍼 스페이스 워프 효과 ─── */
   window.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('heroCanvas');
     const ctx = canvas.getContext('2d');
@@ -832,159 +852,166 @@
     let width = canvas.width = container.offsetWidth;
     let height = canvas.height = container.offsetHeight;
 
+    let mouseActive = false;
+    let warpFactor = 1.0; // 속도 계수
+
     window.addEventListener('resize', () => {
       width = canvas.width = container.offsetWidth;
       height = canvas.height = container.offsetHeight;
     });
 
-    let mouse = { x: null, y: null, radius: 150 };
+    container.addEventListener('mousemove', () => { mouseActive = true; });
+    container.addEventListener('mouseleave', () => { mouseActive = false; });
 
-    container.addEventListener('mousemove', (e) => {
-      const rect = container.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-    });
-
-    container.addEventListener('mouseleave', () => {
-      mouse.x = null;
-      mouse.y = null;
-    });
-
-    // 오피셜 글리치 자형 패스의 시각적 랜드마크 포인트를 캔버스 좌표계에 추상 노드로 투영
-    const rawLogoPoints = [
-      {x: 200, y: 418}, {x: 165, y: 490}, {x: 180, y: 483}, {x: 93, y: 632}, 
-      {x: 136, y: 510}, {x: 104, y: 525}, {x: 145, y: 419}, {x: 39, y: 435}, 
-      {x: 207, y: 373}, {x: 191, y: 399}, {x: 320, y: 364}, {x: 678, y: 414}, 
-      {x: 599, y: 472}, {x: 616, y: 473}, {x: 590, y: 490}, {x: 616, y: 543}, 
-      {x: 599, y: 537}, {x: 634, y: 606}, {x: 556, y: 537}, {x: 571, y: 535}, 
-      {x: 556, y: 517}, {x: 485, y: 578}, {x: 517, y: 517}, {x: 500, y: 525}, 
-      {x: 553, y: 427}, {x: 538, y: 425}, {x: 625, y: 383}, {x: 573, y: 462},
-      {x: 753, y: 433}, {x: 868, y: 391}, {x: 853, y: 408}, {x: 936, y: 392}, 
-      {x: 891, y: 452}, {x: 907, y: 446}, {x: 835, y: 535}, {x: 895, y: 518}, 
-      {x: 882, y: 535}, {x: 957, y: 511}, {x: 845, y: 570}, {x: 861, y: 555}, 
-      {x: 755, y: 589}, {x: 806, y: 520}, {x: 792, y: 525}, {x: 861, y: 428}, 
-      {x: 811, y: 435}, {x: 824, y: 419}, {x: 290, y: 401}, {x: 255, y: 470}, 
-      {x: 336, y: 437}, {x: 291, y: 525}, {x: 308, y: 519}, {x: 238, y: 606}, 
-      {x: 263, y: 537}, {x: 247, y: 544}, {x: 272, y: 491}, {x: 246, y: 499}, 
-      {x: 236, y: 517}, {x: 251, y: 510}, {x: 175, y: 606}, {x: 208, y: 537}, 
-      {x: 173, y: 553}, {x: 227, y: 437}, {x: 193, y: 444}, {x: 288, y: 400},
-      {x: 394, y: 400}, {x: 391, y: 411}, {x: 415, y: 410}, {x: 347, y: 444}, 
-      {x: 363, y: 409}, {x: 688, y: 410}, {x: 536, y: 427}, {x: 500, y: 488}, 
-      {x: 516, y: 483}, {x: 438, y: 578}, {x: 454, y: 536}, {x: 436, y: 544}, 
-      {x: 462, y: 490}, {x: 435, y: 500}, {x: 428, y: 517}, {x: 442, y: 511}, 
-      {x: 366, y: 587}, {x: 381, y: 555}, {x: 365, y: 562}, {x: 399, y: 482}, 
-      {x: 382, y: 481}, {x: 469, y: 437}, {x: 447, y: 469}, {x: 533, y: 427},
-      {x: 399, y: 428}, {x: 364, y: 488}, {x: 380, y: 483}, {x: 302, y: 587}, 
-      {x: 317, y: 547}, {x: 300, y: 553}, {x: 345, y: 454}, {x: 397, y: 427}, 
-      {x: 700, y: 437}, {x: 725, y: 463}, {x: 700, y: 498}, {x: 699, y: 490}, 
-      {x: 672, y: 499}, {x: 664, y: 517}, {x: 713, y: 510}, {x: 618, y: 553}, 
-      {x: 626, y: 501}, {x: 610, y: 516}, {x: 627, y: 472}, {x: 697, y: 436}, 
-      {x: 798, y: 437}, {x: 773, y: 471}, {x: 843, y: 437}, {x: 799, y: 481}, 
-      {x: 815, y: 482}, {x: 763, y: 508}, {x: 701, y: 579}, {x: 716, y: 546}, 
-      {x: 699, y: 553}, {x: 724, y: 501}, {x: 710, y: 507}, {x: 726, y: 473}, 
-      {x: 796, y: 436}, {x: 688, y: 465}, {x: 665, y: 479}, {x: 686, y: 464}, 
-      {x: 554, y: 536}
-    ];
-
-    const nodes = [];
-    const connectionDistance = 75; // 로고의 세밀한 구조 묘사를 위해 간격 조정
-
-    // 반응형 스케일 및 위치 마운트 연산
-    function initNodes() {
-      nodes.length = 0;
-      
-      // 화면 크기에 대응하여 로고 벡터 중심 및 크기 자동 정렬
-      let scale = width > 768 ? 0.75 : 0.45;
-      let logoOriginalWidth = 1000;
-      let logoOriginalHeight = 300; 
-      
-      let offsetX = (width - (logoOriginalWidth * scale)) / 2 - (50 * scale);
-      let offsetY = (height - (logoOriginalHeight * scale)) / 2 - (350 * scale);
-
-      rawLogoPoints.forEach(pt => {
-        let targetX = pt.x * scale + offsetX;
-        let targetY = pt.y * scale + offsetY;
-
-        nodes.push({
-          baseX: targetX,
-          baseY: targetY,
-          x: targetX + (Math.random() - 0.5) * 80, // 초반 유기적 흩어짐 효과
-          y: targetY + (Math.random() - 0.5) * 80,
-          vx: (Math.random() - 0.5) * 0.2,
-          vy: (Math.random() - 0.5) * 0.2,
-          radius: Math.random() * 1.2 + 1,
-          angle: Math.random() * Math.PI * 2,
-          speed: Math.random() * 0.02 + 0.005
-        });
+    // 3D 우주 좌표 구조체 배열 생성
+    const stars = [];
+    const numStars = width > 768 ? 220 : 110;
+    
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: (Math.random() - 0.5) * 2000,
+        y: (Math.random() - 0.5) * 2000,
+        z: Math.random() * 2000,
+        orbitRadius: Math.random() * 180 + 20,
+        orbitSpeed: (Math.random() - 0.5) * 0.015,
+        orbitAngle: Math.random() * Math.PI * 2,
+        size: Math.random() * 1.5 + 0.5
       });
     }
 
-    initNodes();
-    window.addEventListener('resize', initNodes);
+    function drawUniverse() {
+      // 그레이스케일만 사용하도록 명시적 세팅
+      ctx.fillStyle = 'rgba(20, 26, 27, 0.18)'; 
+      ctx.fillRect(0, 0, width, height);
 
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
+      let cx = width / 2;
+      let cy = height / 2;
 
-      nodes.forEach(node => {
-        // 미세하게 살아 숨쉬는 일렁임 부여
-        node.angle += node.speed;
-        let oscillateX = Math.sin(node.angle) * 3;
-        let oscillateY = Math.cos(node.angle) * 3;
+      // 마우스 오버 시 워프 속도 가속화 연산
+      if (mouseActive) {
+        warpFactor += (18.0 - warpFactor) * 0.08;
+      } else {
+        warpFactor += (1.0 - warpFactor) * 0.05;
+      }
 
-        let currentTargetX = node.baseX + oscillateX;
-        let currentTargetY = node.baseY + oscillateY;
+      stars.forEach(star => {
+        // 1단계: 기본 자전/공전 공전 궤도 축 계산
+        star.orbitAngle += star.orbitSpeed;
+        let orbitX = Math.cos(star.orbitAngle) * star.orbitRadius;
+        let orbitY = Math.sin(star.orbitAngle) * star.orbitRadius;
 
-        // 마우스 인터랙션 연산 (마우스 유도 및 복원 시스템)
-        if (mouse.x !== null && mouse.y !== null) {
-          let dx = mouse.x - node.x;
-          let dy = mouse.y - node.y;
-          let dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < mouse.radius) {
-            // 마우스 방향으로 유기적으로 빨려 들어가거나 왜곡되는 스트림 효과
-            let activeForce = (mouse.radius - dist) / mouse.radius;
-            node.x += (dx / dist) * activeForce * 3;
-            node.y += (dy / dist) * activeForce * 3;
-          }
+        // 2단계: 중앙 소실점을 향한 Z축 깊이 이동 연산
+        star.z -= warpFactor * 3.5;
+        if (star.z <= 0) {
+          star.z = 2000;
+          star.x = (Math.random() - 0.5) * 2000;
+          star.y = (Math.random() - 0.5) * 2000;
         }
 
-        // 본래 자형 자리로 우아하게 귀환하려는 탄성 벡터 보정
-        node.x += (currentTargetX - node.x) * 0.06;
-        node.y += (currentTargetY - node.y) * 0.06;
+        // 3D 투영 좌표 변환
+        let k = 400 / star.z;
+        let px = (star.x + orbitX) * k + cx;
+        let py = (star.y + orbitY) * k + cy;
+
+        if (px >= 0 && px <= width && py >= 0 && py <= height) {
+          let size = star.size * k * 1.2;
+          let alpha = Math.min(1, (2000 - star.z) / 400);
+
+          // 워프 주기가 높을수록 라인 스트리밍 효과 증폭
+          if (warpFactor > 3.0) {
+            ctx.strokeStyle = `rgba(234, 234, 234, ${alpha * 0.35})`;
+            ctx.lineWidth = size * 0.4;
+            ctx.beginPath();
+            ctx.moveTo(px, py);
+            // 소실점 뒤쪽으로 이어지는 잔상 벡터 계산
+            let oldK = 400 / (star.z + warpFactor * 12);
+            let opx = (star.x + orbitX) * oldK + cx;
+            let opy = (star.y + orbitY) * oldK + cy;
+            ctx.lineTo(opx, opy);
+            ctx.stroke();
+          }
+
+          // 점 자형 묘사
+          ctx.fillStyle = `rgba(234, 234, 234, ${alpha})`;
+          ctx.beginPath();
+          ctx.arc(px, py, Math.max(0.5, size), 0, Math.PI * 2);
+          ctx.fill();
+        }
       });
 
-      // 자형 노드 간 신경망 가닥(Strands) 연결선 연산
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          let n1 = nodes[i];
-          let n2 = nodes[j];
-          let dx = n1.x - n2.x;
-          let dy = n1.y - n2.y;
+      requestAnimationFrame(drawUniverse);
+    }
+    drawUniverse();
+  });
+
+  /* ─── 3. 컨택트 섹션: 간단하고 세련된 초밀도 뇌신경망 시각화 ─── */
+  window.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('contactCanvas');
+    const ctx = canvas.getContext('2d');
+    const section = canvas.parentElement;
+
+    let width = canvas.width = section.offsetWidth;
+    let height = canvas.height = section.offsetHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = section.offsetWidth;
+      height = canvas.height = section.offsetHeight;
+    });
+
+    const particles = [];
+    const maxParticles = width > 768 ? 45 : 20;
+    const connectionDist = 95;
+
+    for (let i = 0; i < maxParticles; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        radius: Math.random() * 1.5 + 0.8
+      });
+    }
+
+    function drawNeuralNetwork() {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        ctx.fillStyle = 'rgba(140, 160, 164, 0.4)';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // 노드간 거리에 따른 초밀도 디바이스 선 연결 체계
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          let p1 = particles[i];
+          let p2 = particles[j];
+          let dx = p1.x - p2.x;
+          let dy = p1.y - p2.y;
           let dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < connectionDistance) {
-            let alpha = (1 - dist / connectionDistance) * 0.22;
-            ctx.strokeStyle = `rgba(234, 234, 234, ${alpha})`;
-            ctx.lineWidth = 0.45;
+          if (dist < connectionDist) {
+            let alpha = (1 - dist / connectionDist) * 0.15;
+            ctx.strokeStyle = `rgba(140, 160, 164, ${alpha})`;
+            ctx.lineWidth = 0.5;
             ctx.beginPath();
-            ctx.moveTo(n1.x, n1.y);
-            ctx.lineTo(n2.x, n2.y);
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
           }
         }
       }
 
-      // 인공 신경망 노드 접점 드로잉
-      ctx.fillStyle = 'rgba(234, 234, 234, 0.35)';
-      nodes.forEach(node => {
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      requestAnimationFrame(animate);
+      requestAnimationFrame(drawNeuralNetwork);
     }
-    animate();
+    drawNeuralNetwork();
   });
 </script>
 
