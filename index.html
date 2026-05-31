@@ -214,6 +214,21 @@
     width: 100vw;
     height: 100vw;
     position: relative;
+    padding: 56px var(--gutter);
+    border-bottom: 1px solid var(--g2);
+    background-color: #000000 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  @media (max-width: 480px) {
+    .vluw-hero { aspect-ratio: 3/4; height: auto; }
+  }
+  /*
+  .vluw-hero {
+    width: 100vw;
+    height: 100vw;
+    position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -224,7 +239,7 @@
     margin-left: -50vw; margin-right: -50vw;
     background-color: #000000 !important;
   }
-
+*/
   .vluw-hero-bg {
     position: absolute;
     inset: 0;
