@@ -15,11 +15,11 @@
     --white:  #f9f9f9; 
     --point:  #FFE96A; 
     --g1:     #1d2426; 
-    --g2:     #2a3335; /* 통일된 연한 라인 색상 */
-    --g3:     #556265; /* 블랙 50% 수준 (어두움) -> 서브타이틀, 네비 버튼용 */
-    --g4:     #8ca0a4; /* 블랙 30% 수준 (덜 어두움) -> 본문 텍스트용 */
+    --g2:     #2a3335; 
+    --g3:     #6b7a7d; /* 블랙 40% 수준 (어두움) -> 서브타이틀, 네비 버튼용 */
+    --g4:     #b1b1b1; /* 블랙 20% 수준 (덜 어두움) -> 본문 텍스트용 */
     --g5:     #c8d3d5; 
-    --g6:     #eaeaea; /* 애니메이션 및 라이트 텍스트용 화이트 계열 */
+    --g6:     #eaeaea; 
     --gutter: 48px;
     --nav-h:  64px;
   }
@@ -35,7 +35,7 @@
   }
   body {
     background: var(--black) !important;
-    color: var(--g4); /* 본문 기본색: 블랙 30% */
+    color: var(--g4); /* 본문 기본색: 블랙 20% */
     font-family: 'Pretendard', 'Inter', sans-serif;
     font-weight: 300;
     font-size: 15px;
@@ -67,7 +67,7 @@
     line-height: 0.88;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    color: var(--white); /* 타이틀: 화이트 */
+    color: var(--white); 
   }
 
   .t-tagline {
@@ -76,7 +76,7 @@
     font-weight: 300;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--g3); /* 서브타이틀: 블랙 50% */
+    color: var(--g3); /* 서브타이틀: 블랙 40% */
     margin-top: 24px;
     margin-bottom: 32px;
   }
@@ -85,7 +85,7 @@
     font-size: clamp(14px, 1.8vw, 17px);
     font-weight: 300;
     line-height: 1.85;
-    color: var(--g4); /* 본문 텍스트: 블랙 30% */
+    color: var(--g4); /* 본문 텍스트: 블랙 20% */
     max-width: 600px;
   }
 
@@ -102,7 +102,7 @@
     flex-wrap: wrap;
     gap: 8px;
     background: rgba(20, 26, 27, 0.9);
-    border-bottom: 1px solid var(--g2); /* 라인색 통일 */
+    border-bottom: 1px solid var(--g2); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
@@ -133,7 +133,7 @@
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--g3); /* 네비게이션 메뉴 버튼: 블랙 50% */
+    color: var(--g3); /* 네비게이션 메뉴 버튼: 블랙 40% */
     transition: color 0.2s, opacity 0.2s;
   }
   .nav-links a:hover { color: var(--point); opacity: 1; }
@@ -152,8 +152,9 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    border-bottom: 1px solid var(--g2); /* 라인색 통일 */
+    border-bottom: 1px solid var(--g2); 
     overflow: hidden;
+    background: #000000 !important; /* 배경색 완전한 블랙으로 수정 */
   }
 
   .hero-bg-canvas {
@@ -171,19 +172,19 @@
     position: relative;
     z-index: 2;
     pointer-events: none; 
-    text-shadow: 0 0 24px rgba(20, 26, 27, 0.95), 0 4px 12px rgba(20, 26, 27, 1);
+    text-shadow: 0 0 24px rgba(0, 0, 0, 0.95), 0 4px 12px rgba(0, 0, 0, 1);
   }
 
   /* ─── SECTIONS ─── */
   section {
     padding: 80px var(--gutter);
-    border-bottom: 1px solid var(--g2); /* 라인색 통일 */
+    border-bottom: 1px solid var(--g2); 
   }
 
   /* ─── VLUW DIVIDER ─── */
   .vluw-divider {
     padding: 56px var(--gutter);
-    border-bottom: 1px solid var(--g2); /* 라인색 통일 */
+    border-bottom: 1px solid var(--g2); 
   }
 
   .vluw-divider-label {
@@ -202,7 +203,7 @@
     font-weight: 900;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    color: var(--white); /* 타이틀: 화이트 */
+    color: var(--white); 
     line-height: 0.9;
   }
 
@@ -216,7 +217,7 @@
     flex-direction: column;
     justify-content: flex-end;
     padding: 56px var(--gutter);
-    border-bottom: 1px solid var(--g2); /* 라인색 통일 */
+    border-bottom: 1px solid var(--g2); 
     left: 50%; right: 50%;
     margin-left: -50vw; margin-right: -50vw;
   }
@@ -238,13 +239,19 @@
       rgba(20,26,27,0.05) 100%);
   }
 
-  .vluw-hero-content { position: relative; z-index: 1; }
+  .vluw-hero-content { position: relative; z-index: 1; align-items: flex-start; display: flex; flex-direction: column; }
+  
+  /* 훅 문구 디자인 수정: 배경 포인트 컬러, 글자색 #141a1b */
   .vluw-hero-hook {
+    display: inline-block;
     font-size: clamp(13px, 1.5vw, 16px);
-    font-weight: 300;
-    color: var(--g4); /* 본문 텍스트 속성 반영: 블랙 30% */
-    line-height: 1.7;
-    margin-bottom: 16px;
+    font-weight: 500;
+    background-color: var(--point);
+    color: #141a1b;
+    line-height: 1.6;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    border-radius: 2px;
   }
 
   .vluw-hero-title {
@@ -254,7 +261,7 @@
     line-height: 0.88;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    color: var(--white); /* 타이틀: 화이트 */
+    color: var(--white); 
   }
 
   /* ─── WHO IS VLUW ─── */
@@ -262,7 +269,7 @@
     font-size: clamp(14px, 1.8vw, 17px);
     font-weight: 300;
     line-height: 1.85;
-    color: var(--g4); /* 본문 텍스트: 블랙 30% */
+    color: var(--g4); /* 본문 텍스트: 블랙 20% */
     max-width: 640px;
     margin-bottom: 64px;
   }
@@ -273,7 +280,7 @@
     grid-template-columns: 200px 1fr;
     gap: 48px;
     padding: 48px 0;
-    border-bottom: 1px solid var(--g2); /* 라인색 통일 */
+    border-bottom: 1px solid var(--g2); 
   }
   
   .member:last-child { 
@@ -294,22 +301,22 @@
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--white); /* 타이틀: 화이트 */
+    color: var(--white); 
     line-height: 1;
     margin-bottom: 4px;
   }
-  .member-name-kr { font-size: 12px; font-weight: 400; color: var(--g3); /* 서브 정보: 블랙 50% */ margin-bottom: 8px; }
+  .member-name-kr { font-size: 12px; font-weight: 400; color: var(--g3); /* 서브 정보: 블랙 40% */ margin-bottom: 8px; }
   .member-role {
     font-family: 'Inter', sans-serif;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--white); /* 포지션 글씨: 화이트로 수정 */
+    color: var(--white); 
     margin-bottom: 16px;
   }
   .member-tags { font-size: 11px; font-weight: 300; color: var(--g3); line-height: 1.8; margin-bottom: 20px; }
-  .member-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--g4); /* 본문 텍스트: 블랙 30% */ }
+  .member-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--g4); /* 본문 텍스트: 블랙 20% */ }
 
   /* ─── MUSIC ─── */
   .music-block { margin-bottom: 72px; }
@@ -321,13 +328,13 @@
     font-weight: 600;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--white); /* 타이틀 속성: 화이트 */
+    color: var(--white); 
     margin-bottom: 32px;
     padding-bottom: 16px;
-    border-bottom: 1px solid var(--g2); /* 라인색 통일 */
+    border-bottom: 1px solid var(--g2); 
   }
 
-  .album-intro { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--g4); /* 본문 텍스트: 블랙 30% */ max-width: 640px; margin-bottom: 40px; }
+  .album-intro { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--g4); /* 본문 텍스트: 블랙 20% */ max-width: 640px; margin-bottom: 40px; }
   .tracklist-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--g3); margin-bottom: 8px; }
   
   .track {
@@ -335,14 +342,14 @@
     grid-template-columns: 100px 1fr;
     gap: 28px;
     padding: 24px 0;
-    border-bottom: 1px solid var(--g2); /* 라인색 통일 */
+    border-bottom: 1px solid var(--g2); 
     align-items: start;
   }
   @media (max-width: 480px) { .track { grid-template-columns: 80px 1fr; gap: 20px; } }
 
   .track-cover { width: 100%; aspect-ratio: 1; object-fit: cover; border: 1px solid var(--g2); }
-  .track-title { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; color: var(--white); /* 타이틀: 화이트 */ margin-bottom: 8px; }
-  .track-desc { font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--g4); /* 본문 텍스트: 블랙 30% */ margin-bottom: 12px; }
+  .track-title { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .track-desc { font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--g4); /* 본문 텍스트: 블랙 20% */ margin-bottom: 12px; }
   
   .track-link {
     font-family: 'Inter', sans-serif;
@@ -350,7 +357,7 @@
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--white); /* 리슨 나우 버튼 색상: 화이트로 수정 */
+    color: var(--white); 
     border-bottom: 1px solid transparent;
     padding-bottom: 2px;
     transition: all 0.15s;
@@ -371,7 +378,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 14px 20px;
-    border: 1px solid var(--g2); /* 라인색 통일 */
+    border: 1px solid var(--g2); 
     margin-top: -1px; 
     background: transparent;
     transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
@@ -384,7 +391,7 @@
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--g3); /* 네비게이션 스타일 연동: 블랙 50% */
+    color: var(--g3); /* 네비게이션 스타일 연동: 블랙 40% */
     transition: color 0.2s;
   }
   
@@ -426,11 +433,11 @@
     height: auto;
     object-fit: contain;
     margin-bottom: 20px;
-    border: 1px solid var(--g2); /* 라인색 통일 */
+    border: 1px solid var(--g2); 
   }
 
-  .story-title { font-size: 14px; font-weight: 500; color: var(--white); /* 타이틀: 화이트 */ line-height: 1.5; margin-bottom: 12px; }
-  .story-desc { font-size: 12px; font-weight: 300; line-height: 1.75; color: var(--g4); /* 본문 텍스트: 블랙 30% */ margin-bottom: 20px; }
+  .story-title { font-size: 14px; font-weight: 500; color: var(--white); line-height: 1.5; margin-bottom: 12px; }
+  .story-desc { font-size: 12px; font-weight: 300; line-height: 1.75; color: var(--g4); /* 본문 텍스트: 블랙 20% */ margin-bottom: 20px; }
   
   .story-link {
     font-family: 'Inter', sans-serif;
@@ -438,7 +445,7 @@
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--white); /* 리드 버튼 색상: 화이트로 수정 */
+    color: var(--white); 
     border-bottom: 1px solid transparent;
     padding-bottom: 2px;
     transition: all 0.15s;
@@ -450,8 +457,9 @@
   .contact-section {
     position: relative;
     padding: 120px var(--gutter);
-    border-bottom: 1px solid var(--g2); /* 라인색 통일 */
+    border-bottom: 1px solid var(--g2); 
     overflow: hidden;
+    background: #000000 !important; /* 배경색 완전한 블랙으로 수정 */
   }
   .contact-canvas {
     position: absolute;
@@ -469,16 +477,48 @@
     font-family: 'Inter', sans-serif;
     font-size: clamp(18px, 3.5vw, 36px);
     font-weight: 700;
-    color: var(--white); /* 타이틀 속성: 화이트 */
+    color: var(--white); 
     display: inline-block;
     transition: color 0.2s;
+    cursor: pointer;
   }
   .contact-email:hover { color: var(--point); }
 
   /* ─── FOOTER ─── */
-  footer { padding: 32px var(--gutter); display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--g2); /* 라인색 통일 */ }
-  .footer-name { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--g3); }
-  .footer-copy { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 300; color: var(--g3); }
+  footer { 
+    padding: 32px var(--gutter); 
+    border-top: 1px solid var(--g2); 
+  }
+  .footer-text { 
+    font-family: 'Inter', sans-serif; 
+    font-size: 11px; /* 폰트 크기 11px로 통일 */
+    font-weight: 400; 
+    letter-spacing: 0.08em; 
+    color: var(--g3); /* 블랙 40% 적용 */
+  }
+
+  /* ─── TOAST NOTIFICATION ─── */
+  .toast-box {
+    position: fixed;
+    bottom: 32px;
+    left: var(--gutter);
+    background-color: var(--point);
+    color: #141a1b;
+    padding: 12px 22px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 30px;
+    z-index: 2000;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+  .toast-box.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   /* ─── MODAL SYSTEM ─── */
   .image-modal {
@@ -554,7 +594,7 @@
       <path d="M 394.5,400.5 C 395.978,400.238 397.311,400.571 398.5,401.5C 396.167,404.833 393.833,408.167 391.5,411.5C 392.5,411.833 393.5,412.167 394.5,412.5C 401.485,411.105 408.485,410.272 415.5,410C 392.589,421.372 369.756,432.872 347,444.5C 351.894,432.705 357.394,421.038 363.5,409.5C 373.879,406.325 384.212,403.325 394.5,400.5 Z" fill="var(--white)"/>
       <path d="M 679.5,415.5 C 679.5,414.833 679.167,414.5 678.5,414.5C 681.767,412.696 685.1,411.196 688.5,410C 685.778,412.358 682.778,414.191 679.5,415.5 Z" fill="#454747"/>
       <path d="M 538.5,425.5 C 543.5,426.167 548.5,426.833 553.5,427.5C 547.824,427.666 542.157,427.499 536.5,427C 537.044,426.283 537.711,425.783 538.5,425.5 Z" fill="#8d8d8d"/>
-      <path d="M 533.5,427.5 C 534.239,427.369 534.906,427.536 535.5,428C 523.454,447.921 511.788,468.088 500.5,488.5C 500.833,488.833 501.167,489.167 501.5,489.5C 506.379,486.719 511.379,484.552 516.5,483C 490.453,514.925 464.286,546.759 438,578.5C 442.78,564.347 448.28,550.347 454.5,536.5C 454.333,536.167 454.167,535.833 454,535.5C 448.221,538.808 442.388,541.642 436.5,544C 446.006,526.165 454.672,508.331 462.5,490.5C 453.312,493.45 444.312,496.783 435.5,500.5C 432.387,506.044 429.887,511.711 428,517.5C 432.635,514.593 437.468,512.427 442.5,511C 417,536.5 391.5,562 366,587.5C 370.433,576.461 375.6,565.628 381.5,555C 375.8,556.761 370.3,559.261 365,562.5C 375.788,535.671 387.288,509.004 399.5,482.5C 393.862,481.67 388.196,481.17 382.5,481C 411.5,466.5 440.5,452 469.5,437.5C 470.521,438.002 470.688,438.668 470,439.5C 462.333,449.5 454.667,459.5 447,469.5C 446.312,470.332 446.479,470.998 447.5,471.5C 476.228,456.804 504.894,442.137 533.5,427.5 Z" fill="var(--white)"/>
+      <path d="M 533.5,427.5 C 534.239,427.369 534.906,427.536 535.5,428C 523.454,447.921 511.788,468.088 500.5,488.5C 500.833,488.833 501.167,489.167 501.5,489.5C 506.379,486.719 511.379,484.552 516.5,483C 490.453,514.925 464.286,546.759 438,578.5C 442.78,564.347 448.28,550.347 454.5,536.5C 454.333,536.167 454.167,535.833 454,535.5C 448.221,538.808 442.388,541.642 436.5,544C 446.006,526.165 454.672,508.331 462.5,490.5C 453.312,490.5 444.312,496.783 435.5,500.5C 432.387,506.044 429.887,511.711 428,517.5C 432.635,514.593 437.468,512.427 442.5,511C 417,536.5 391.5,562 366,587.5C 370.433,576.461 375.6,565.628 381.5,555C 375.8,556.761 370.3,559.261 365,562.5C 375.788,535.671 387.288,509.004 399.5,482.5C 393.862,481.67 388.196,481.17 382.5,481C 411.5,466.5 440.5,452 469.5,437.5C 470.521,438.002 470.688,438.668 470,439.5C 462.333,449.5 454.667,459.5 447,469.5C 446.312,470.332 446.479,470.998 447.5,471.5C 476.228,456.804 504.894,442.137 533.5,427.5 Z" fill="var(--white)"/>
       <path d="M 397.5,427.5 C 398.239,427.369 398.906,427.536 399.5,428C 387.96,448.248 376.293,468.415 364.5,488.5C 364.833,488.833 365.167,489.167 365.5,489.5C 370.379,486.719 375.379,484.552 380.5,483C 354.333,517.833 328.167,552.667 302,587.5C 306.739,573.967 311.906,560.467 317.5,547C 317.167,546.5 316.833,546 316.5,545.5C 311.143,548.35 305.81,550.85 300.5,553C 315.355,520.122 330.355,487.289 345.5,454.5C 362.895,445.471 380.228,436.471 397.5,427.5 Z" fill="var(--white)"/>
       <path d="M 720.5,177.5 C 720.5,177.5 697.5,206.5 697.5,206.5 C 745.5,164.5 727.5,187.5 757.5,149.5 C 737.5,174.5 764.5,140.5 778.5,122.5 C 753.5,154.5 771.5,131.5 741.5,169.5 C 757.5,149.5 728.5,186.5 742.5,168.5 C 713.5,205.5 713.5,205.5 727.5,187.5 C 720.5,177.5 720.5,177.5 720.5,177.5 Z" fill="var(--white)"/>
       <path d="M 697.5,436.5 C 698.552,436.351 699.552,436.517 700.5,437C 709.412,445.408 717.745,454.241 725.5,463.5C 717.502,475.481 709.002,487.148 700,498.5C 699.503,495.854 699.336,493.187 699.5,490.5C 690.427,493.024 681.427,495.857 672.5,499C 668.733,504.999 666.066,511.165 664.5,517.5C 680.768,514.344 697.101,511.844 713.5,510C 681.833,524.5 650.167,539 618.5,553.5C 620.483,536.256 623.149,518.923 626.5,501.5C 620.844,505.623 615.344,510.623 610,516.5C 614.637,501.265 620.471,486.432 627.5,472C 651.05,460.392 674.383,448.559 697.5,436.5 Z" fill="var(--white)"/>
@@ -590,6 +630,7 @@ C 560.157,535.501 565.824,535.334 571.5,535.5 Z" fill="#505050"/>
 <div class="vluw-hero">
   <div class="vluw-hero-bg"></div>
   <div class="vluw-hero-content">
+    <!-- 수정사항 5 반영: 배경 컬러 #FFE96A, 글자색 #141a1b -->
     <p class="vluw-hero-hook">슬퍼도 상관없어.<br>하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</p>
     <h2 class="vluw-hero-title">VLUW<br>IS BLUE.</h2>
   </div>
@@ -792,14 +833,18 @@ C 560.157,535.501 565.824,535.334 571.5,535.5 Z" fill="#505050"/>
   <canvas id="contactCanvas" class="contact-canvas"></canvas>
   <div class="contact-content">
     <p class="t-label">Contact</p>
-    <a href="mailto:hi.thinkerz@gmail.com" class="contact-email">hi.thinkerz@gmail.com</a>
+    <!-- 수정사항 6 반영: 메일 복사 기능 추가를 위해 span 노드로 변경 -->
+    <span class="contact-email" id="copyEmailBtn">hi.thinkerz@gmail.com</span>
   </div>
 </div>
 
 <footer>
-  <div class="footer-name">Thinkerz Studio © 2026</div>
-  <div class="footer-copy">All Rights Reserved</div>
+  <!-- 수정사항 3 반영: 폰트 크기 및 문구 구성 통합 정리 -->
+  <div class="footer-text">Thinkerz Studio © 2026 All Rights Reserved</div>
 </footer>
+
+<!-- 클립보드 복사 알림 토스트 박스 -->
+<div id="toastBox" class="toast-box">클립보드에 복사됨</div>
 
 <div id="imageModal" class="image-modal" style="display: none;">
   <div class="modal-wrapper">
@@ -843,7 +888,31 @@ C 560.157,535.501 565.824,535.334 571.5,535.5 Z" fill="#505050"/>
     }
   });
 
-  /* ─── 2. 어바웃 히어로: 평행우주 효과 ─── */
+  /* ─── 2. 이메일 클립보드 복사 & 토스트 팝업 ─── */
+  const copyEmailBtn = document.getElementById('copyEmailBtn');
+  const toastBox = document.getElementById('toastBox');
+  let toastTimeout;
+
+  copyEmailBtn.addEventListener('click', () => {
+    const emailText = copyEmailBtn.innerText;
+    
+    navigator.clipboard.writeText(emailText).then(() => {
+      // 기존 작동중인 타이머 리셋
+      clearTimeout(toastTimeout);
+      
+      // 토스트 알림 띄우기
+      toastBox.classList.add('show');
+      
+      // 2초 뒤 사라지게 처리
+      toastTimeout = setTimeout(() => {
+        toastBox.classList.remove('show');
+      }, 2000);
+    }).catch(err => {
+      console.error('클립보드 복사 실패: ', err);
+    });
+  });
+
+  /* ─── 3. 어바웃 히어로: 평행우주 효과 ─── */
   window.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('heroCanvas');
     const ctx = canvas.getContext('2d');
@@ -879,7 +948,8 @@ C 560.157,535.501 565.824,535.334 571.5,535.5 Z" fill="#505050"/>
     }
 
     function drawUniverse() {
-      ctx.fillStyle = 'rgba(20, 26, 27, 0.18)'; 
+      // 수정사항 4 반영: 잔상 배경색을 완전한 블랙(#000000)으로 처리
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.18)'; 
       ctx.fillRect(0, 0, width, height);
 
       let cx = width / 2;
@@ -935,7 +1005,7 @@ C 560.157,535.501 565.824,535.334 571.5,535.5 Z" fill="#505050"/>
     drawUniverse();
   });
 
-  /* ─── 3. 컨택트 섹션: 뇌신경망 시각화 (색상 매칭 수정) ─── */
+  /* ─── 4. 컨택트 섹션: 뇌신경망 시각화 ─── */
   window.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('contactCanvas');
     const ctx = canvas.getContext('2d');
@@ -973,7 +1043,6 @@ C 560.157,535.501 565.824,535.334 571.5,535.5 Z" fill="#505050"/>
         if (p.x < 0 || p.x > width) p.vx *= -1;
         if (p.y < 0 || p.y > height) p.vy *= -1;
 
-        // 노드 색상 어바웃 히어로와 동일한 화이트 계열(#eaeaea) 톤으로 수정
         ctx.fillStyle = 'rgba(234, 234, 234, 0.4)';
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
@@ -990,7 +1059,6 @@ C 560.157,535.501 565.824,535.334 571.5,535.5 Z" fill="#505050"/>
 
           if (dist < connectionDist) {
             let alpha = (1 - dist / connectionDist) * 0.15;
-            // 라인 스트리밍 효과와 매칭되는 화이트 알파값 적용
             ctx.strokeStyle = `rgba(234, 234, 234, ${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
