@@ -11,15 +11,16 @@
 <style>
   /* ─── TOKENS ─── */
   :root {
-    /* 수정: 완전한 블랙 대신 가독성을 확보한 세련된 짙은 회색으로 변경 */
-    --black:  #121212; 
+    /* 수정: 배경색을 조금 더 밝은 짙은 회색으로 변경 */
+    --black:  #1E1E1E; 
     --white:  #f0f0ee;
-    --g1:     #1c1c1c;
-    --g2:     #2e2e2e;
-    --g3:     #666;
-    --g4:     #999;
-    --g5:     #bbb;
-    --g6:     #ddd;
+    --g1:     #282828;
+    --g2:     #3a3a3a;
+    /* 수정: 배경이 밝아짐에 따라 가독성 확보를 위해 텍스트 명도 업그레이드 */
+    --g3:     #777;
+    --g4:     #AAA;
+    --g5:     #ccc;
+    --g6:     #eee;
     --point:  #FFE96A;
     --gutter: 48px;
     --nav-h:  56px;
@@ -101,7 +102,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 8px;
-    background: rgba(18,18,18,0.95);
+    background: rgba(30,30,30,0.95);
     border-bottom: 1px solid var(--g2);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -207,9 +208,9 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(to top,
-      rgba(18,18,18,1) 0%,
-      rgba(18,18,18,0.5) 40%,
-      rgba(18,18,18,0.05) 100%);
+      rgba(30,30,30,1) 0%,
+      rgba(30,30,30,0.5) 40%,
+      rgba(30,30,30,0.05) 100%);
   }
 
   .vluw-hero-content { position: relative; z-index: 1; }
@@ -327,37 +328,49 @@
   }
   .track-link:hover { color: var(--point); border-color: var(--point); }
 
-  .music-platforms {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid var(--g2);
-  }
-
-  /* ─── BUTTONS SYSTEM ─── */
-  /* 수정: 모든 플랫폼 및 일반 사각버튼의 기본 규칙 및 오버롤 디자인 완벽 통일 */
-  .btn {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 12px 24px;
-    background: transparent;
-    color: var(--white);
-    border: 1px solid var(--g6);
-    transition: all 0.25s ease;
-    display: inline-block;
-    cursor: pointer;
+  /* ─── BUTTONS & LINKS LIST SYSTEM ─── */
+  /* 수정: Spotify, Apple Music, Youtube Music 버튼의 노멀/오버롤 상태를 Links와 완벽히 통합 */
+  .links-list { 
+    display: flex; 
+    flex-direction: column; 
+    border-top: 1px solid var(--g2); 
+    max-width: 360px; 
   }
   
-  /* 마우스 오버(호버)시: 배경색 #FFE96A, 글씨 검정색, 테두리 #FFE96A로 변환 */
-  .btn:hover {
+  .link-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--g2);
+    background: transparent;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  .link-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--g6);
+    transition: color 0.25s ease;
+  }
+  
+  .link-arrow { 
+    font-size: 12px; 
+    color: var(--g4); 
+    transition: color 0.25s ease;
+  }
+
+  /* 수정: 모든 행 기반 버튼(Music 플랫폼 & SNS Links) 오버롤 시 배경 #FFE96A, 글씨 검정색 반전 적용 */
+  .link-row:hover {
     background: var(--point) !important;
+  }
+  .link-row:hover .link-name,
+  .link-row:hover .link-arrow {
     color: #000000 !important;
-    border-color: var(--point) !important;
   }
 
   /* ─── STORY ─── */
@@ -375,7 +388,6 @@
     flex-direction: column;
   }
 
-  /* 수정: 스토리 포스터를 원본의 고유 종횡비(비율)대로 보여주도록 세팅 */
   .story-cover {
     width: 100%;
     height: auto;
@@ -400,31 +412,6 @@
   }
   .story-link:hover { color: var(--point); border-color: var(--point); }
 
-  /* ─── LINKS ─── */
-  .links-list { display: flex; flex-direction: column; border: 1px solid var(--g2); max-width: 360px; }
-  .link-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--g2);
-    transition: background 0.2s;
-  }
-  .link-row:last-child { border-bottom: none; }
-  .link-row:hover { background: var(--g1); }
-  .link-row:hover .link-name { color: var(--point); }
-
-  .link-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--g6);
-    transition: color 0.2s;
-  }
-  .link-arrow { font-size: 12px; color: var(--g3); }
-
   /* ─── CONTACT ─── */
   .contact-email {
     font-family: 'Inter', sans-serif;
@@ -442,14 +429,13 @@
   .footer-copy { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 300; color: var(--g3); }
 
   /* ─── MODAL SYSTEM ─── */
-  /* 수정: Flexbox 시스템을 구현하여 내부 이미지가 완벽하게 화면 중앙(정중앙)에 배치되도록 수정 */
   .image-modal {
     display: none;
     position: fixed;
     z-index: 1000;
     left: 0; top: 0;
     width: 100%; height: 100%;
-    background-color: rgba(10, 10, 10, 0.93);
+    background-color: rgba(20, 20, 20, 0.93);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     display: flex;
@@ -506,7 +492,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Thinkerz Studio</a>
   <ul class="nav-links">
@@ -518,7 +503,6 @@
   </ul>
 </nav>
 
-<!-- STUDIO HERO -->
 <div class="hero-studio" id="about">
   <p class="t-label">Virtual Entertainment Studio</p>
   <h1 class="t-hero-en">Thinkerz<br>Studio</h1>
@@ -526,13 +510,11 @@
   <p class="t-body-lg">Thinkerz Studio는 AI 기술 기반의 Virtual Entertainment 제작사입니다. 인간의 창의성과 AI의 제작 역량을 결합한 Human-Led AI Production을 통해 스토리·비주얼·음악이 유기적으로 연결된 엔터테인먼트 IP를 구축합니다.</p>
 </div>
 
-<!-- VLUW DIVIDER -->
 <div class="vluw-divider" id="vluw">
   <div class="vluw-divider-label">Project 01</div>
   <div class="vluw-divider-title">VLUW</div>
 </div>
 
-<!-- VLUW HERO -->
 <div class="vluw-hero">
   <div class="vluw-hero-bg"></div>
   <div class="vluw-hero-content">
@@ -541,7 +523,6 @@
   </div>
 </div>
 
-<!-- WHO IS VLUW -->
 <section id="who">
   <p class="t-label">Who is VLUW</p>
   <p class="world-text">VLUW는 타임머신이 존재하는 평행우주에서 탄생한 4인조 밴드다. 이 세계에서 타임머신은 역사를 바꾸거나 미래를 지배하는 데 쓰이지 않는다. 과거에서 아파하는 누군가를 집으로 데려와 밥을 먹이고, 미래에서 방황하는 존재에게 삶의 이유를 되찾아준다. 슬퍼도 오늘을 신나게 살아가는데 쓰이는 지극히 사적인 타임머신. 그 세계에서 VLUW는 태어났다.</p>
@@ -590,7 +571,6 @@
   </div>
 </section>
 
-<!-- MUSIC -->
 <section id="music">
   <p class="t-label">Music</p>
 
@@ -683,21 +663,24 @@
       </div>
     </div>
 
-    <!-- 수정: Spotify, Apple, Youtube 뮤직 버튼을 모두 동일 규격의 클래스(.btn)로 병합 완료 -->
-    <div class="music-platforms">
-      <a href="https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN" target="_blank" rel="noopener" class="btn">Spotify</a>
-      <a href="https://music.apple.com/kr/artist/vluw/1864445735" target="_blank" rel="noopener" class="btn">Apple Music</a>
-      <a href="https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag" target="_blank" rel="noopener" class="btn">Youtube Music</a>
+    <div class="links-list" style="margin-top: 48px;">
+      <a href="https://open.spotify.com/artist/4MpEyDNGR6tIp2G1TFg9EN" target="_blank" rel="noopener" class="link-row">
+        <span class="link-name">Spotify</span><span class="link-arrow">→</span>
+      </a>
+      <a href="https://music.apple.com/kr/artist/vluw/1864445735" target="_blank" rel="noopener" class="link-row">
+        <span class="link-name">Apple Music</span><span class="link-arrow">→</span>
+      </a>
+      <a href="https://www.youtube.com/channel/UCoR5SmLaZHpZsp31S1fbWag" target="_blank" rel="noopener" class="link-row">
+        <span class="link-name">Youtube Music</span><span class="link-arrow">→</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- STORY -->
 <section id="story">
   <p class="t-label">Story</p>
   <div class="story-grid">
     <div class="story-item">
-      <!-- 수정: 원본 이미지 고유 비율 유지를 위한 스타일 적용 완료 -->
       <img class="story-cover clickable-img" src="images/VLUW_GPHB_Poster.png" alt="제나의 위험한 광폭행보">
       <div class="story-title">제나의 위험한 광폭행보</div>
       <div class="story-desc">타임머신을 만들고도 무서워 못 타는 나태봉. 그의 1인 기업에 입사한 이제나는 걸핏하면 자신의 이팔청춘을 돌려달라는 할머니에게 분노해 실제 16세 때 할머니를 잡아다 대령하는데…</div>
@@ -712,9 +695,8 @@
   </div>
 </section>
 
-<!-- LINKS -->
 <section id="links">
-  <p class="t-label">Related Links</p>
+  <p class="t-label">Links</p>
   <div class="links-list">
     <a href="https://instagram.com/official_vluw" target="_blank" rel="noopener" class="link-row">
       <span class="link-name">Instagram</span><span class="link-arrow">→</span>
@@ -734,7 +716,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <p class="t-label">Contact</p>
   <a href="mailto:hi.thinkerz@gmail.com" class="contact-email">hi.thinkerz@gmail.com</a>
@@ -745,10 +726,9 @@
   <div class="footer-copy">All Rights Reserved</div>
 </footer>
 
-<!-- 원본이미지 모달 구조 (수정: 정중앙 정렬을 위해 wrapper 추가 스타일 대응) -->
 <div id="imageModal" class="image-modal" style="display: none;">
   <div class="modal-wrapper">
-    <span class="modal-close" id="modalClose">&times;</span>
+    <span class="modal-close" id="modalClose">×</span>
     <img class="modal-content" id="modalTargetImg">
   </div>
 </div>
@@ -761,7 +741,7 @@
 
   clickableImages.forEach(img => {
     img.addEventListener('click', function() {
-      modal.style.display = 'flex'; // 수정: 정중앙 정렬(flex) 유지를 위해 block 대신 flex로 오픈
+      modal.style.display = 'flex'; 
       modalImg.src = this.src;
       modalImg.alt = this.alt;
       document.body.style.overflow = 'hidden';
