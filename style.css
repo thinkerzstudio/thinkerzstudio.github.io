@@ -59,17 +59,21 @@ img { display: block; max-width: 100%; }
   color: var(--white); 
 }
 
-/* [수정] A Shelter for Misfits: 노란 배경 배지 스타일 적용 (크기는 유지) */
+/* [최종 수정] A Shelter for Misfits 배지 스타일 완벽 보정 */
 .t-tagline {
   display: inline-block;
+  align-self: flex-start;     /* 오른쪽으로 쭉 늘어나는 현상 방지 */
+  width: fit-content;         /* 너비를 글자 크기에 딱 맞춤 */
   font-family: 'Inter', sans-serif;
   font-size: clamp(14px, 2.5vw, 22px);
   font-weight: 700;
+  line-height: 1.2;           /* 행간을 대폭 줄여 상하 노란 배경을 타이트하게 조절 */
   letter-spacing: 0.12em;
   text-transform: uppercase;
   background-color: var(--point);
   color: #000000 !important;
-  padding: 2px 5px;
+  text-shadow: none !important; /* 히어로 영역에서 상속되던 검은 블러 그림자 강제 제거 */
+  padding: 2px 6px;           /* 상하 여백 최소화 및 좌우 여백 확보 */
   box-shadow: 2px 0 0 var(--point), -2px 0 0 var(--point);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
@@ -163,12 +167,18 @@ nav {
 
 .hero-studio .t-label,
 .hero-studio .t-hero-en,
-.hero-studio .t-tagline,
 .hero-studio .t-body-lg {
   position: relative;
   z-index: 2;
   pointer-events: none; 
   text-shadow: 0 0 24px rgba(0, 0, 0, 0.95), 0 4px 12px rgba(0, 0, 0, 1);
+}
+
+/* .t-tagline은 배경 깔끔함을 위해 그림자 상속 레이어에서 제외 */
+.hero-studio .t-tagline {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
 }
 
 /* ─── SECTIONS ─── */
@@ -347,12 +357,12 @@ section {
 .music-block { margin-bottom: 72px; }
 .music-block:last-child { margin-bottom: 0; }
 
-/* [수정] Single, 1st EP 블록 타이틀: 노란 배경 배지 스타일 적용 (기존 하단 라인 제거 및 타이트하게 변경) */
 .music-block-title {
   display: inline-block;
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: 700;
+  line-height: 1.2;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   background-color: var(--point);
@@ -415,7 +425,6 @@ section {
   cursor: pointer;
 }
 
-/* [수정] 버튼 내 텍스트 색상을 본문 텍스트 색상(var(--g4))으로 변경 */
 .link-name {
   font-family: 'Inter', sans-serif;
   font-size: 11px;
@@ -426,7 +435,6 @@ section {
   transition: color 0.2s;
 }
 
-/* [수정] 버튼 내 화살표 색상을 본문 텍스트 색상(var(--g4))으로 변경 */
 .link-arrow { 
   font-size: 12px; 
   color: var(--g4); 
