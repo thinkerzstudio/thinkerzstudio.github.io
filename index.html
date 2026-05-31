@@ -106,13 +106,17 @@
     -webkit-backdrop-filter: blur(8px);
   }
 
-  .nav-logo {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--white);
+  /* 네비게이션 로고 래퍼 스타일 */
+  .nav-logo-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 4px 0;
+  }
+  .svg-logo {
+    height: 24px; /* 내비바 높이에 최적화된 로고 스케일 */
+    width: auto;
+    display: block;
   }
 
   .nav-links {
@@ -134,11 +138,12 @@
   .nav-links a:hover { color: var(--point); }
 
   @media (max-width: 480px) {
-    nav { padding: 12px var(--gutter); height: auto; min-height: var(--nav-h); align-items: flex-start; }
+    nav { padding: 12px var(--gutter); height: auto; min-height: var(--nav-h); align-items: center; }
     .nav-links { gap: 16px; }
+    .svg-logo { height: 20px; }
   }
 
-  /* ─── STUDIO HERO (벡터 애니메이션 적용을 위한 구조 수정) ─── */
+  /* ─── STUDIO HERO (인터랙티브 시공간 왜곡 애니메이션 배경 세팅) ─── */
   .hero-studio {
     position: relative;
     min-height: 100vh;
@@ -150,7 +155,7 @@
     overflow: hidden;
   }
 
-  /* 벡터 애니메이션 캔버스 레이어 추가 */
+  /* 선명하고 몰입감 넘치는 SF 추상 캔버스 배경 레이어 */
   .hero-bg-canvas {
     position: absolute;
     top: 0;
@@ -159,16 +164,17 @@
     height: 100%;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.55;
+    opacity: 0.85; /* 명도를 높여 선명하게 수정 */
   }
 
-  /* 텍스트 콘텐츠가 캔버스 그래픽 위로 올라오도록 보호 */
+  /* 캔버스 입자 위에 올라가는 텍스트 레이어 확실하게 방어 */
   .hero-studio .t-label,
   .hero-studio .t-hero-en,
   .hero-studio .t-tagline,
   .hero-studio .t-body-lg {
     position: relative;
     z-index: 2;
+    text-shadow: 0 0 12px rgba(30, 30, 30, 0.9), 0 2px 4px rgba(30, 30, 30, 1);
   }
 
   /* ─── SECTIONS ─── */
@@ -514,9 +520,22 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Thinkerz Studio</a>
+  <a href="#" class="nav-logo-link" aria-label="Thinkerz Studio Home">
+    <svg class="svg-logo" viewBox="0 0 920 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M37.5 137.5L200.5 86.5L163.5 135.5L181.5 112.5L151.5 152.5L169.5 130.5L138.5 171.5L157.5 147.5L118.5 198.5L138.5 174.5L108.5 214.5L132.5 183.5L88.5 239.5L115.5 174.5L118.5 154.5L110.5 164.5L127.5 124.5L138.5 110.5L108.5 148.5L125.5 126.5L88.5 172.5L104.5 152.5L62.5 204.5L87.5 147.5L95.5 121.5L48.5 210.5L89.5 318.5L114.5 214.5L156.5 160.5L132.5 192.5L164.5 151.5L144.5 177.5L174.5 138.5L157.5 160.5L185.5 124.5L171.5 142.5L228.5 70.5L37.5 137.5Z" fill="var(--white)"/>
+      <path d="M228.5 164.5L248.5 139.5L232.5 159.5L260.5 124.5L244.5 144.5L273.5 107.5L285.5 92.5L263.5 120.5L281.5 97.5L254.5 132.5L270.5 112.5L242.5 147.5L258.5 127.5L228.5 164.5ZM244.5 168.5L218.5 201.5L248.5 264.5L264.5 203.5L244.5 168.5Z" fill="var(--white)"/>
+      <path d="M275.5 146.5L288.5 130.5L277.5 144.5L304.5 110.5L327.5 81.5L307.5 107.5L333.5 74.5L343.5 61.5L322.5 88.5L339.5 67.5L313.5 100.5L326.5 84.5L299.5 118.5L313.5 100.5L287.5 132.5L300.5 116.5L275.5 146.5ZM305.5 148.5L270.5 192.5L320.5 296.5L338.5 228.5L305.5 148.5Z" fill="var(--white)"/>
+      <path d="M336.5 194.5L318.5 217.5L342.5 204.5L324.5 227.5L351.5 211.5L363.5 196.5L342.5 223.5L359.5 202.5L332.5 236.5L347.5 217.5L317.5 255.5L334.5 234.5L305.5 271.5L329.5 241.5L288.5 292.5L315.5 226.5L325.5 202.5L336.5 194.5ZM353.5 173.5L322.5 212.5L364.5 299.5L383.5 249.5L353.5 173.5Z" fill="var(--white)"/>
+      <path d="M375.5 211.5L353.5 239.5L384.5 224.5L364.5 250.5L392.5 236.5L409.5 214.5L384.5 246.5L402.5 223.5L375.5 257.5L392.5 236.5L359.5 277.5L378.5 253.5L343.5 297.5L371.5 232.5L379.5 213.5L375.5 211.5ZM442.5 152.5L413.5 189.5L400.5 172.5L425.5 140.5L442.5 152.5Z" fill="var(--white)"/>
+      <path d="M414.5 241.5L440.5 145.5L487.5 137.5L453.5 181.5L473.5 155.5L444.5 192.5L462.5 169.5L433.5 206.5L452.5 182.5L412.5 233.5L432.5 207.5L402.5 245.5L422.5 220.5L387.5 264.5L417.5 153.5L422.5 135.5L414.5 241.5ZM442.5 243.5L413.5 280.5L444.5 342.5L467.5 259.5L442.5 243.5Z" fill="var(--white)"/>
+      <path d="M470.5 206.5L520.5 129.5L565.5 106.5L532.5 148.5L551.5 124.5L521.5 162.5L539.5 139.5L509.5 177.5L528.5 153.5L490.5 201.5L510.5 176.5L480.5 214.5L501.5 188.5L462.5 237.5L490.5 174.5L495.5 152.5L470.5 206.5ZM552.5 135.5L523.5 172.5L506.5 149.5L533.5 115.5L552.5 135.5ZM499.5 210.5L472.5 244.5L511.5 321.5L531.5 246.5L499.5 210.5Z" fill="var(--white)"/>
+      <path d="M578.5 193.5L552.5 226.5L626.5 153.5L608.5 176.5L638.5 138.5L617.5 164.5L644.5 130.5L658.5 112.5L632.5 145.5L651.5 121.5L620.5 160.5L637.5 139.5L606.5 178.5L621.5 159.5L592.5 196.5L606.5 178.5L578.5 193.5ZM607.5 196.5L569.5 244.5L614.5 334.5L634.5 256.5L607.5 196.5ZM551.5 227.5L533.5 250.5L520.5 233.5L538.5 210.5L551.5 227.5Z" fill="var(--white)"/>
+      <path d="M685.5 147.5L664.5 174.5L692.5 159.5L672.5 185.5L700.5 171.5L714.5 153.5L691.5 182.5L708.5 160.5L682.5 193.5L697.5 174.5L667.5 212.5L684.5 191.5L654.5 228.5L677.5 199.5L641.5 245.5L668.5 189.5L674.5 172.5L685.5 147.5Z" fill="var(--white)"/>
+      <path d="M720.5 177.5L697.5 206.5L745.5 164.5L727.5 187.5L757.5 149.5L737.5 174.5L764.5 140.5L778.5 122.5L753.5 154.5L771.5 131.5L741.5 169.5L757.5 149.5L728.5 186.5L742.5 168.5L713.5 205.5L727.5 187.5L720.5 177.5ZM724.5 211.5L689.5 255.5L736.5 349.5L753.5 281.5L724.5 211.5Z" fill="var(--white)"/>
+      <path d="M764.5 156.5L745.5 180.5L882.5 125.5L835.5 184.5L861.5 152.5L823.5 200.5L844.5 174.5L809.5 218.5L831.5 190.5L795.5 235.5L814.5 211.5L773.5 262.5L809.5 184.5L818.5 162.5L764.5 156.5ZM803.5 266.5L745.5 339.5L866.5 291.5L815.5 355.5L902.5 245.5L882.5 270.5L912.5 232.5L894.5 255.5L921.5 221.5L899.5 249.5L928.5 212.5L907.5 238.5L936.5 202.5L885.5 242.5L865.5 258.5L878.5 232.5L842.5 261.5L857.5 239.5L822.5 268.5L841.5 244.5L803.5 266.5Z" fill="var(--white)"/>
+    </svg>
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#vluw">VLUW</a></li>
@@ -526,9 +545,7 @@
   </ul>
 </nav>
 
-<!-- STUDIO HERO -->
 <div class="hero-studio" id="about">
-  <!-- 애니메이션을 위한 캔버스 배치 -->
   <canvas id="heroCanvas" class="hero-bg-canvas"></canvas>
   
   <p class="t-label">Virtual Entertainment Studio</p>
@@ -537,13 +554,11 @@
   <p class="t-body-lg">Thinkerz Studio는 AI 기술 기반의 Virtual Entertainment 제작사입니다. 인간의 창의성과 AI의 제작 역량을 결합한 Human-Led AI Production을 통해 스토리·비주얼·음악이 유기적으로 연결된 엔터테인먼트 IP를 구축합니다.</p>
 </div>
 
-<!-- VLUW DIVIDER -->
 <div class="vluw-divider" id="vluw">
   <div class="vluw-divider-label">Project 01</div>
   <div class="vluw-divider-title">VLUW</div>
 </div>
 
-<!-- VLUW HERO -->
 <div class="vluw-hero">
   <div class="vluw-hero-bg"></div>
   <div class="vluw-hero-content">
@@ -552,7 +567,6 @@
   </div>
 </div>
 
-<!-- WHO IS VLUW -->
 <section id="who">
   <p class="t-label">Who is VLUW</p>
   <p class="world-text">VLUW는 타임머신이 존재하는 평행우주에서 탄생한 4인조 밴드다. 이 세계에서 타임머신은 역사를 바꾸거나 미래를 지배하는 데 쓰이지 않는다. 과거에서 아파하는 누군가를 집으로 데려와 밥을 먹이고, 미래에서 방황하는 존재에게 삶의 이유를 되찾아준다. 슬퍼도 오늘을 신나게 살아가는데 쓰이는 지극히 사적인 타임머신. 그 세계에서 VLUW는 태어났다.</p>
@@ -601,7 +615,6 @@
   </div>
 </section>
 
-<!-- MUSIC -->
 <section id="music">
   <p class="t-label">Music</p>
 
@@ -708,7 +721,6 @@
   </div>
 </section>
 
-<!-- STORY -->
 <section id="story">
   <p class="t-label">Story</p>
   <div class="story-grid">
@@ -727,7 +739,6 @@
   </div>
 </section>
 
-<!-- LINKS -->
 <section id="links">
   <p class="t-label">Links</p>
   <div class="links-list">
@@ -749,7 +760,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <p class="t-label">Contact</p>
   <a href="mailto:hi.thinkerz@gmail.com" class="contact-email">hi.thinkerz@gmail.com</a>
@@ -760,7 +770,6 @@
   <div class="footer-copy">All Rights Reserved</div>
 </footer>
 
-<!-- 원본이미지 모달 구조 -->
 <div id="imageModal" class="image-modal" style="display: none;">
   <div class="modal-wrapper">
     <span class="modal-close" id="modalClose">×</span>
@@ -769,7 +778,7 @@
 </div>
 
 <script>
-  /* ─── 1. 기존 이미지 모달 및 기본 인터랙션 스크립트 ─── */
+  /* ─── 1. 이미지 모달 스크립트 ─── */
   const modal = document.getElementById('imageModal');
   const modalImg = document.getElementById('modalTargetImg');
   const closeBtn = document.getElementById('modalClose');
@@ -803,100 +812,143 @@
     }
   });
 
-  /* ─── 2. ABOUT 섹션 캔버스 벡터 애니메이션 엔진 (추가) ─── */
+  /* ─── 2. NEW 어바웃 섹션 시공간 왜곡(Space-Time Glitch Grid) 애니메이션 엔진 ─── */
   window.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('heroCanvas');
     const ctx = canvas.getContext('2d');
     const container = canvas.parentElement;
 
-    function resize() {
-      canvas.width = container.offsetWidth;
-      canvas.height = container.offsetHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
+    let width = canvas.width = container.offsetWidth;
+    let height = canvas.height = container.offsetHeight;
 
-    const particles = [];
-    const particleCount = 60; 
-    const connectionDistance = 120; 
+    window.addEventListener('resize', () => {
+      width = canvas.width = container.offsetWidth;
+      height = canvas.height = container.offsetHeight;
+    });
 
-    let mouse = { x: null, y: null, radius: 150 };
+    // 오피셜 브랜드 로고의 엣지와 세계관을 융합한 파라메트릭 데이터 구조
+    const gridSpacing = 45; // 선명한 격자 형태 구축
+    let time = 0;
+    let mouse = { x: width / 2, y: height / 2, tx: width / 2, ty: height / 2, radius: 220 };
+
     window.addEventListener('mousemove', (e) => {
       const rect = container.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
+      mouse.tx = e.clientX - rect.left;
+      mouse.ty = e.clientY - rect.top;
     });
 
-    window.addEventListener('mouseleave', () => {
-      mouse.x = null;
-      mouse.y = null;
-    });
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.radius = Math.random() * 1.5 + 0.5;
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-        if (mouse.x !== null && mouse.y !== null) {
-          const dx = mouse.x - this.x;
-          const dy = mouse.y - this.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < mouse.radius) {
-            const force = (mouse.radius - dist) / mouse.radius;
-            this.x -= (dx / dist) * force * 0.6;
-            this.y -= (dy / dist) * force * 0.6;
-          }
-        }
-      }
-
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255, 233, 106, 0.3)'; 
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
+    // 디지털 신호 입자 정의 (인간과 AI의 유기적 결합 가닥들)
+    const streams = [];
+    const streamCount = 22;
+    for (let i = 0; i < streamCount; i++) {
+      streams.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        speed: Math.random() * 2 + 1,
+        length: Math.random() * 80 + 40,
+        width: Math.random() * 1.5 + 0.5
+      });
     }
 
     function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, width, height);
+      time += 0.015;
 
-      particles.forEach(p => {
-        p.update();
-        p.draw();
+      // 마우스 좌표 감속 완충(Easing) 처리로 왜곡을 더 묵직하게 연출
+      mouse.x += (mouse.tx - mouse.x) * 0.08;
+      mouse.y += (mouse.ty - mouse.y) * 0.08;
+
+      // 코어 인프라: 시공간을 가로지르는 뒤틀린 다차원 공간 그리드망
+      ctx.strokeStyle = 'rgba(119, 119, 119, 0.18)'; // 더 뚜렷하고 선명한 선 두께 및 농도 조정
+      ctx.lineWidth = 1.0;
+
+      // 가로선 렌더링 및 왜곡 계산
+      for (let y = 0; y < height; y += gridSpacing) {
+        ctx.beginPath();
+        for (let x = 0; x < width; x += 15) {
+          let dx = mouse.x - x;
+          let dy = mouse.y - y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          let distort = 0;
+
+          if (dist < mouse.radius) {
+            // 로고 특유의 날카로운 파형을 위해 코사인 왜곡파 적용
+            distort = Math.cos((dist / mouse.radius) * Math.PI) * 45 * (1 - dist / mouse.radius);
+          }
+
+          // 파동 노이즈 조합 (시간 여행의 일렁임)
+          let wave = Math.sin(x * 0.005 + time) * 12 + Math.cos(y * 0.005 + time) * 8;
+          let targetY = y + wave - (dy / (dist + 0.1)) * distort;
+
+          if (x === 0) ctx.moveTo(x, targetY);
+          else ctx.lineTo(x, targetY);
+        }
+        ctx.stroke();
+      }
+
+      // 세로선 렌더링 및 왜곡 계산
+      for (let x = 0; x < width; x += gridSpacing) {
+        ctx.beginPath();
+        for (let y = 0; y < height; y += 15) {
+          let dx = mouse.x - x;
+          let dy = mouse.y - y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          let distort = 0;
+
+          if (dist < mouse.radius) {
+            distort = Math.cos((dist / mouse.radius) * Math.PI) * 45 * (1 - dist / mouse.radius);
+          }
+
+          let wave = Math.cos(y * 0.005 + time) * 12 + Math.sin(x * 0.005 + time) * 8;
+          let targetX = x + wave - (dx / (dist + 0.1)) * distort;
+
+          if (y === 0) ctx.moveTo(targetX, y);
+          else ctx.lineTo(targetX, y);
+        }
+        ctx.stroke();
+      }
+
+      // 차원의 균열을 흐르는 인텔리전스 디지털 입자 스트림 (선명도 확장)
+      streams.forEach(s => {
+        s.y -= s.speed;
+        // 마우스 왜곡장 내부에 들어왔을 때 입자의 흐름 가속 왜곡
+        let dx = mouse.x - s.x;
+        let dy = mouse.y - s.y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        let currentX = s.x;
+
+        if (dist < mouse.radius) {
+          let force = (1 - dist / mouse.radius) * 35;
+          currentX += (dx / (dist + 0.1)) * force * Math.sin(time * 2);
+        }
+
+        // 화면 상단을 벗어나면 하단에서 재배치
+        if (s.y < -s.length) {
+          s.y = height + s.length;
+          s.x = Math.random() * width;
+        }
+
+        // 포인트 컬러 그라데이션 선명화 테크닉 적용
+        ctx.beginPath();
+        ctx.moveTo(currentX, s.y);
+        ctx.lineTo(currentX, s.y + s.length);
+        
+        let gradient = ctx.createLinearGradient(currentX, s.y, currentX, s.y + s.length);
+        gradient.addColorStop(0, 'rgba(255, 233, 106, 0.75)'); // 포인트 컬러 두께 및 투명도 업그레이드
+        gradient.addColorStop(0.5, 'rgba(240, 240, 238, 0.4)');
+        gradient.addColorStop(1, 'transparent');
+
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = s.width * 1.5;
+        ctx.stroke();
+
+        // 스트림의 선두에 글리치형 사각 핵 입자 결합
+        if (Math.random() > 0.4) {
+          ctx.fillStyle = 'rgba(255, 233, 106, 0.9)';
+          ctx.fillRect(currentX - s.width, s.y, s.width * 2, s.width * 2);
+        }
       });
 
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < connectionDistance) {
-            const alpha = (1 - dist / connectionDistance) * 0.15;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(240, 240, 238, ${alpha})`; 
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
-          }
-        }
-      }
       requestAnimationFrame(animate);
     }
     animate();
