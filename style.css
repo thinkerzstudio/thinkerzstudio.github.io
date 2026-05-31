@@ -6,7 +6,7 @@
   --g1:     #111111;
   --g2:     #222222; 
   --g3:     #6b7a7d; 
-  --g4:     #b1b1b1; 
+  --g4:     #b1b1b1; /* 본문 텍스트 색상 */
   --g5:     #c8d3d5; 
   --g6:     #eaeaea; 
   --gutter: 48px;
@@ -59,13 +59,20 @@ img { display: block; max-width: 100%; }
   color: var(--white); 
 }
 
+/* [수정] A Shelter for Misfits: 노란 배경 배지 스타일 적용 (크기는 유지) */
 .t-tagline {
+  display: inline-block;
   font-family: 'Inter', sans-serif;
   font-size: clamp(14px, 2.5vw, 22px);
-  font-weight: 300;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--g3); 
+  background-color: var(--point);
+  color: #000000 !important;
+  padding: 2px 5px;
+  box-shadow: 2px 0 0 var(--point), -2px 0 0 var(--point);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
   margin-top: 24px;
   margin-bottom: 32px;
 }
@@ -340,16 +347,21 @@ section {
 .music-block { margin-bottom: 72px; }
 .music-block:last-child { margin-bottom: 0; }
 
+/* [수정] Single, 1st EP 블록 타이틀: 노란 배경 배지 스타일 적용 (기존 하단 라인 제거 및 타이트하게 변경) */
 .music-block-title {
+  display: inline-block;
   font-family: 'Inter', sans-serif;
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--white); 
+  background-color: var(--point);
+  color: #000000 !important;
+  padding: 2px 5px;
+  box-shadow: 2px 0 0 var(--point), -2px 0 0 var(--point);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
   margin-bottom: 32px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--g2); 
 }
 
 .album-intro { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--g4); max-width: 640px; margin-bottom: 40px; }
@@ -403,19 +415,21 @@ section {
   cursor: pointer;
 }
 
+/* [수정] 버튼 내 텍스트 색상을 본문 텍스트 색상(var(--g4))으로 변경 */
 .link-name {
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--g3); 
+  color: var(--g4); 
   transition: color 0.2s;
 }
 
+/* [수정] 버튼 내 화살표 색상을 본문 텍스트 색상(var(--g4))으로 변경 */
 .link-arrow { 
   font-size: 12px; 
-  color: var(--g3); 
+  color: var(--g4); 
   transition: transform 0.2s, color 0.2s;
 }
 
