@@ -59,7 +59,27 @@ img { display: block; max-width: 100%; }
   color: var(--white); 
 }
 
-/* [최종 수정] A Shelter for Misfits 배지 스타일 완벽 보정 */
+/* 어바웃 히어로 대형 SVG 로고 콘테이너 및 컬러 매핑 */
+.hero-logo-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 720px; /* 기존 텍스트 너비 및 레이아웃 그리드를 고려한 최적 크기 */
+  margin-bottom: 8px; /* 기존 line-height 감소에 대응하는 타이트한 간격 연출 */
+  pointer-events: none;
+}
+.hero-svg-logo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* 투명화된 패스들에 브랜드 고유 포인트 컬러인 네온 옐로우 강제 주입 */
+.svg-path-point {
+  fill: var(--point) !important;
+  opacity: 1 !important;
+}
+
+/* A Shelter for Misfits 배지 스타일 완벽 보정 */
 .t-tagline {
   display: inline-block;
   align-self: flex-start;     /* 오른쪽으로 쭉 늘어나는 현상 방지 */
@@ -113,11 +133,18 @@ nav {
   height: 100%;
   padding: 10px 0;
 }
-.svg-logo {
-  height: 28px; 
-  width: auto;
-  display: block;
-  shape-rendering: geometricPrecision;
+/* 상단바 교체용 영문 로고 타이포 스타일링 */
+.nav-logo-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--white);
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-logo-link:hover .nav-logo-text {
+  color: var(--point);
 }
 
 .nav-links {
@@ -141,7 +168,7 @@ nav {
 @media (max-width: 480px) {
   nav { padding: 12px var(--gutter); height: auto; min-height: var(--nav-h); align-items: center; }
   .nav-links { gap: 16px; }
-  .svg-logo { height: 22px; }
+  .nav-logo-text { font-size: 12px; }
 }
 
 /* ─── STUDIO HERO ─── */
@@ -166,7 +193,7 @@ nav {
 }
 
 .hero-studio .t-label,
-.hero-studio .t-hero-en,
+.hero-studio .hero-logo-wrapper,
 .hero-studio .t-body-lg {
   position: relative;
   z-index: 2;
@@ -217,7 +244,7 @@ section {
 
 /* ─── VLUW HERO ─── */
 .vluw-hero {
-  width: 100vw;
+  width: 100%; /* [권고사항 반영] 100vw에서 100%로 보정하여 PC 우측 밀림 현상 및 가로 스크롤바 생성 원천 차단 */
   height: 100vw;
   position: relative;
   padding: 56px var(--gutter);
@@ -228,7 +255,7 @@ section {
   justify-content: flex-end;
 }
 @media (max-width: 480px) {
-  .vluw-hero { aspect-ratio: 3/4; height: auto; }
+  .vluw-hero { aspect-ratio: 3/4; height: auto; width: 100%; }
 }
 
 .vluw-hero-bg {
@@ -571,7 +598,7 @@ footer {
 
 /* ─── MODAL SYSTEM ─── */
 .image-modal {
-  display: none;
+  display: none; /* [권고사항 반영] flex에서 none으로 완벽 초기화하여 로딩 시 빈 검은 화면 노출 버그 완벽 격리 */
   position: fixed;
   z-index: 1000;
   left: 0; top: 0;
@@ -579,7 +606,6 @@ footer {
   background-color: rgba(0, 0, 0, 0.98);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  display: flex;
   align-items: center;
   justify-content: center;
 }
