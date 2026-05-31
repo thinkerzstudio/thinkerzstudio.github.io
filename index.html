@@ -247,25 +247,22 @@
     flex-direction: column; 
   }
   
-  /* ─── 수정 1: VLUW_MA_003_09.jpg 레퍼런스 스타일 완벽 적용 ─── */
-  .vluw-hero-hook-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px; /* 행과 행 사이의 명확한 분리 여백 */
-    margin-bottom: 24px;
-  }
-
-  .vluw-hero-hook-line {
-    display: inline-block; /* 부모 박스에 묶이지 않고 각자 글자 길이만큼만 배경 영역 확보 */
+  /* ─── 수정 1: 박스 태그 제거 후 텍스트 자체에 배경색 밀착 적용 ─── */
+  .vluw-hero-hook-para {
     font-size: clamp(14px, 1.6vw, 17px);
     font-weight: 700;
-    background-color: var(--point);
+    line-height: 1.8; /* 행간 자간 정밀 수정 */
     color: #141a1b;
-    padding: 3px 10px;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
-    white-space: nowrap;
-    transform: rotate(-0.5deg); /* 날것의 테이프 감성 */
+    margin-bottom: 24px;
+    max-width: 600px;
+  }
+
+  .vluw-hero-hook-text {
+    background-color: var(--point);
+    padding: 1px 4px; /* 마진 없이 글자에 완벽히 밀착하도록 세팅 */
+    box-shadow: 2px 0 0 var(--point), -2px 0 0 var(--point); /* 글자 양 끝 여백 처리 */
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
   }
 
   .vluw-hero-title {
@@ -332,7 +329,10 @@
   .member-tags { font-size: 11px; font-weight: 300; color: var(--g3); line-height: 1.8; margin-bottom: 20px; }
   .member-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--g4); }
 
-  /* ─── MUSIC ─── */
+  /* ─── 수정 2: Music 섹션의 배경을 완전한 블랙으로 지정 ─── */
+  #music {
+    background-color: #000000 !important;
+  }
   .music-block { margin-bottom: 72px; }
   .music-block:last-child { margin-bottom: 0; }
 
@@ -467,6 +467,11 @@
   }
   .story-link:hover { color: var(--point); border-color: var(--point); }
 
+  /* ─── 수정 2: Links 섹션의 배경을 완전한 블랙으로 지정 ─── */
+  #links {
+    background-color: #000000 !important;
+  }
+
   /* ─── CONTACT ─── */
   .contact-section {
     position: relative;
@@ -481,7 +486,7 @@
     width: 100%; height: 100%;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.95; /* 선명도 최대로 조정 */
+    opacity: 0.95; 
   }
   .contact-content {
     position: relative;
@@ -504,7 +509,6 @@
     background: #000000 !important; 
     border-top: 1px solid var(--g2); 
   }
-  /* 수정 3: 카피라이트 폰트 굵기 볼드체(700)로 수정 */
   .footer-text { 
     font-family: 'Inter', sans-serif; 
     font-size: 11px; 
@@ -646,11 +650,10 @@ C 560.157,535.501 565.824,535.334 571.5,535.5 Z" fill="#505050"/>
 <div class="vluw-hero">
   <div class="vluw-hero-bg"></div>
   <div class="vluw-hero-content">
-    <!-- 수정 1: 사진첩 감성(VLUW_MA_003_09.jpg)처럼 온전히 쪼개어 가로폭이 행 단위로 딱 들어맞는 구조 -->
-    <div class="vluw-hero-hook-container">
-      <span class="vluw-hero-hook-line">슬퍼도 상관없어.</span>
-      <span class="vluw-hero-hook-line">하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</span>
-    </div>
+    <p class="vluw-hero-hook-para">
+      <span class="vluw-hero-hook-text">슬퍼도 상관없어.</span><br>
+      <span class="vluw-hero-hook-text" style="display:inline-block; margin-top: 5px;">하늘은 여전히 푸르고, 우리는 오늘도 신날테니까.</span>
+    </p>
     <h2 class="vluw-hero-title">VLUW<br>IS BLUE.</h2>
   </div>
 </div>
@@ -999,7 +1002,6 @@ C 560.157,535.501 565.824,535.334 571.5,535.5 Z" fill="#505050"/>
             let oldK = 400 / (star.z + warpFactor * 12);
             let opx = (star.x + orbitX) * oldK + cx;
             let opy = (star.y + orbitY) * oldK + cy;
-            ctx.lineTo(opx, opy);
             ctx.stroke();
           }
 
@@ -1015,7 +1017,7 @@ C 560.157,535.501 565.824,535.334 571.5,535.5 Z" fill="#505050"/>
     drawUniverse();
   });
 
-  /* ─── 4. 컨택트 섹션: 뇌신경망 애니메이션 (수정 2: 노란색 배제, 순수 그레이스케일만 사용) ─── */
+  /* ─── 4. 컨택트 섹션: 뇌신경망 애니메이션 (수정 3: 하얀색 점을 본문 텍스트 색상 var(--g4)로 변경) ─── */
   window.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('contactCanvas');
     const ctx = canvas.getContext('2d');
@@ -1046,6 +1048,7 @@ C 560.157,535.501 565.824,535.334 571.5,535.5 Z" fill="#505050"/>
     function drawNeuralNetwork() {
       ctx.clearRect(0, 0, width, height);
 
+      // 본문 텍스트 색상인 #b1b1b1 값을 추출해 입자에 매칭
       particles.forEach(p => {
         p.x += p.vx;
         p.y += p.vy;
@@ -1053,8 +1056,8 @@ C 560.157,535.501 565.824,535.334 571.5,535.5 Z" fill="#505050"/>
         if (p.x < 0 || p.x > width) p.vx *= -1;
         if (p.y < 0 || p.y > height) p.vy *= -1;
 
-        // 수정 2: 노란색 제거, 선명한 화이트/그레이스케일 입자 적용
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.85)'; 
+        // 수정 3: 본문 텍스트 컬러 토큰(--g4: #b1b1b1)의 RGBA 형태로 불투명하게 수정
+        ctx.fillStyle = 'rgba(177, 177, 177, 0.95)'; 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
@@ -1069,9 +1072,8 @@ C 560.157,535.501 565.824,535.334 571.5,535.5 Z" fill="#505050"/>
           let dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDist) {
-            // 수정 2: 연결선도 완전한 그레이스케일(#eaeaea 및 투명도) 처리
-            let alpha = (1 - dist / connectionDist) * 0.5; 
-            ctx.strokeStyle = `rgba(234, 234, 234, ${alpha})`;
+            let alpha = (1 - dist / connectionDist) * 0.4; 
+            ctx.strokeStyle = `rgba(177, 177, 177, ${alpha})`; // 선 또한 이질감 없도록 텍스트 색상 연동
             ctx.lineWidth = 0.9; 
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
