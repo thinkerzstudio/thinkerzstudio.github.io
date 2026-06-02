@@ -174,16 +174,18 @@ nav {
   pointer-events: auto; 
 }
 
-/* SVG 메인 로고 스타일 추가 (크기 확대 및 정상적인 상하 마진 부여) */
+/* 3D 라인아트 효과를 적용한 SVG 메인 로고 스타일 */
 .hero-studio .hero-main-logo {
   position: relative;
   z-index: 2;
   pointer-events: none;
-  width: clamp(320px, 55vw, 760px); 
+  /* 이전보다 사이즈를 약간 축소 */
+  width: clamp(260px, 45vw, 640px); 
   height: auto;
   margin-top: 12px; 
   margin-bottom: 12px; 
-  filter: drop-shadow(0 0 24px rgba(0, 0, 0, 0.95)) drop-shadow(0 4px 12px rgba(0, 0, 0, 1));
+  /* 3D 깊이감을 주기 위해 빛 번짐(글로우)과 뎁스 섀도우를 다중 적용 */
+  filter: drop-shadow(4px 4px 0px rgba(255, 255, 255, 0.15)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
 }
 
 .hero-studio .t-label,
