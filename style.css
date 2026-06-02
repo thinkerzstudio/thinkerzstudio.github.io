@@ -4,7 +4,6 @@
   --white:  #ffffff; 
   --point:  #FFE96A; 
   --g1:     #111111;
-  /* 선과 보더를 최소화하되 시인성을 아주 약간 끌어올림 (0.06 -> 0.15) */
   --g2:     rgba(255, 255, 255, 0.15); 
   --g3:     #7a7a7a; 
   --g4:     #a0a0a0; 
@@ -53,7 +52,7 @@ img { display: block; max-width: 100%; }
 
 .t-tagline {
   display: inline-block;
-  align-self: center; /* 전체 텍스트 중앙 정렬을 위해 플렉스 시작점 해제 */
+  align-self: center;
   width: fit-content;         
   font-family: 'Inter', sans-serif;
   font-size: clamp(14px, 2.5vw, 20px); 
@@ -72,14 +71,13 @@ img { display: block; max-width: 100%; }
   margin-bottom: 20px; 
 }
 
-/* 폰트 사이즈를 15px로 통일하고 본문 정렬 수정 */
 .t-body-lg {
   font-size: 15px; 
   font-weight: 300;
   line-height: 1.7; 
   color: var(--g4); 
   max-width: 600px;
-  margin: 0 auto; /* 중앙 정렬 배치를 위한 마진 추가 */
+  margin: 0 auto;
 }
 
 /* ─── NAV ─── */
@@ -151,8 +149,8 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: center; /* 추가: 가로 중앙 정렬 */
-  text-align: center;  /* 추가: 텍스트 중앙 정렬 */
+  align-items: center; 
+  text-align: center; 
   border-bottom: none; 
   overflow: hidden;
   background: #000000 !important; 
@@ -166,7 +164,6 @@ nav {
   pointer-events: auto; 
 }
 
-/* 메인 3D 라인 로고: PC에서는 좌우 마진을 제외한 가로 영역의 딱 50%를 차지 */
 .hero-studio .hero-main-logo {
   position: relative;
   z-index: 2;
@@ -179,7 +176,6 @@ nav {
 }
 
 @media (max-width: 768px) {
-  /* 모바일에서는 기존처럼 100% 꽉 채우기 */
   .hero-studio .hero-main-logo {
     width: 100%; 
   }
@@ -282,7 +278,8 @@ section {
   font-size: clamp(14px, 1.6vw, 17px);
   font-weight: 700;
   line-height: 1.7; 
-  margin-bottom: 32px;
+  /* 훅 문구와 로고 사이 간격을 대폭 축소 (32px -> 8px) */
+  margin-bottom: 8px; 
   max-width: 600px;
 }
 
@@ -296,14 +293,22 @@ section {
   -webkit-box-decoration-break: clone;
 }
 
-/* VLUW IS BLUE 펜글씨 로고 최적화 */
+/* VLUW IS BLUE 펜글씨 로고 레이아웃 조율 */
 .vluw-is-blue-svg {
-  width: clamp(240px, 50vw, 600px);
+  width: 50%; /* PC에서는 50% */
   height: auto;
   object-fit: contain;
   mix-blend-mode: screen; 
-  margin-top: 16px;
+  margin-top: 0; /* 불필요한 상단 여백 제거 */
   pointer-events: none;
+  transform-origin: left center;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .vluw-is-blue-svg {
+    width: 100%; /* 모바일에서는 가로 폭 100% 꽉 채우기 */
+  }
 }
 
 /* ─── WHO IS VLUW ─── */
@@ -335,7 +340,6 @@ section {
 .member-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: none; } 
 .member-info { padding-top: 2px; }
 
-/* 멤버 타이틀, 역할, 설명 위계 마진 조율 */
 .member-name-en {
   font-family: 'Inter', sans-serif;
   font-size: 32px;
