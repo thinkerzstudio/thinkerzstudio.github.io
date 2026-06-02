@@ -28,10 +28,11 @@ html {
 body {
   background: var(--black) !important;
   color: var(--g4); 
-  font-family: 'Plus Jakarta Sans', 'SUIT', sans-serif;
+  /* 최초 제공해주신 영문 Inter 폰트 원복 및 최신 한글 SUIT 적용 */
+  font-family: 'Inter', 'SUIT', sans-serif;
   font-weight: 300;
   font-size: 15px;
-  line-height: 1.6; /* 행간을 넓혀 시원한 느낌 추가 (1.8 -> 1.6으로 조직력 강화) */
+  line-height: 1.6; /* 행간을 조여 전체적인 조직력 및 밀도감 강화 */
   overflow-x: hidden;
 }
 a { color: inherit; text-decoration: none; }
@@ -42,7 +43,7 @@ img { display: block; max-width: 100%; }
 
 /* ─── TYPOGRAPHY SCALE ─── */
 .t-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.4em; /* 자간을 더 넓혀 세련되게 */
@@ -56,7 +57,7 @@ img { display: block; max-width: 100%; }
   display: inline-block;
   align-self: flex-start;     
   width: fit-content;         
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: clamp(14px, 2.5vw, 20px); /* 폰트 사이즈 미세하게 축소 */
   font-weight: 700;
   line-height: 1.2;           
@@ -128,7 +129,7 @@ nav {
 }
 
 .nav-links a {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -170,7 +171,7 @@ nav {
   position: relative;
   z-index: 2;
   pointer-events: none;
-  width: clamp(200px, 35vw, 530px); /* 사이즈 10% 확대 */
+  width: clamp(200px, 35vw, 530px); /* 기존 PC 크기 대비 10% 확대 반영 */
   height: auto;
   margin-top: 16px; 
   margin-bottom: 16px; 
@@ -179,7 +180,7 @@ nav {
 
 @media (max-width: 768px) {
   .hero-studio .hero-main-logo {
-    width: 100%; /* 모바일에서 좌우 마진 꽉 차게 */
+    width: 100%; /* 모바일에서 해상도 마진을 가득 채우도록 수정 */
   }
 }
 
@@ -213,7 +214,7 @@ section {
 }
 
 .vluw-divider-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.35em;
@@ -223,7 +224,7 @@ section {
 }
 
 .vluw-divider-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: clamp(48px, 10vw, 100px);
   font-weight: 900;
   letter-spacing: -0.03em;
@@ -236,7 +237,7 @@ section {
 .vluw-hero {
   width: 100vw;
   height: auto; 
-  aspect-ratio: 1 / 1; /* PC 비율 1:1 */
+  aspect-ratio: 1 / 1; /* PC 레이아웃에서 정비율 1:1 보장 */
   position: relative;
   padding: 80px var(--gutter);
   border-bottom: none;
@@ -246,7 +247,7 @@ section {
   justify-content: flex-end;
 }
 @media (max-width: 768px) {
-  .vluw-hero { aspect-ratio: 3 / 4; height: auto; } /* 모바일 비율 3:4 */
+  .vluw-hero { aspect-ratio: 3 / 4; height: auto; } /* 모바일 환경에서 시네마틱 3:4 비율 전환 */
 }
 @media (max-width: 480px) {
   .vluw-hero { padding: 40px var(--gutter); height: auto; }
@@ -280,7 +281,7 @@ section {
 .vluw-hero-hook-para {
   font-size: clamp(14px, 1.6vw, 17px);
   font-weight: 700;
-  line-height: 1.7; /* 행간 조율 */
+  line-height: 1.7; /* 행간 구조화 */
   margin-bottom: 32px;
   max-width: 600px;
 }
@@ -296,7 +297,7 @@ section {
 }
 
 .vluw-hero-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: clamp(52px, 12vw, 120px);
   font-weight: 900;
   line-height: 0.88;
@@ -312,14 +313,14 @@ section {
   line-height: 1.75; /* 행간 조율 */
   color: var(--g4); 
   max-width: 640px;
-  margin-bottom: 100px; /* 더 넓은 여백 */
+  margin-bottom: 100px; 
 }
 
 .members { display: flex; flex-direction: column; }
 .member {
   display: grid;
-  grid-template-columns: 240px 1fr; /* 사진 크기 살짝 키움 */
-  gap: 64px; /* 멤버 사진과 텍스트 사이 간격 대폭 확보 */
+  grid-template-columns: 240px 1fr; 
+  gap: 64px; 
   padding: 80px 0;
   border-bottom: 1px solid var(--g2); 
 }
@@ -331,10 +332,10 @@ section {
   .member { grid-template-columns: 1fr; gap: 32px; padding: 64px 0; }
 }
 
-.member-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: none; } /* 사진 보더 제거 */
+.member-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: none; } 
 .member-info { padding-top: 2px; }
 .member-name-en {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 32px;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -347,7 +348,7 @@ section {
 
 .member-role {
   display: inline;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -366,16 +367,16 @@ section {
 }
 
 .member-tags { font-size: 12px; font-weight: 300; color: var(--g3); line-height: 1.6; margin-bottom: 24px; }
-.member-desc { font-size: 15px; font-weight: 300; line-height: 1.65; /* 행간 조율 */ color: var(--g4); }
+.member-desc { font-size: 15px; font-weight: 300; line-height: 1.65; /* 행간 긴밀하게 압축 */ color: var(--g4); }
 
 /* ─── MUSIC ─── */
 #music { background-color: #000000 !important; }
-.music-block { margin-bottom: 120px; } /* 블록간 간격 증대 */
+.music-block { margin-bottom: 120px; } 
 .music-block:last-child { margin-bottom: 0; }
 
 .music-block-title {
   display: inline-block;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: 700;
   line-height: 1.2;
@@ -390,8 +391,8 @@ section {
   margin-bottom: 40px;
 }
 
-.album-intro { font-size: 15px; font-weight: 300; line-height: 1.7; /* 행간 조율 */ color: var(--g4); max-width: 640px; margin-bottom: 64px; }
-.tracklist-label { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--g3); margin-bottom: 16px; }
+.album-intro { font-size: 15px; font-weight: 300; line-height: 1.7; /* 행간 밀도 조율 */ color: var(--g4); max-width: 640px; margin-bottom: 64px; }
+.tracklist-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--g3); margin-bottom: 16px; }
 
 .track {
   display: grid;
@@ -404,11 +405,11 @@ section {
 @media (max-width: 480px) { .track { grid-template-columns: 80px 1fr; gap: 24px; padding: 24px 0; } }
 
 .track-cover { width: 100%; aspect-ratio: 1; object-fit: cover; border: none; }
-.track-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 12px; }
+.track-title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 12px; }
 .track-desc { font-size: 14px; font-weight: 300; line-height: 1.6; /* 행간 조율 */ color: var(--g4); margin-bottom: 16px; }
 
 .track-link {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -433,7 +434,7 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 0; /* 좌우 여백 제거, 위아래 여백 증대 */
+  padding: 24px 0; 
   border: none; 
   border-bottom: 1px solid var(--g2); 
   background: transparent !important;
@@ -442,7 +443,7 @@ section {
 }
 
 .link-name {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -465,7 +466,7 @@ section {
 }
 .link-row:hover .link-arrow {
   color: var(--point) !important;
-  transform: translateX(8px); /* 더 시원하게 화살표 이동 */
+  transform: translateX(8px); 
 }
 
 /* ─── STORY ─── */
@@ -489,17 +490,154 @@ section {
   height: auto;
   object-fit: contain;
   margin-bottom: 32px;
-  border: none; /* 보더 제거 */
+  border: none; 
 }
 
 .story-title { font-size: 16px; font-weight: 500; color: var(--white); line-height: 1.5; margin-bottom: 16px; }
-.story-desc { font-size: 14px; font-weight: 300; line-height: 1.6; /* 행간 조율 */ color: var(--g4); margin-bottom: 24px; }
+.story-desc { font-size: 14px; font-weight: 300; line-height: 1.6; /* 행간 긴밀하게 정렬 */ color: var(--g4); margin-bottom: 24px; }
 
 .story-link {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--white); 
-  border-bottom: 1px
+  border-bottom: 1px solid transparent;
+  padding-bottom: 4px;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+}
+.story-link:hover { color: var(--point); border-color: var(--point); }
+
+/* ─── LINKS ─── */
+#links { background-color: #000000 !important; }
+
+/* ─── CONTACT (구조적 안정을 위한 수정 블록) ─── */
+.contact-section {
+  position: relative;
+  padding: 180px var(--gutter);
+  border-bottom: none; 
+  overflow: hidden;
+  background: #000000 !important; 
+}
+.contact-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.8; 
+}
+.contact-content {
+  position: relative;
+  z-index: 2;
+}
+.contact-email {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(22px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--white); 
+  display: inline-block;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+.contact-email:hover { color: var(--point); }
+
+/* ─── FOOTER ─── */
+footer { 
+  padding: 48px var(--gutter); 
+  background: #000000 !important; 
+  border-top: 1px solid var(--g2); 
+}
+.footer-text { 
+  font-family: 'Inter', sans-serif; 
+  font-size: 10px; 
+  font-weight: 600; 
+  letter-spacing: 0.1em; 
+  color: var(--g3); 
+}
+
+/* ─── TOAST NOTIFICATION ─── */
+.toast-box {
+  position: fixed;
+  bottom: 40px;
+  left: var(--gutter);
+  background-color: var(--point);
+  color: #000000;
+  padding: 14px 28px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 40px;
+  z-index: 2000;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.toast-box.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── MODAL SYSTEM ─── */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 85vh;
+  object-fit: contain;
+  animation: zoom 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes zoom {
+  from { transform: scale(0.97); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-close {
+  position: absolute;
+  top: 32px; right: 40px;
+  color: var(--g4);
+  font-size: 42px;
+  font-weight: 200;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  line-height: 1;
+  z-index: 1010;
+}
+.modal-close:hover { color: var(--point); }
+
+@media (max-width: 768px) {
+  .modal-wrapper { padding: 20px; }
+  .modal-content { max-width: 95%; max-height: 80vh; }
+  .modal-close { top: 20px; right: 24px; font-size: 34px; }
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: #222; }
