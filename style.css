@@ -4,13 +4,12 @@
   --white:  #ffffff; 
   --point:  #FFE96A; 
   --g1:     #111111;
-  /* 선과 보더를 극도로 최소화하기 위해 투명한 회색으로 변경 */
-  --g2:     rgba(255, 255, 255, 0.06); 
+  /* 선과 보더를 최소화하되 시인성을 아주 약간 끌어올림 (0.06 -> 0.15) */
+  --g2:     rgba(255, 255, 255, 0.15); 
   --g3:     #7a7a7a; 
-  --g4:     #a0a0a0; /* 본문 텍스트를 약간 더 차분하게 */
+  --g4:     #a0a0a0; 
   --g5:     #c8d3d5; 
   --g6:     #eaeaea; 
-  /* 갤러리처럼 넓은 여백을 위해 거터(Gutter) 대폭 확대 */
   --gutter: 8vw;
   --nav-h:  80px;
 }
@@ -28,11 +27,10 @@ html {
 body {
   background: var(--black) !important;
   color: var(--g4); 
-  /* 최초 제공해주신 영문 Inter 폰트 원복 및 최신 한글 SUIT 적용 */
   font-family: 'Inter', 'SUIT', sans-serif;
   font-weight: 300;
   font-size: 15px;
-  line-height: 1.6; /* 행간을 조여 전체적인 조직력 및 밀도감 강화 */
+  line-height: 1.6; 
   overflow-x: hidden;
 }
 a { color: inherit; text-decoration: none; }
@@ -46,10 +44,10 @@ img { display: block; max-width: 100%; }
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.4em; /* 자간을 더 넓혀 세련되게 */
+  letter-spacing: 0.4em; 
   text-transform: uppercase;
   color: var(--point); 
-  margin-bottom: 40px;
+  margin-bottom: 32px; /* 섹션 타이틀과 너무 멀어지지 않게 간격 조율 */
   opacity: 0.85;
 }
 
@@ -58,7 +56,7 @@ img { display: block; max-width: 100%; }
   align-self: flex-start;     
   width: fit-content;         
   font-family: 'Inter', sans-serif;
-  font-size: clamp(14px, 2.5vw, 20px); /* 폰트 사이즈 미세하게 축소 */
+  font-size: clamp(14px, 2.5vw, 20px); 
   font-weight: 700;
   line-height: 1.2;           
   letter-spacing: 0.15em;
@@ -70,16 +68,17 @@ img { display: block; max-width: 100%; }
   box-shadow: 2px 0 0 var(--point), -2px 0 0 var(--point);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
-  margin-top: 32px;
-  margin-bottom: 40px;
+  margin-top: 48px; /* 위쪽 3D 로고와의 간격은 넓히고 */
+  margin-bottom: 20px; /* 아래 본문 텍스트와의 간격은 좁혀서 위계 형성 */
 }
 
 .t-body-lg {
   font-size: clamp(14px, 1.8vw, 17px);
   font-weight: 300;
-  line-height: 1.7; /* 행간 조율 */
+  line-height: 1.7; 
   color: var(--g4); 
   max-width: 600px;
+  margin-top: 0;
 }
 
 /* ─── NAV ─── */
@@ -94,11 +93,10 @@ nav {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
-  background: transparent !important; /* 헤더 투명화로 미니멀 극대화 */
-  border-bottom: none; /* 헤더 선 제거 */
+  background: transparent !important; 
+  border-bottom: none; 
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  /* 그라데이션으로 헤더 배경이 스르륵 사라지는 효과 */
   background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%) !important;
 }
 
@@ -109,7 +107,6 @@ nav {
   padding: 10px 0;
 }
 
-/* 앙증맞은 흰색 내비게이션 로고. 호버시 포인트 노란색 */
 .svg-logo {
   height: 24px;
   width: auto;
@@ -153,7 +150,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  border-bottom: none; /* 히어로 보더 제거 */
+  border-bottom: none; 
   overflow: hidden;
   background: #000000 !important; 
 }
@@ -166,12 +163,12 @@ nav {
   pointer-events: auto; 
 }
 
-/* 메인 3D 라인 로고 극강의 샤프함 유지 */
+/* 메인 3D 라인 로고: PC에서는 좌우 마진을 제외한 가로 영역의 딱 50%를 차지 */
 .hero-studio .hero-main-logo {
   position: relative;
   z-index: 2;
   pointer-events: none;
-  width: clamp(200px, 35vw, 530px); /* 기존 PC 크기 대비 10% 확대 반영 */
+  width: 50%;
   height: auto;
   margin-top: 16px; 
   margin-bottom: 16px; 
@@ -179,8 +176,9 @@ nav {
 }
 
 @media (max-width: 768px) {
+  /* 모바일에서는 기존처럼 100% 꽉 채우기 */
   .hero-studio .hero-main-logo {
-    width: 100%; /* 모바일에서 해상도 마진을 가득 채우도록 수정 */
+    width: 100%; 
   }
 }
 
@@ -198,10 +196,9 @@ nav {
 }
 
 /* ─── SECTIONS ─── */
-/* 섹션 상하 여백을 대폭 늘려 미니멀리즘의 정수인 '여백의 미' 강조 */
 section {
   padding: 160px var(--gutter);
-  border-bottom: none; /* 지저분한 모든 가로 보더 제거 */
+  border-bottom: none; 
   background-color: #000000 !important;
 }
 @media (max-width: 768px) { section { padding: 100px var(--gutter); } }
@@ -237,7 +234,7 @@ section {
 .vluw-hero {
   width: 100vw;
   height: auto; 
-  aspect-ratio: 1 / 1; /* PC 레이아웃에서 정비율 1:1 보장 */
+  aspect-ratio: 1 / 1; 
   position: relative;
   padding: 80px var(--gutter);
   border-bottom: none;
@@ -247,7 +244,7 @@ section {
   justify-content: flex-end;
 }
 @media (max-width: 768px) {
-  .vluw-hero { aspect-ratio: 3 / 4; height: auto; } /* 모바일 환경에서 시네마틱 3:4 비율 전환 */
+  .vluw-hero { aspect-ratio: 3 / 4; height: auto; } 
 }
 @media (max-width: 480px) {
   .vluw-hero { padding: 40px var(--gutter); height: auto; }
@@ -281,7 +278,7 @@ section {
 .vluw-hero-hook-para {
   font-size: clamp(14px, 1.6vw, 17px);
   font-weight: 700;
-  line-height: 1.7; /* 행간 구조화 */
+  line-height: 1.7; 
   margin-bottom: 32px;
   max-width: 600px;
 }
@@ -310,7 +307,7 @@ section {
 .world-text {
   font-size: clamp(14px, 1.8vw, 17px);
   font-weight: 300;
-  line-height: 1.75; /* 행간 조율 */
+  line-height: 1.75; 
   color: var(--g4); 
   max-width: 640px;
   margin-bottom: 100px; 
@@ -334,6 +331,8 @@ section {
 
 .member-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: none; } 
 .member-info { padding-top: 2px; }
+
+/* 멤버 타이틀, 역할, 설명 위계 마진 조율 */
 .member-name-en {
   font-family: 'Inter', sans-serif;
   font-size: 32px;
@@ -342,9 +341,14 @@ section {
   text-transform: uppercase;
   color: var(--white); 
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 4px; /* 한글이름과 간격 좁힘 */
 }
-.member-name-kr { font-size: 13px; font-weight: 400; color: var(--g3); margin-bottom: 24px; }
+.member-name-kr { 
+  font-size: 13px; 
+  font-weight: 400; 
+  color: var(--g3); 
+  margin-bottom: 12px; /* 롤과 간격 좁힘 */
+}
 
 .member-role {
   display: inline;
@@ -362,12 +366,23 @@ section {
 }
 
 .member-role-container {
-  margin-top: 6px;
-  margin-bottom: 24px; 
+  margin-top: 4px;
+  margin-bottom: 24px; /* 태그, 설명부와 간격을 벌림 */
 }
 
-.member-tags { font-size: 12px; font-weight: 300; color: var(--g3); line-height: 1.6; margin-bottom: 24px; }
-.member-desc { font-size: 15px; font-weight: 300; line-height: 1.65; /* 행간 긴밀하게 압축 */ color: var(--g4); }
+.member-tags { 
+  font-size: 12px; 
+  font-weight: 300; 
+  color: var(--g3); 
+  line-height: 1.6; 
+  margin-bottom: 12px; /* 설명 텍스트 상단 안착 */
+}
+.member-desc { 
+  font-size: 15px; 
+  font-weight: 300; 
+  line-height: 1.65; 
+  color: var(--g4); 
+}
 
 /* ─── MUSIC ─── */
 #music { background-color: #000000 !important; }
@@ -388,10 +403,10 @@ section {
   box-shadow: 2px 0 0 var(--point), -2px 0 0 var(--point);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
-  margin-bottom: 40px;
+  margin-bottom: 24px; /* 섹션 본문과 조금 가깝게 조율 */
 }
 
-.album-intro { font-size: 15px; font-weight: 300; line-height: 1.7; /* 행간 밀도 조율 */ color: var(--g4); max-width: 640px; margin-bottom: 64px; }
+.album-intro { font-size: 15px; font-weight: 300; line-height: 1.7; color: var(--g4); max-width: 640px; margin-bottom: 64px; }
 .tracklist-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--g3); margin-bottom: 16px; }
 
 .track {
@@ -405,8 +420,20 @@ section {
 @media (max-width: 480px) { .track { grid-template-columns: 80px 1fr; gap: 24px; padding: 24px 0; } }
 
 .track-cover { width: 100%; aspect-ratio: 1; object-fit: cover; border: none; }
-.track-title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 12px; }
-.track-desc { font-size: 14px; font-weight: 300; line-height: 1.6; /* 행간 조율 */ color: var(--g4); margin-bottom: 16px; }
+.track-title { 
+  font-family: 'Inter', sans-serif; 
+  font-size: 18px; 
+  font-weight: 600; 
+  color: var(--white); 
+  margin-bottom: 8px; /* 설명문과 간격 조율 */
+}
+.track-desc { 
+  font-size: 14px; 
+  font-weight: 300; 
+  line-height: 1.6; 
+  color: var(--g4); 
+  margin-bottom: 24px; /* 하단 액션 버튼과 명확히 분리 */
+}
 
 .track-link {
   font-family: 'Inter', sans-serif;
@@ -493,8 +520,20 @@ section {
   border: none; 
 }
 
-.story-title { font-size: 16px; font-weight: 500; color: var(--white); line-height: 1.5; margin-bottom: 16px; }
-.story-desc { font-size: 14px; font-weight: 300; line-height: 1.6; /* 행간 긴밀하게 정렬 */ color: var(--g4); margin-bottom: 24px; }
+.story-title { 
+  font-size: 16px; 
+  font-weight: 500; 
+  color: var(--white); 
+  line-height: 1.5; 
+  margin-bottom: 12px; /* 설명 간격 좁힘 */
+}
+.story-desc { 
+  font-size: 14px; 
+  font-weight: 300; 
+  line-height: 1.6; 
+  color: var(--g4); 
+  margin-bottom: 24px; /* 버튼 간격 벌림 */
+}
 
 .story-link {
   font-family: 'Inter', sans-serif;
@@ -513,7 +552,7 @@ section {
 /* ─── LINKS ─── */
 #links { background-color: #000000 !important; }
 
-/* ─── CONTACT (구조적 안정을 위한 수정 블록) ─── */
+/* ─── CONTACT ─── */
 .contact-section {
   position: relative;
   padding: 180px var(--gutter);
