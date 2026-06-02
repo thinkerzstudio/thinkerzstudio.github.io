@@ -279,7 +279,7 @@ section {
   font-weight: 700;
   line-height: 1.7; 
   /* 훅 문구와 로고 사이 간격을 대폭 축소 (32px -> 8px) */
-  margin-bottom: 16px; 
+  margin-bottom: 32px;
   max-width: 600px;
 }
 
