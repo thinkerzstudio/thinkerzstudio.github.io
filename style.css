@@ -174,14 +174,15 @@ nav {
   pointer-events: auto; 
 }
 
-/* SVG 메인 로고 스타일 추가 */
+/* SVG 메인 로고 스타일 추가 (크기 확대 및 상하 간격 조정) */
 .hero-studio .hero-main-logo {
   position: relative;
   z-index: 2;
   pointer-events: none;
-  width: clamp(200px, 35vw, 420px);
+  width: clamp(280px, 45vw, 620px); /* 기존 너비보다 대폭 확대 */
   height: auto;
-  margin-bottom: 24px;
+  margin-top: -12px; /* 상단 t-label과의 여백을 좁힘 */
+  margin-bottom: -6px; /* 하단 t-tagline과의 여백을 좁힘 */
   /* 텍스트에 있던 그림자를 SVG에도 드롭 섀도우 형태로 유지 */
   filter: drop-shadow(0 0 24px rgba(0, 0, 0, 0.95)) drop-shadow(0 4px 12px rgba(0, 0, 0, 1));
 }
