@@ -1,19 +1,22 @@
 /* ─── TOKENS ─── */
 :root {
   --black:  #000000;
-  --white:  #f9f9f9; 
+  --white:  #ffffff; 
   --point:  #FFE96A; 
   --g1:     #111111;
-  --g2:     #333333; 
-  --g3:     #6b7a7d; 
-  --g4:     #b1b1b1; /* 본문 텍스트 색상 */
+  /* 선과 보더를 극도로 최소화하기 위해 투명한 회색으로 변경 */
+  --g2:     rgba(255, 255, 255, 0.06); 
+  --g3:     #7a7a7a; 
+  --g4:     #a0a0a0; /* 본문 텍스트를 약간 더 차분하게 */
   --g5:     #c8d3d5; 
   --g6:     #eaeaea; 
-  --gutter: 48px;
-  --nav-h:  64px;
+  /* 갤러리처럼 넓은 여백을 위해 거터(Gutter) 대폭 확대 */
+  --gutter: 8vw;
+  --nav-h:  80px;
 }
-@media (max-width: 768px) { :root { --gutter: 32px; --nav-h: 56px; } }
-@media (max-width: 480px) { :root { --gutter: 20px; --nav-h: 96px; } }
+@media (max-width: 1024px) { :root { --gutter: 6vw; } }
+@media (max-width: 768px) { :root { --gutter: 32px; --nav-h: 64px; } }
+@media (max-width: 480px) { :root { --gutter: 24px; --nav-h: 56px; } }
 
 /* ─── RESET ─── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,64 +31,52 @@ body {
   font-family: 'Pretendard', 'Inter', sans-serif;
   font-weight: 300;
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.8; /* 행간을 넓혀 시원한 느낌 추가 */
   overflow-x: hidden;
 }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 
-.clickable-img { cursor: pointer; transition: opacity 0.2s; }
-.clickable-img:hover { opacity: 0.85; }
+.clickable-img { cursor: pointer; transition: opacity 0.3s ease; }
+.clickable-img:hover { opacity: 0.7; }
 
 /* ─── TYPOGRAPHY SCALE ─── */
 .t-label {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.4em; /* 자간을 더 넓혀 세련되게 */
   text-transform: uppercase;
   color: var(--point); 
-  margin-bottom: 32px;
-  opacity: 0.9;
+  margin-bottom: 40px;
+  opacity: 0.85;
 }
 
-/* 기존 h1을 위한 텍스트 클래스 (재사용을 위해 유지) */
-.t-hero-en {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(56px, 12vw, 130px);
-  font-weight: 900;
-  line-height: 0.88;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  color: var(--white); 
-}
-
-/* [최종 수정] A Shelter for Misfits 배지 스타일 완벽 보정 */
 .t-tagline {
   display: inline-block;
   align-self: flex-start;     
   width: fit-content;         
   font-family: 'Inter', sans-serif;
-  font-size: clamp(14px, 2.5vw, 22px);
+  font-size: clamp(14px, 2.5vw, 20px); /* 폰트 사이즈 미세하게 축소 */
   font-weight: 700;
   line-height: 1.2;           
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  background-color: var(--white);
+  background-color: var(--point);
   color: #000000 !important;
   text-shadow: none !important; 
-  padding: 2px 6px;           
-  box-shadow: 2px 0 0 var(--white), -2px 0 0 var(--white);
+  padding: 3px 8px;           
+  box-shadow: 2px 0 0 var(--point), -2px 0 0 var(--point);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
-  margin-top: 24px;
-  margin-bottom: 32px;
+  margin-top: 32px;
+  margin-bottom: 40px;
 }
 
 .t-body-lg {
   font-size: clamp(14px, 1.8vw, 17px);
   font-weight: 300;
-  line-height: 1.85;
+  line-height: 1.95;
   color: var(--g4); 
   max-width: 600px;
 }
@@ -102,10 +93,12 @@ nav {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
-  background: #000000 !important; 
-  border-bottom: 1px solid var(--g2); 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: transparent !important; /* 헤더 투명화로 미니멀 극대화 */
+  border-bottom: none; /* 헤더 선 제거 */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  /* 그라데이션으로 헤더 배경이 스르륵 사라지는 효과 */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%) !important;
 }
 
 .nav-logo-link {
@@ -115,13 +108,13 @@ nav {
   padding: 10px 0;
 }
 
-/* 새로 교체된 네비게이션 작은 씽커즈 로고 스타일 */
+/* 앙증맞은 흰색 내비게이션 로고. 호버시 포인트 노란색 */
 .svg-logo {
-  height: 28px;
+  height: 24px;
   width: auto;
   display: block;
   shape-rendering: geometricPrecision;
-  transition: fill 0.2s;
+  transition: fill 0.3s ease;
 }
 .nav-logo-link:hover .svg-logo {
   fill: var(--point) !important;
@@ -129,7 +122,7 @@ nav {
 
 .nav-links {
   display: flex;
-  gap: 28px;
+  gap: 32px;
   list-style: none;
   flex-wrap: wrap;
 }
@@ -138,28 +131,28 @@ nav {
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--g3); 
-  transition: color 0.2s, opacity 0.2s;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 .nav-links a:hover { color: var(--point); opacity: 1; }
 
 @media (max-width: 480px) {
-  nav { padding: 12px var(--gutter); height: auto; min-height: var(--nav-h); align-items: center; }
+  nav { padding: 16px var(--gutter); height: auto; min-height: var(--nav-h); align-items: center; }
   .nav-links { gap: 16px; }
-  .svg-logo { height: 24px; }
+  .svg-logo { height: 20px; }
 }
 
 /* ─── STUDIO HERO ─── */
 .hero-studio {
   position: relative;
   min-height: 100vh;
-  padding: calc(var(--nav-h) + 80px) var(--gutter) 80px;
+  padding: calc(var(--nav-h) + 80px) var(--gutter) 100px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  border-bottom: 1px solid var(--g2); 
+  border-bottom: none; /* 히어로 보더 제거 */
   overflow: hidden;
   background: #000000 !important; 
 }
@@ -172,30 +165,25 @@ nav {
   pointer-events: auto; 
 }
 
-/* 3D 라인아트 효과를 적용한 SVG 메인 로고 스타일 */
+/* 메인 3D 라인 로고 극강의 샤프함 유지 */
 .hero-studio .hero-main-logo {
   position: relative;
   z-index: 2;
   pointer-events: none;
-  /* 사이즈를 살짝 축소하여 밸런스 조정 */
-  width: clamp(220px, 38vw, 540px); 
+  width: clamp(200px, 32vw, 480px); /* 사이즈를 더 섬세하게 조율 */
   height: auto;
-  margin-top: 12px; 
-  margin-bottom: 12px; 
-  /* 3D 깊이감을 주기 위해 빛 번짐(글로우)과 뎁스 섀도우를 다중 적용 */
-  filter: drop-shadow(4px 4px 0px rgba(255, 255, 255, 0.15)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+  margin-top: 16px; 
+  margin-bottom: 16px; 
+  filter: drop-shadow(4px 4px 0px rgba(255, 255, 255, 0.1)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.3));
 }
 
 .hero-studio .t-label,
-.hero-studio .t-hero-en,
 .hero-studio .t-body-lg {
   position: relative;
   z-index: 2;
   pointer-events: none; 
-  text-shadow: 0 0 24px rgba(0, 0, 0, 0.95), 0 4px 12px rgba(0, 0, 0, 1);
 }
 
-/* .t-tagline은 배경 깔끔함을 위해 그림자 상속 레이어에서 제외 */
 .hero-studio .t-tagline {
   position: relative;
   z-index: 2;
@@ -203,16 +191,18 @@ nav {
 }
 
 /* ─── SECTIONS ─── */
+/* 섹션 상하 여백을 대폭 늘려 미니멀리즘의 정수인 '여백의 미' 강조 */
 section {
-  padding: 80px var(--gutter);
-  border-bottom: 1px solid var(--g2); 
+  padding: 160px var(--gutter);
+  border-bottom: none; /* 지저분한 모든 가로 보더 제거 */
   background-color: #000000 !important;
 }
+@media (max-width: 768px) { section { padding: 100px var(--gutter); } }
 
 /* ─── VLUW DIVIDER ─── */
 .vluw-divider {
-  padding: 56px var(--gutter);
-  border-bottom: 1px solid var(--g2); 
+  padding: 120px var(--gutter);
+  border-bottom: none; 
   background-color: #000000 !important;
 }
 
@@ -223,7 +213,7 @@ section {
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--point);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .vluw-divider-title {
@@ -239,17 +229,17 @@ section {
 /* ─── VLUW HERO ─── */
 .vluw-hero {
   width: 100vw;
-  height: 100vw;
+  height: 85vh; /* 화면을 꽉 채우지 않고 살짝 모자라게 하여 시네마틱 뷰 연출 */
   position: relative;
-  padding: 56px var(--gutter);
-  border-bottom: 1px solid var(--g2);
+  padding: 80px var(--gutter);
+  border-bottom: none;
   background-color: #000000 !important;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 @media (max-width: 480px) {
-  .vluw-hero { aspect-ratio: 3/4; height: auto; }
+  .vluw-hero { height: 75vh; padding: 40px var(--gutter); }
 }
 
 .vluw-hero-bg {
@@ -265,7 +255,7 @@ section {
   inset: 0;
   background: linear-gradient(to top,
     rgba(0,0,0,1) 0%,
-    rgba(0,0,0,0.5) 40%,
+    rgba(0,0,0,0.4) 50%,
     rgba(0,0,0,0.05) 100%);
 }
 
@@ -281,7 +271,7 @@ section {
   font-size: clamp(14px, 1.6vw, 17px);
   font-weight: 700;
   line-height: 1.9; 
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   max-width: 600px;
 }
 
@@ -289,7 +279,7 @@ section {
   display: inline;
   background-color: var(--point);
   color: #000000 !important;
-  padding: 2px 5px; 
+  padding: 3px 6px; 
   box-shadow: 2px 0 0 var(--point), -2px 0 0 var(--point); 
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
@@ -309,44 +299,41 @@ section {
 .world-text {
   font-size: clamp(14px, 1.8vw, 17px);
   font-weight: 300;
-  line-height: 1.85;
+  line-height: 2;
   color: var(--g4); 
   max-width: 640px;
-  margin-bottom: 64px;
+  margin-bottom: 100px; /* 더 넓은 여백 */
 }
 
-.members { display: flex; flex-direction: column; border-top: 1px solid var(--g2); }
+.members { display: flex; flex-direction: column; }
 .member {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 48px;
-  padding: 48px 0;
+  grid-template-columns: 240px 1fr; /* 사진 크기 살짝 키움 */
+  gap: 64px; /* 멤버 사진과 텍스트 사이 간격 대폭 확보 */
+  padding: 80px 0;
   border-bottom: 1px solid var(--g2); 
 }
 
-.member:last-child { 
-  border-bottom: none; 
-  padding-bottom: 0; 
-}
+.member:first-child { border-top: 1px solid var(--g2); }
+.member:last-child { border-bottom: none; }
 
 @media (max-width: 640px) {
-  .member { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
-  .member:last-child { padding-bottom: 0; }
+  .member { grid-template-columns: 1fr; gap: 32px; padding: 64px 0; }
 }
 
-.member-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid var(--g2); }
+.member-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: none; } /* 사진 보더 제거 */
 .member-info { padding-top: 2px; }
 .member-name-en {
   font-family: 'Inter', sans-serif;
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--white); 
   line-height: 1;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
-.member-name-kr { font-size: 12px; font-weight: 400; color: var(--g3); margin-bottom: 12px; }
+.member-name-kr { font-size: 13px; font-weight: 400; color: var(--g3); margin-bottom: 24px; }
 
 .member-role {
   display: inline;
@@ -357,7 +344,7 @@ section {
   text-transform: uppercase;
   background-color: var(--point);
   color: #000000 !important;
-  padding: 2px 5px;
+  padding: 2px 6px;
   box-shadow: 2px 0 0 var(--point), -2px 0 0 var(--point);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
@@ -365,17 +352,15 @@ section {
 
 .member-role-container {
   margin-top: 6px;
-  margin-bottom: 18px; 
+  margin-bottom: 24px; 
 }
 
-.member-tags { font-size: 11px; font-weight: 300; color: var(--g3); line-height: 1.8; margin-bottom: 20px; }
-.member-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--g4); }
+.member-tags { font-size: 12px; font-weight: 300; color: var(--g3); line-height: 1.8; margin-bottom: 24px; }
+.member-desc { font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--g4); }
 
 /* ─── MUSIC ─── */
-#music {
-  background-color: #000000 !important;
-}
-.music-block { margin-bottom: 72px; }
+#music { background-color: #000000 !important; }
+.music-block { margin-bottom: 120px; } /* 블록간 간격 증대 */
 .music-block:last-child { margin-bottom: 0; }
 
 .music-block-title {
@@ -388,29 +373,29 @@ section {
   text-transform: uppercase;
   background-color: var(--point);
   color: #000000 !important;
-  padding: 2px 5px;
+  padding: 2px 6px;
   box-shadow: 2px 0 0 var(--point), -2px 0 0 var(--point);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
-.album-intro { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--g4); max-width: 640px; margin-bottom: 40px; }
-.tracklist-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--g3); margin-bottom: 8px; }
+.album-intro { font-size: 15px; font-weight: 300; line-height: 2; color: var(--g4); max-width: 640px; margin-bottom: 64px; }
+.tracklist-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--g3); margin-bottom: 16px; }
 
 .track {
   display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 28px;
-  padding: 24px 0;
+  grid-template-columns: 120px 1fr;
+  gap: 40px;
+  padding: 32px 0;
   border-bottom: 1px solid var(--g2); 
   align-items: start;
 }
-@media (max-width: 480px) { .track { grid-template-columns: 80px 1fr; gap: 20px; } }
+@media (max-width: 480px) { .track { grid-template-columns: 80px 1fr; gap: 24px; padding: 24px 0; } }
 
-.track-cover { width: 100%; aspect-ratio: 1; object-fit: cover; border: 1px solid var(--g2); }
-.track-title { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
-.track-desc { font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--g4); margin-bottom: 12px; }
+.track-cover { width: 100%; aspect-ratio: 1; object-fit: cover; border: none; }
+.track-title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 12px; }
+.track-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--g4); margin-bottom: 16px; }
 
 .track-link {
   font-family: 'Inter', sans-serif;
@@ -420,17 +405,17 @@ section {
   text-transform: uppercase;
   color: var(--white); 
   border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
-  transition: all 0.15s;
+  padding-bottom: 4px;
+  transition: all 0.2s ease;
   display: inline-block;
 }
 .track-link:hover { color: var(--point); border-color: var(--point); }
 
-/* ─── BUTTONS & LINKS LIST SYSTEM ─── */
+/* ─── BUTTONS & LINKS LIST SYSTEM (Ultra Minimal) ─── */
 .links-list { 
   display: flex; 
   flex-direction: column; 
-  max-width: 360px; 
+  max-width: 400px; 
   gap: 0; 
 }
 
@@ -438,53 +423,50 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 20px;
-  border: 1px solid var(--g2); 
-  margin-top: -1px; 
-  background: transparent;
-  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  padding: 24px 0; /* 좌우 여백 제거, 위아래 여백 증대 */
+  border: none; 
+  border-bottom: 1px solid var(--g2); 
+  background: transparent !important;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: pointer;
 }
 
 .link-name {
   font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--g4); 
-  transition: color 0.2s;
+  color: var(--white); 
+  transition: color 0.3s ease;
 }
 
 .link-arrow { 
-  font-size: 12px; 
+  font-size: 14px; 
   color: var(--g4); 
-  transition: transform 0.2s, color 0.2s;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .link-row:hover {
-  background: var(--point) !important;
   border-color: var(--point) !important;
 }
 .link-row:hover .link-name {
-  color: var(--black) !important;
+  color: var(--point) !important;
 }
 .link-row:hover .link-arrow {
-  color: var(--black) !important;
-  transform: translateX(4px);
+  color: var(--point) !important;
+  transform: translateX(8px); /* 더 시원하게 화살표 이동 */
 }
 
 /* ─── STORY ─── */
-#story {
-  background-color: #000000 !important;
-}
+#story { background-color: #000000 !important; }
 .story-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  max-width: 720px;
+  gap: 40px;
+  max-width: 800px;
 }
-@media (max-width: 560px) { .story-grid { grid-template-columns: 1fr; gap: 40px; } }
+@media (max-width: 640px) { .story-grid { grid-template-columns: 1fr; gap: 64px; } }
 
 .story-item {
   background: transparent;
@@ -496,12 +478,12 @@ section {
   width: 100%;
   height: auto;
   object-fit: contain;
-  margin-bottom: 20px;
-  border: 1px solid var(--g2); 
+  margin-bottom: 32px;
+  border: none; /* 보더 제거 */
 }
 
-.story-title { font-size: 14px; font-weight: 500; color: var(--white); line-height: 1.5; margin-bottom: 12px; }
-.story-desc { font-size: 12px; font-weight: 300; line-height: 1.75; color: var(--g4); margin-bottom: 20px; }
+.story-title { font-size: 16px; font-weight: 500; color: var(--white); line-height: 1.5; margin-bottom: 16px; }
+.story-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--g4); margin-bottom: 24px; }
 
 .story-link {
   font-family: 'Inter', sans-serif;
@@ -511,22 +493,20 @@ section {
   text-transform: uppercase;
   color: var(--white); 
   border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
-  transition: all 0.15s;
+  padding-bottom: 4px;
+  transition: all 0.2s ease;
   align-self: flex-start;
 }
 .story-link:hover { color: var(--point); border-color: var(--point); }
 
 /* ─── LINKS ─── */
-#links {
-  background-color: #000000 !important;
-}
+#links { background-color: #000000 !important; }
 
 /* ─── CONTACT ─── */
 .contact-section {
   position: relative;
-  padding: 120px var(--gutter);
-  border-bottom: 1px solid var(--g2); 
+  padding: 180px var(--gutter);
+  border-bottom: none; 
   overflow: hidden;
   background: #000000 !important; 
 }
@@ -536,7 +516,7 @@ section {
   width: 100%; height: 100%;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.95; 
+  opacity: 0.8; /* 애니메이션 투명도 조절로 텍스트 집중도 향상 */
 }
 .contact-content {
   position: relative;
@@ -544,46 +524,46 @@ section {
 }
 .contact-email {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(18px, 3.5vw, 36px);
+  font-size: clamp(22px, 4vw, 42px);
   font-weight: 700;
   color: var(--white); 
   display: inline-block;
-  transition: color 0.2s;
+  transition: color 0.3s ease;
   cursor: pointer;
 }
 .contact-email:hover { color: var(--point); }
 
 /* ─── FOOTER ─── */
 footer { 
-  padding: 32px var(--gutter); 
+  padding: 48px var(--gutter); 
   background: #000000 !important; 
   border-top: 1px solid var(--g2); 
 }
 .footer-text { 
   font-family: 'Inter', sans-serif; 
-  font-size: 11px; 
-  font-weight: 700; 
-  letter-spacing: 0.08em; 
+  font-size: 10px; 
+  font-weight: 600; 
+  letter-spacing: 0.1em; 
   color: var(--g3); 
 }
 
 /* ─── TOAST NOTIFICATION ─── */
 .toast-box {
   position: fixed;
-  bottom: 32px;
+  bottom: 40px;
   left: var(--gutter);
   background-color: var(--point);
   color: #000000;
-  padding: 12px 22px;
-  font-size: 12px;
+  padding: 14px 28px;
+  font-size: 13px;
   font-weight: 600;
-  border-radius: 30px;
+  border-radius: 40px;
   z-index: 2000;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.4s ease, transform 0.4s ease;
   pointer-events: none;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 }
 .toast-box.show {
   opacity: 1;
@@ -598,8 +578,8 @@ footer {
   left: 0; top: 0;
   width: 100%; height: 100%;
   background-color: rgba(0, 0, 0, 0.98);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -619,7 +599,7 @@ footer {
   max-width: 90%;
   max-height: 85vh;
   object-fit: contain;
-  animation: zoom 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  animation: zoom 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 @keyframes zoom {
@@ -629,12 +609,12 @@ footer {
 
 .modal-close {
   position: absolute;
-  top: 24px; right: 32px;
+  top: 32px; right: 40px;
   color: var(--g4);
-  font-size: 38px;
+  font-size: 42px;
   font-weight: 200;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: color 0.3s ease;
   line-height: 1;
   z-index: 1010;
 }
@@ -643,10 +623,10 @@ footer {
 @media (max-width: 768px) {
   .modal-wrapper { padding: 20px; }
   .modal-content { max-width: 95%; max-height: 80vh; }
-  .modal-close { top: 16px; right: 20px; font-size: 34px; }
+  .modal-close { top: 20px; right: 24px; font-size: 34px; }
 }
 
 /* SCROLLBAR */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: var(--g2); }
+::-webkit-scrollbar-thumb { background: #222; }
