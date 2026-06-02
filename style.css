@@ -594,7 +594,7 @@ section {
 footer { 
   padding: 48px var(--gutter); 
   background: #000000 !important; 
-  border-top: 1px solid var(--g2); 
+  /*border-top: 1px solid var(--g2);*/
 }
 .footer-text { 
   font-family: 'Inter', sans-serif; 
