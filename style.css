@@ -115,18 +115,16 @@ nav {
   padding: 10px 0;
 }
 
-/* 교체된 네비게이션 로고 텍스트 스타일 */
-.nav-logo-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--white);
-  text-transform: uppercase;
-  transition: color 0.2s;
+/* 새로 교체된 네비게이션 작은 씽커즈 로고 스타일 */
+.svg-logo {
+  height: 28px;
+  width: auto;
+  display: block;
+  shape-rendering: geometricPrecision;
+  transition: fill 0.2s;
 }
-.nav-logo-text:hover {
-  color: var(--point);
+.nav-logo-link:hover .svg-logo {
+  fill: var(--point) !important;
 }
 
 .nav-links {
@@ -150,7 +148,7 @@ nav {
 @media (max-width: 480px) {
   nav { padding: 12px var(--gutter); height: auto; min-height: var(--nav-h); align-items: center; }
   .nav-links { gap: 16px; }
-  .nav-logo-text { font-size: 13px; }
+  .svg-logo { height: 24px; }
 }
 
 /* ─── STUDIO HERO ─── */
@@ -179,8 +177,8 @@ nav {
   position: relative;
   z-index: 2;
   pointer-events: none;
-  /* 이전보다 사이즈를 약간 축소 */
-  width: clamp(260px, 45vw, 640px); 
+  /* 사이즈를 살짝 축소하여 밸런스 조정 */
+  width: clamp(220px, 38vw, 540px); 
   height: auto;
   margin-top: 12px; 
   margin-bottom: 12px; 
