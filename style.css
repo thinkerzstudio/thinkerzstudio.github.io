@@ -38,6 +38,19 @@ img { display: block; max-width: 100%; }
 .clickable-img { cursor: pointer; transition: opacity 0.3s ease; }
 .clickable-img:hover { opacity: 0.7; }
 
+/* 검색엔진 수집용 텍스트 숨김 클래스 */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 /* ─── TYPOGRAPHY SCALE ─── */
 .t-label {
   font-family: 'Inter', sans-serif;
@@ -278,8 +291,7 @@ section {
   font-size: clamp(14px, 1.6vw, 17px);
   font-weight: 700;
   line-height: 1.7; 
-  /* 훅 문구와 로고 사이 간격을 대폭 축소 (32px -> 8px) */
-  margin-bottom: 32px;
+  margin-bottom: 32px; 
   max-width: 600px;
 }
 
@@ -293,13 +305,12 @@ section {
   -webkit-box-decoration-break: clone;
 }
 
-/* VLUW IS BLUE 펜글씨 로고 레이아웃 조율 */
 .vluw-is-blue-svg {
-  width: 50%; /* PC에서는 50% */
+  width: 50%; 
   height: auto;
   object-fit: contain;
   mix-blend-mode: screen; 
-  margin-top: 0; /* 불필요한 상단 여백 제거 */
+  margin-top: 0; 
   pointer-events: none;
   transform-origin: left center;
   display: block;
@@ -307,7 +318,7 @@ section {
 
 @media (max-width: 768px) {
   .vluw-is-blue-svg {
-    width: 100%; /* 모바일에서는 가로 폭 100% 꽉 채우기 */
+    width: 100%; 
   }
 }
 
@@ -594,7 +605,7 @@ section {
 footer { 
   padding: 48px var(--gutter); 
   background: #000000 !important; 
-  /*border-top: 1px solid var(--g2);*/
+  /* border-top: 1px solid var(--g2); */
 }
 .footer-text { 
   font-family: 'Inter', sans-serif; 
